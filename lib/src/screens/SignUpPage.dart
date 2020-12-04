@@ -48,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('Welcome to Fryo!', style: h3),
+                Text('Welcome to Boarding Hub!', style: h3),
                 Text('Let\'s get started', style: taglineText),
                 fryoTextInput('Username'),
                 fryoTextInput('Full Name'),
