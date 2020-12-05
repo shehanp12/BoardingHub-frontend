@@ -8,6 +8,6 @@ abstract class AuthService{
   Future<User> currentUser();
   Future<User> signInWithEmailAndPassword(String email, String password);
   Future<Response> createUserWithEmailAndPassword(BoardingProvider boardingProvider, String password);
-  Stream<User> get onAuthStateChanged;
+
 
 }

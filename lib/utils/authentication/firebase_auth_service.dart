@@ -38,9 +38,9 @@ class FirebaseAuthService implements AuthService{
         if (event != null) {
           print(event.email);
           await event.getIdToken().then((id) async {
-            boardingProvider.userId = event.uid;
-            httpResponse =
-            await restService.signupUser(user, id.token.toString());
+            boardingProvider.uid = event.uid;
+            // httpResponse =
+            // // await restService.signupUser(user, id.token.toString());
           });
           return httpResponse;
         }
@@ -60,13 +60,11 @@ class FirebaseAuthService implements AuthService{
      }
 
   @override
-  Future<User> currentUser() {
-    // TODO: implement currentUser
-    throw UnimplementedError();
+  Future<User> currentUser() async{
+      return  _firebaseAuth.currentUser;
+
   }
 
-  @override
-  // TODO: implement onAuthStateChanged
-  Stream<User> get onAuthStateChanged => throw UnimplementedError();
+
 
 }
