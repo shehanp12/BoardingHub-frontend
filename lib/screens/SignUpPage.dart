@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingProvider.dart';
+import 'package:flutter_app/utils/authentication/auth_service.dart';
+import 'package:flutter_app/utils/authentication/firebase_auth_service.dart';
 import '../shared/styles.dart';
 import '../shared/colors.dart';
 import '../shared/inputFields.dart';
@@ -21,7 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String fullName;
   String email;
   String password;
-
+  final FirebaseAuthService  _firebaseAuthService = FirebaseAuthService();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -80,6 +82,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         onPressed: () async {
                           // Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeft, child: Dashboard()));
                           BoardingProvider boardingProvider = new BoardingProvider( username, fullName, email, password);
+
+                          await _firebaseAuthService.createUserWithEmailAndPassword(boardingProvider, password);
 
                         },
                         color: primaryColor,
