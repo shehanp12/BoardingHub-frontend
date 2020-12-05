@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_app/models/BoardingProvider.dart';
 import 'package:flutter_app/utils/authentication/auth_service.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart';
 
 class FirebaseAuthService implements AuthService{
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -23,7 +25,7 @@ class FirebaseAuthService implements AuthService{
   }
 
   @override
-  Future<User> createUserWithEmailAndPassword(String email, String password) {
+  Future<Response> createUserWithEmailAndPassword(BoardingProvider boardingProvider, String password) async {
     // TODO: implement createUserWithEmailAndPassword
     throw UnimplementedError();
   }
