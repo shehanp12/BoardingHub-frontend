@@ -14,21 +14,50 @@ class FirebaseAuthService implements AuthService{
           email: email,
           password: password
       );
+
+     await for (var firebaseUser in _firebaseAuth.authStateChanges()) {
+       return firebaseUser;
+     }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
       }
+      return null;
     }
 
   }
 
   @override
   Future<Response> createUserWithEmailAndPassword(BoardingProvider boardingProvider, String password) async {
-    // TODO: implement createUserWithEmailAndPassword
-    throw UnimplementedError();
-  }
+    print(boardingProvider);
+    try {
+      Response httpResponse;
+      await for (var event in _firebaseAuth.authStateChanges()) {
+        if (event != null) {
+          print(event.email);
+          await event.getIdToken().then((id) async {
+            boardingProvider.userId = event.uid;
+            httpResponse =
+            await restService.signupUser(user, id.token.toString());
+          });
+          return httpResponse;
+        }
+      }
+
+
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+
+     }
 
   @override
   Future<User> currentUser() {
