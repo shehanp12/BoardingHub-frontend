@@ -1,23 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_app/models/BoardingProvider.dart';
 import 'package:flutter_app/utils/authentication/auth_service.dart';
-import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 
-class FirebaseAuthService implements AuthService{
+class FirebaseAuthService implements AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   @override
   Future<User> signInWithEmailAndPassword(String email, String password) async {
     try {
-     await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: email,
-          password: password
-      );
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
 
-     await for (var firebaseUser in _firebaseAuth.authStateChanges()) {
-       return firebaseUser;
-     }
+      await for (var firebaseUser in _firebaseAuth.authStateChanges()) {
+        return firebaseUser;
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -26,11 +23,11 @@ class FirebaseAuthService implements AuthService{
       }
       return null;
     }
-
   }
 
   @override
-  Future<Response> createUserWithEmailAndPassword(BoardingProvider boardingProvider, String password) async {
+  Future<Response> createUserWithEmailAndPassword(
+      BoardingProvider boardingProvider, String password) async {
     print(boardingProvider);
     try {
       Response httpResponse;
@@ -45,8 +42,6 @@ class FirebaseAuthService implements AuthService{
           return httpResponse;
         }
       }
-
-
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -56,15 +51,10 @@ class FirebaseAuthService implements AuthService{
     } catch (e) {
       print(e);
     }
-
-     }
-
-  @override
-  Future<User> currentUser() async{
-      return  _firebaseAuth.currentUser;
-
   }
 
-
-
+  @override
+  Future<User> currentUser() async {
+    return _firebaseAuth.currentUser;
+  }
 }

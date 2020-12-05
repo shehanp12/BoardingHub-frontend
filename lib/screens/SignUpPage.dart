@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/models/BoardingProvider.dart';
 import '../shared/styles.dart';
 import '../shared/colors.dart';
 import '../shared/inputFields.dart';
@@ -20,6 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String fullName;
   String email;
   String password;
+
 
   final _formKey = GlobalKey<FormState>();
 
@@ -77,6 +79,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: FlatButton(
                         onPressed: () async {
                           // Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeft, child: Dashboard()));
+                          BoardingProvider boardingProvider = new BoardingProvider( username, fullName, email, password);
+
                         },
                         color: primaryColor,
                         padding: EdgeInsets.all(13),
