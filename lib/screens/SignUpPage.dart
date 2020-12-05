@@ -17,7 +17,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   String username;
-  String fullname;
+  String fullName;
   String email;
   String password;
 
@@ -64,7 +64,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         fryoTextInput('Username',
                             onChanged: (val) => setState(() => username = val)),
                         fryoTextInput('Full Name',
-                            onChanged: (val) => setState(() => fullname = val)),
+                            onChanged: (val) => setState(() => fullName = val)),
                         fryoEmailInput('Email Address',
                             onChanged: (val) => setState(() => email = val)),
                         fryoPasswordInput('Password',
