@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/src/screens/register_page.dart';
 import './src/screens/SignInPage.dart';
 import './src/screens/SignUpPage.dart';
 import './src/screens/HomePage.dart';
@@ -16,9 +17,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fryo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.orange,
       ),
-      home: HomePage(pageTitle: 'Welcome'),
+      //home: HomePage(pageTitle: 'Welcome'),
+      home: RegisterFrom(),
       routes: <String, WidgetBuilder> {
         '/signup': (BuildContext context) =>  SignUpPage(),
         '/signin': (BuildContext context) =>  SignInPage(),
