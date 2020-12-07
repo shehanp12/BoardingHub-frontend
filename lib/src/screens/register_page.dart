@@ -48,8 +48,8 @@ class _RegisterPageState extends State<RegisterFrom> {
           //stops: [0.1, 0.5, 0.7, 0.9],
           colors: [
             Colors.black,
-            Color(0xFFFF9800),
-            Color(0xFFF57C00),
+            Color(0xFFFB8C00),
+            Color(0xFFFF6D00),
           ],
         ),
                       /*image: DecorationImage(

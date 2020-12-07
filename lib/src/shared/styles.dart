@@ -111,6 +111,7 @@ const inputFieldDefaultBorderStyle = OutlineInputBorder(
 
 const textInputDecoration = InputDecoration(
   //fillColor: Colors.redAccent,
+
   border: OutlineInputBorder(
     borderSide: BorderSide(),
     

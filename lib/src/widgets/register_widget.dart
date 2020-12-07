@@ -116,6 +116,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   TextFormField(
                     decoration: textInputDecoration.copyWith(
                       labelText: "Title",
+                      labelStyle: TextStyle(),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(fieldRadius)),
                     ),
