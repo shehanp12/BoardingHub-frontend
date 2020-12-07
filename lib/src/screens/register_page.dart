@@ -50,8 +50,6 @@ class _RegisterPageState extends State<RegisterFrom> {
             Colors.black,
             Color(0xFFFF9800),
             Color(0xFFF57C00),
-  
-            
           ],
         ),
                       /*image: DecorationImage(

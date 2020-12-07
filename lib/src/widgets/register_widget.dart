@@ -52,7 +52,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         child: OutlineButton(
             borderSide: BorderSide(color: Colors.black),
             key: key,
-            child: Text(text, style: TextStyle(fontSize: 16.0)),
+            child: Text(text, style: TextStyle(fontSize: 15.0)),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
             //shape: StadiumBorder(),
@@ -64,7 +64,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
     Widget _buildButtons() {
       return ConstrainedBox(
-          constraints: BoxConstraints.expand(height: 80.0),
+          constraints: BoxConstraints.expand(height: 35.0,width: MediaQuery.of(context).size.width/1.5,),
           child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -231,7 +231,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   new Row(
                     children: <Widget>[
                       
-                      new Text("AttachBathroom"),
+                      new Text("Attach Bathroom"),
                       new Container(width: 5.0),
                       Checkbox(
                         value: checkBoxValue3,
