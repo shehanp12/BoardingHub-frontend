@@ -3,16 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/src/widgets/Loading_Screen.dart';
 import 'package:flutter_app/src/widgets/register_widget.dart';
 
-enum PhoneAuthState {
-  Started,
-  CodeSent,
-  CodeResent,
-  Verified,
-  Failed,
-  Error,
-  AutoRetrievalTimeOut
-}
-
 class RegisterFrom extends StatefulWidget {
   RegisterFrom();
 
@@ -22,39 +12,8 @@ class RegisterFrom extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterFrom> {
   bool loading = false;
-  //final CategoryService categoryService = CategoryService();
-  //Future<List<CategoryNew>> categoryList;
-  final AsyncMemoizer _memoizer = AsyncMemoizer();
-  String phoneNumber;
-  String phoneIsoCode;
-  bool visible = false;
-  String confirmedNumber;
-  int id = 1;
-
-  void onPhoneNumberChange(
-      String number, String internationalizedPhoneNumber, String isoCode) {
-    print(number);
-    setState(() {
-      phoneNumber = number;
-      phoneIsoCode = isoCode;
-    });
-  }
-
-  onValidPhoneNumber(
-      String number, String internationalizedPhoneNumber, String isoCode) {
-    setState(() {
-      visible = true;
-      confirmedNumber = internationalizedPhoneNumber;
-    });
-  }
-
-
-
  
-
   
-
-
   showAlertDialog(BuildContext context) {
     AlertDialog alert = AlertDialog(
       content: new Row(
@@ -83,6 +42,18 @@ class _RegisterPageState extends State<RegisterFrom> {
                 SizedBox(height: 100),
                 Container(
                   decoration: BoxDecoration(
+                    gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          //stops: [0.1, 0.5, 0.7, 0.9],
+          colors: [
+            Colors.black,
+            Color(0xFFFF9800),
+            Color(0xFFF57C00),
+  
+            
+          ],
+        ),
                       /*image: DecorationImage(
                           image: AssetImage('Ecfinder_Assets/logo/mainbg.jpg'),
                           fit: BoxFit.cover)*/

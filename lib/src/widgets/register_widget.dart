@@ -15,6 +15,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   final _formKey = GlobalKey<FormState>();
   bool checkBoxValue = false;
   bool checkBoxValue1 = false;
+  bool checkBoxValue2 = false;
+  bool checkBoxValue3 = false;
+  bool checkBoxValue4 = false;
 
   String error = '';
 
@@ -147,9 +150,55 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       //onChanged: (val) => setState(() => email = val),
                     ),
                   ),
+                  
                   Padding(padding: EdgeInsets.all(3.0)),
                   new Row(
                     children: <Widget>[
+                      Text("Close to"),
+                        SizedBox(width: MediaQuery.of(context).size.width/10,),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                    width: MediaQuery.of(context).size.width/1.4,
+                    child: TextFormField(
+                      decoration: textInputDecoration.copyWith(
+                        labelText: "University",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(fieldRadius)),
+                      ),
+                      validator: (val) => val.isEmpty ? '' : null,
+                      //onChanged: (val) => setState(() => uname = val),
+                    ),
+                  ),
+                    ],
+                  ),
+                   Padding(padding: EdgeInsets.all(3.0)),
+                  new Row(
+                    children: <Widget>[
+                      
+                        SizedBox(width: MediaQuery.of(context).size.width/4.5,),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                    width: MediaQuery.of(context).size.width/1.4,
+                    child: TextFormField(
+                      decoration: textInputDecoration.copyWith(
+                        labelText: "Town",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(fieldRadius)),
+                      ),
+                      validator: (val) => val.isEmpty ? '' : null,
+                      //onChanged: (val) => setState(() => uname = val),
+                    ),
+                  ),
+                    ],
+                  ),
+                  
+                    
+                  Padding(padding: EdgeInsets.all(3.0)),
+                  new Row(
+                    children: <Widget>[
+                      
+                      new Text("Girls Only"),
+                      new Container(width: 50.0),
                       Checkbox(
                         value: checkBoxValue1,
                         onChanged: (newValue) {
@@ -158,12 +207,67 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           });
                         },
                       ),
-                      new Container(width: 5.0),
-                      new Text("Girls Only"),
+                      
                     ],
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
-                  Column(
+                  new Row(
+                    children: <Widget>[
+                      
+                      new Text("Parking"),
+                      new Container(width: 60.0),
+                      Checkbox(
+                        value: checkBoxValue2,
+                        onChanged: (newValue) {
+                          setState(() {
+                            checkBoxValue2 = newValue;
+                          });
+                        },
+                      ),
+                      
+                    ],
+                  ),
+                  Padding(padding: EdgeInsets.all(3.0)),
+                  new Row(
+                    children: <Widget>[
+                      
+                      new Text("AttachBathroom"),
+                      new Container(width: 5.0),
+                      Checkbox(
+                        value: checkBoxValue3,
+                        onChanged: (newValue) {
+                          setState(() {
+                            checkBoxValue3 = newValue;
+                          });
+                        },
+                      ),
+                      
+                    ],
+                  ),
+
+                  Padding(padding: EdgeInsets.all(3.0)),
+                  new Row(
+                    children: <Widget>[
+                      
+                      new Text("Kitchen"),
+                      new Container(width: 60.0),
+                      Checkbox(
+                        value: checkBoxValue4,
+                        onChanged: (newValue) {
+                          setState(() {
+                            checkBoxValue4 = newValue;
+                          });
+                        },
+                      ),
+                      
+                    ],
+                  ),
+
+
+                 
+
+                  Padding(padding: EdgeInsets.all(3.0)),
+                  Row(
                     children: <Widget>[
                       Align(
                         alignment: Alignment.centerLeft,
