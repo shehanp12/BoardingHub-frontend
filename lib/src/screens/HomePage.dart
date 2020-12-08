@@ -25,10 +25,10 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Image.asset('images/welcome.png', width: 190, height: 190),
+          Image.asset('images/welcomenew.png', width: 190, height: 190),
           Container(
             margin: EdgeInsets.only(bottom: 10, top: 0),
-            child: Text('Fryo!', style: logoStyle),
+            child: Text('Welcome!', style: logoStyle),
           ),
           Container(
             width: 200,

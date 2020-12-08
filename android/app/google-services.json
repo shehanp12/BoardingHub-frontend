@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "339482688261",
+    "project_id": "boardinghub",
+    "storage_bucket": "boardinghub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339482688261:android:8360c4fb58ee34ae0d556c",
+        "android_client_info": {
+          "package_name": "com.boardingHub.androidapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339482688261-u029d2l0al9e9kgk56n4ir9frm31h80n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgo4RbtzPahKwR4SPdgKJlmdjQBVsykcU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339482688261-u029d2l0al9e9kgk56n4ir9frm31h80n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
