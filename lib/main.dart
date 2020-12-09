@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/src/screens/samplepage.dart';
-import './src/screens/SignInPage.dart';
-import './src/screens/SignUpPage.dart';
-import './src/screens/HomePage.dart';
-import './src/screens/Dashboard.dart';
-import './src/screens/ProductPage.dart';
+import 'package:flutter_app/screens/samplepage.dart';
+import 'screens/SignInPage.dart';
+import 'screens/SignUpPage.dart';
+import 'screens/HomePage.dart';
+import 'screens/Dashboard.dart';
+import 'screens/ProductPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 

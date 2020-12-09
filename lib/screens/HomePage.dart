@@ -4,8 +4,8 @@ import '../shared/colors.dart';
 import '../shared/buttons.dart';
 
 import 'package:page_transition/page_transition.dart';
-import './SignUpPage.dart';
-import './SignInPage.dart';
+import 'SignUpPage.dart';
+import 'SignInPage.dart';
 
 class HomePage extends StatefulWidget {
   final String pageTitle;
