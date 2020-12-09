@@ -29,13 +29,12 @@ dependencies:
 
   page_transition: '^1.0.9'
   smooth_star_rating: '1.0.2'
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  firebase_core: ^0.5.3
   cupertino_icons: ^0.1.2
-  image_picker: ^0.6.1+4
-  beauty_textfield: ^0.0.1
-
+  firebase_auth: ^0.18.4
+  json_serializable: ^3.5.1
+  json_annotation: ^3.1.1
+  http: ^0.12.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../shared/Product.dart';
-import '../shared/colors.dart';
-import '../shared/styles.dart';
+import 'Product.dart';
+import 'colors.dart';
+import 'styles.dart';
 
 Widget foodItem(Product food,
     {double imgWidth, onLike, onTapped, bool isProductPage = false}) {
