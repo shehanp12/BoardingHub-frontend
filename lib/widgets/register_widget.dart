@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/src/screens/SignInPage.dart';
-import 'package:flutter_app/src/shared/styles.dart';
-import 'package:flutter_app/src/widgets/regbutton.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_app/screens/SignInPage.dart';
+import 'package:flutter_app/shared/styles.dart';
+import 'package:flutter_app/widgets/regbutton.dart';
+
 
 class RegisterWidget extends StatefulWidget {
   RegisterWidget();
@@ -345,7 +345,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               title: InkWell(
                                 onTap: () => Navigator.of(context).push(
                                     MaterialPageRoute(
-                                        builder: (_) => SignInPage())),
+                                        builder: (_) =>SignInPage())),
                                 child: Text(
                                     "I agreed to the terms & conditions of Boarding Hub"),
                               ),

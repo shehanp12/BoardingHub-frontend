@@ -1,7 +1,7 @@
 import 'package:async/async.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/src/widgets/Loading_Screen.dart';
-import 'package:flutter_app/src/widgets/register_widget.dart';
+import 'package:flutter_app/widgets/Loading_Screen.dart';
+import 'package:flutter_app/widgets/register_widget.dart';
 
 class RegisterFrom extends StatefulWidget {
   RegisterFrom();

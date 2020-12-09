@@ -29,13 +29,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.5.0-nullsafety.1"
-  beauty_textfield:
-    dependency: "direct main"
-    description:
-      name: beauty_textfield
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -188,13 +181,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_plugin_android_lifecycle:
-    dependency: transitive
-    description:
-      name: flutter_plugin_android_lifecycle
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.11"
   flutter_test:
     dependency: "direct dev"
     description: flutter
