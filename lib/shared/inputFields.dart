@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import './colors.dart';
-import './styles.dart';
+import 'colors.dart';
+import 'styles.dart';
 
 Container fryoTextInput(String hintText,
     {onTap, onChanged, onEditingComplete, onSubmitted}) {
   return Container(
     margin: EdgeInsets.only(top: 13),
-    child: TextField(
+    child: TextFormField(
+
       onTap: onTap,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
-      onSubmitted: onSubmitted,
       cursorColor: primaryColor,
       style: inputFieldTextStyle,
       decoration: InputDecoration(

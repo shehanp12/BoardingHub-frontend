@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../shared/styles.dart';
 import '../shared/colors.dart';
 import '../shared/fryo_icons.dart';
-import './ProductPage.dart';
+import 'ProductPage.dart';
 import '../shared/Product.dart';
 import '../shared/partials.dart';
 
