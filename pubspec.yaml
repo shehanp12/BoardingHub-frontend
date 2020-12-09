@@ -107,6 +107,12 @@ flutter:
     - family: Fryo
       fonts:
         - asset: fonts/Fryo.ttf
+    - family: DancingScript
+      fonts:
+        - asset: fonts/DancingScript-Bold.ttf
+        - asset: fonts/DancingScript-Medium.ttf
+        - asset: fonts/DancingScript-Regular.ttf
+        - asset: fonts/DancingScript-SemiBold.ttf
 
 
 
