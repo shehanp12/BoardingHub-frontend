@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/ads_list_data.dart';
 import 'package:flutter_app/screens/Ads_list_view.dart';
-import 'package:flutter_app/screens/bottom_navigation_view/app_theme.dart';
+import 'package:flutter_app/shared/app_theme.dart';
 import 'package:flutter_app/screens/filter/filters_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';

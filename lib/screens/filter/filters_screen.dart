@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/popular_filter_list.dart';
-import 'package:flutter_app/screens/bottom_navigation_view/app_theme.dart';
+import 'package:flutter_app/shared/app_theme.dart';
 import 'package:flutter_app/screens/filter/range_slider_view.dart';
 import 'package:flutter_app/screens/filter/slider_view.dart';
 

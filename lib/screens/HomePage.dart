@@ -4,7 +4,7 @@ import 'package:flutter_app/screens/AdsPage.dart';
 import 'package:flutter_app/screens/Ads_list_view.dart';
 import 'package:flutter_app/screens/SignInPage.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/bottom_bar_view.dart';
-import 'package:flutter_app/screens/bottom_navigation_view/app_theme.dart';
+import 'package:flutter_app/shared/app_theme.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/tabIcon_data.dart';
 import 'package:flutter_app/screens/filter/filters_screen.dart';
 import 'package:flutter_app/screens/my_diary_screen.dart';
