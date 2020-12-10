@@ -6,7 +6,7 @@ class AdsListData {
     this.dist = 1.8,
     this.reviews = 80,
     this.rating = 4.5,
-    this.perNight = 180,
+    this.perMounth = 180,
   });
 
   String imagePath;
@@ -15,35 +15,35 @@ class AdsListData {
   double dist;
   double rating;
   int reviews;
-  int perNight;
+  int perMounth;
 
   static List<AdsListData> adList = <AdsListData>[
     AdsListData(
-      imagePath: 'assets/hotel/hotel_1.png',
-      titleTxt: 'Grand Royal Hotel',
-      subTxt: 'Wembley, London',
+      imagePath: 'images/room1.jpeg',
+      titleTxt: 'Bedrooms',
+      subTxt: 'pitipana,homagama',
       dist: 2.0,
       reviews: 80,
       rating: 4.4,
-      perNight: 180,
+      perMounth: 50,
     ),
     AdsListData(
-      imagePath: 'assets/hotel/hotel_2.png',
-      titleTxt: 'Queen Hotel',
-      subTxt: 'Wembley, London',
+      imagePath: 'images/room2.jpeg',
+      titleTxt: 'Rooms',
+      subTxt: 'kaduwela, London',
       dist: 4.0,
       reviews: 74,
       rating: 4.5,
-      perNight: 200,
+      perMounth: 200,
     ),
-    AdsListData(
+    /*AdsListData(
       imagePath: 'assets/hotel/hotel_3.png',
       titleTxt: 'Grand Royal Hotel',
       subTxt: 'Wembley, London',
       dist: 3.0,
       reviews: 62,
       rating: 4.0,
-      perNight: 60,
+      perMounth: 60,
     ),
     AdsListData(
       imagePath: 'assets/hotel/hotel_4.png',
@@ -52,7 +52,7 @@ class AdsListData {
       dist: 7.0,
       reviews: 90,
       rating: 4.4,
-      perNight: 170,
+      perMounth: 170,
     ),
     AdsListData(
       imagePath: 'assets/hotel/hotel_5.png',
@@ -61,7 +61,7 @@ class AdsListData {
       dist: 2.0,
       reviews: 240,
       rating: 4.5,
-      perNight: 200,
-    ),
+      perMounth: 200,
+    ),*/
   ];
 }
