@@ -63,7 +63,14 @@ flutter:
     - images/8.png
     - images/9.png
     - images/welcomenew.png
-    
+    - images/tabicon/tab_1.png
+    - images/tabicon/tab_1s.png
+    - images/tabicon/tab_2.png
+    - images/tabicon/tab_2s.png
+    - images/tabicon/tab_3.png
+    - images/tabicon/tab_3s.png
+    - images/tabicon/tab_4.png
+    - images/tabicon/tab_4s.png
 
 
 

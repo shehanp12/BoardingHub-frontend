@@ -1,4 +1,3 @@
-import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
 import 'package:flutter_app/widgets/register_widget.dart';
