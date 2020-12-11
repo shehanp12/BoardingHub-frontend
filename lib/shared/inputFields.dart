@@ -3,11 +3,11 @@ import 'colors.dart';
 import 'styles.dart';
 
 Container fryoTextInput(String hintText,
-    {onTap, onChanged, onEditingComplete, onSubmitted,validator}) {
+    {onTap, onChanged, onEditingComplete, onSubmitted, validator}) {
   return Container(
     margin: EdgeInsets.only(top: 13),
     child: TextFormField(
-      validator:validator ,
+      validator: validator,
       onTap: onTap,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
@@ -24,7 +24,7 @@ Container fryoTextInput(String hintText,
 }
 
 Container fryoEmailInput(String hintText,
-    {onTap, onChanged, onEditingComplete, onSubmitted,validator}) {
+    {onTap, onChanged, onEditingComplete, onSubmitted, validator}) {
   return Container(
     margin: EdgeInsets.only(top: 13),
     child: TextFormField(
@@ -32,7 +32,6 @@ Container fryoEmailInput(String hintText,
       onChanged: onChanged,
       validator: validator,
       onEditingComplete: onEditingComplete,
-
       keyboardType: TextInputType.emailAddress,
       cursorColor: primaryColor,
       style: inputFieldTextStyle,
@@ -46,9 +45,8 @@ Container fryoEmailInput(String hintText,
   );
 }
 
-
 Container fryoPasswordInput(String hintText,
-    {onTap, onChanged, onEditingComplete, onSubmitted,validator}) {
+    {onTap, onChanged, onEditingComplete, onSubmitted, validator}) {
   return Container(
     margin: EdgeInsets.only(top: 13),
     child: TextFormField(
