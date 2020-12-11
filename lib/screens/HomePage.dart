@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/ads_list_data.dart';
 import 'package:flutter_app/screens/AdsPage.dart';
-import 'package:flutter_app/screens/Ads_list_view.dart';
 import 'package:flutter_app/screens/SignInPage.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/bottom_bar_view.dart';
 import 'package:flutter_app/shared/app_theme.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/tabIcon_data.dart';
-import 'package:flutter_app/screens/filter/filters_screen.dart';
-import 'package:flutter_app/screens/my_diary_screen.dart';
-import 'package:flutter_app/screens/training_screen.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class HomePage extends StatefulWidget {
   final String pageTitle;
@@ -39,7 +35,7 @@ class _HomePageState extends State<HomePage>
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    tabBody = MyDiaryScreen(animationController: animationController);
+    tabBody = AdsScreen();
     super.initState();
   }
 
@@ -110,7 +106,8 @@ class _HomePageState extends State<HomePage>
                       SignInPage();
                 });
               });
-            }else if (index == 2) {
+            }
+            /*else if (index == 2) {
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
@@ -120,8 +117,8 @@ class _HomePageState extends State<HomePage>
                       TrainingScreen(animationController: animationController);
                 });
               });
-            }
-            else if (index == 3){
+            }*/
+            /*else if (index == 3){
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
@@ -131,7 +128,7 @@ class _HomePageState extends State<HomePage>
                       MyDiaryScreen(animationController: animationController);
                 });
               });
-            }
+            }*/
           },
         ),
       ],

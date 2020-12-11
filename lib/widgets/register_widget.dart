@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/SignInPage.dart';
+import 'package:flutter_app/screens/register_page.dart';
 import 'package:flutter_app/shared/styles.dart';
 import 'package:flutter_app/widgets/regbutton.dart';
 
@@ -159,7 +160,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         SizedBox(width: MediaQuery.of(context).size.width/10,),
                         Container(
                           alignment: Alignment.centerLeft,
-                    width: MediaQuery.of(context).size.width/1.4,
+                    width: MediaQuery.of(context).size.width/1.5,
                     child: TextFormField(
                       decoration: textInputDecoration.copyWith(
                         labelText: "University",
@@ -176,10 +177,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   new Row(
                     children: <Widget>[
                       
-                        SizedBox(width: MediaQuery.of(context).size.width/4.5,),
+                        SizedBox(width: MediaQuery.of(context).size.width/4.2,),
                         Container(
                           alignment: Alignment.centerLeft,
-                    width: MediaQuery.of(context).size.width/1.4,
+                    width: MediaQuery.of(context).size.width/1.5,
                     child: TextFormField(
                       decoration: textInputDecoration.copyWith(
                         labelText: "Town",
@@ -364,6 +365,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           "Submit",
                           style: TitleTextStyle,
                         ),
+                        /*onPress: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => RegisterFrom()),
+            );
+          },*/
                       ),
                       SizedBox(height: 12.0),
                       Text(
