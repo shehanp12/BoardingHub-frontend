@@ -123,13 +123,24 @@ class _SignUpPageState extends State<SignUpPage> {
       );
     }
     _restService.registerUser(boardingProvider).then((val) {
-
+     val.data['success'] == true ?
       _scaffoldKey.currentState
           .showSnackBar(
         new SnackBar(content: new Text(val.data['msg']),
           backgroundColor: Colors.deepOrangeAccent,))
-          .closed.then((_) =>Navigator.of(context)
-          .push(MaterialPageRoute(builder: (_) => Dashboard())));
+          .closed.then((_) =>
+        Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeft, child: Dashboard()
+
+
+      ),
+        ) ,
+
+      ):
+     _scaffoldKey.currentState
+         .showSnackBar(
+         new SnackBar(content: new Text(val.data['msg']),
+           backgroundColor: Colors.deepOrangeAccent,));
+
 
     });
   }
