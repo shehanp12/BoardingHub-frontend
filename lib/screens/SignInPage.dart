@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/HomePage.dart';
 import '../shared/styles.dart';
 import '../shared/colors.dart';
 import '../shared/inputFields.dart';
 import 'package:page_transition/page_transition.dart';
 import 'SignUpPage.dart';
-import 'Dashboard.dart';
 
 class SignInPage extends StatefulWidget {
   final String pageTitle;
@@ -62,7 +62,7 @@ class _SignInPageState extends State<SignInPage> {
               right: -15,
               child: FlatButton(
                 onPressed: () {
-                    Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeft, child: Dashboard()));
+                    Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeft, child: HomePage()));
                 },
                 color: primaryColor,
                 padding: EdgeInsets.all(13),
