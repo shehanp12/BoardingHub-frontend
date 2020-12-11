@@ -120,24 +120,8 @@ class _SignUpPageState extends State<SignUpPage> {
     _formKey.currentState.save();
 
 
-    // debugPrint("$_name $_email $_password");
-    _restService.registerUser(boardingProvider).then((  response) {
 
-      print('User is registered');
-      // _loginButtonController.reverse();
-      // _scaffoldKey.currentState
-      //     .showSnackBar(
-      //   new SnackBar(content: new Text(response.message)),
-      // )
-      //     .closed
-      //     .then((_) => Navigator.of(context).pop());
-    }).catchError((error) {
-      // _loginButtonController.reverse();
-      final message =
-      error is MyHttpException ? error.message : 'Unknown error occurred';
-      // _scaffoldKey.currentState.showSnackBar(
-      //   new SnackBar(content: new Text(message)),
-      // );
-    });
+
+    _restService.registerUser(boardingProvider);
   }
 }

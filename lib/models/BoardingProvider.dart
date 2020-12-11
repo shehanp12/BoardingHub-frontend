@@ -13,18 +13,19 @@ class BoardingProvider {
     this.password = password;
   }
 
-  BoardingProvider.fromJson(Map<String, String> json)
-      :
-        username = json["username"],
-        fullName = json["fullName"],
-        email = json["email"],
-        password = json["password"];
 
-  Map<String, String> toJson() => {
-
-        'username': username,
-        'fullName': fullName,
-        'email': email,
-        'password': password
-      };
+  // BoardingProvider.fromJson(Map<String, String> json)
+  //     :
+  //       username = json["username"],
+  //       fullName = json["fullName"],
+  //       email = json["email"],
+  //       password = json["password"];
+  //
+  // Map<String, String> toJson() => {
+  //
+  //       'username': username,
+  //       'fullName': fullName,
+  //       'email': email,
+  //       'password': password
+  //     };
 }

@@ -31,6 +31,7 @@ dependencies:
   smooth_star_rating: '1.0.2'
   firebase_core: ^0.5.3
   cupertino_icons: ^0.1.2
+  dio: ^3.0.10
   firebase_auth: ^0.18.4
   json_serializable: ^3.5.1
   json_annotation: ^3.1.1
