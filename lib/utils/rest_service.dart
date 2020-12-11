@@ -1,7 +1,4 @@
-
-
 import 'package:dio/dio.dart';
-
 
 class RestService {
 
@@ -19,12 +16,10 @@ class RestService {
 
        }
 
+
        );
 
-
    }
-
-
 
 }
 
