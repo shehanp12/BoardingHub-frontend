@@ -20,7 +20,12 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      
+      body:Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('images/background/dashboardbg.jpg'),fit: BoxFit.cover)),
+         child:Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,7 +68,8 @@ class _WelcomePageState extends State<WelcomePage> {
           )
         ],
       )),
-      backgroundColor: bgColor,
+      //backgroundColor: bgColor,
+            ),
     );
   }
 }

@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/screens/WelcomePage.dart';
 import 'package:flutter_app/screens/samplepage.dart';
+import 'screens/Dashboard.dart';
 import 'screens/SignInPage.dart';
 import 'screens/SignUpPage.dart';
 import 'screens/Dashboard.dart';
 import 'screens/ProductPage.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'screens/WelcomePage.dart';
 
 
 void main() => runApp(MyApp());
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.orange,
         ),
         //home: WelcomePage(pageTitle: 'Welcome'),
-        home: HomePage(),
+        home: WelcomePage(),
         routes: <String, WidgetBuilder> {
           '/signup': (BuildContext context) =>  SignUpPage(),
           '/signin': (BuildContext context) =>  SignInPage(),
