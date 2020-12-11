@@ -108,3 +108,18 @@ const inputFieldFocusedBorderStyle = OutlineInputBorder(
 
 const inputFieldDefaultBorderStyle = OutlineInputBorder(
     gapPadding: 0, borderRadius: BorderRadius.all(Radius.circular(6)));
+
+const textInputDecoration = InputDecoration(
+  //fillColor: Colors.redAccent,
+
+  border: OutlineInputBorder(
+    borderSide: BorderSide(),
+    
+  ),
+);
+
+const TitleTextStyle =
+    TextStyle(fontFamily: 'Pacifico', 
+    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    );
