@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/models/BoardingProvider.dart';
 import 'package:flutter_app/screens/HomePage.dart';
-
 import 'package:flutter_app/utils/rest_service.dart';
-import '../shared/styles.dart';
-import '../shared/colors.dart';
-import '../shared/inputFields.dart';
+import '../../shared/styles.dart';
+import '../../shared/colors.dart';
+import '../../shared/inputFields.dart';
 import 'package:page_transition/page_transition.dart';
-import 'SignInPage.dart';
+import 'SignUpPage.dart';
 
-class SignUpPage extends StatefulWidget {
+
+class SignInPage extends StatefulWidget {
   final String pageTitle;
 
-  SignUpPage({Key key, this.pageTitle}) : super(key: key);
+  SignInPage({Key key, this.pageTitle}) : super(key: key);
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  _SignInPageState createState() => _SignInPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  String username;
-  String fullName;
+class _SignInPageState extends State<SignInPage> {
   String email;
   String password;
-  final RestService _restService = new RestService();
-  final _scaffoldKey = new GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final RestService _restService = new RestService();
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +31,20 @@ class _SignUpPageState extends State<SignUpPage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: white,
-          title: Text('Sign Up',
+          title: Text('Sign In',
               style: TextStyle(
                   color: Colors.grey, fontFamily: 'Poppins', fontSize: 15)),
           actions: <Widget>[
             FlatButton(
               onPressed: () {
-                // Navigator.of(context).pushReplacementNamed('/signin');
+                // Navigator.of(context).pushReplacementNamed('/signup');
                 Navigator.pushReplacement(
                     context,
                     PageTransition(
                         type: PageTransitionType.rightToLeft,
-                        child: SignInPage()));
+                        child: SignUpPage()));
               },
-              child: Text('Sign In', style: contrastText),
+              child: Text('Sign Up', style: contrastText),
             )
           ],
         ),
@@ -64,16 +61,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Welcome to Boarding Hub!', style: h3),
-                        Text('Let\'s get started', style: taglineText),
-                        fryoTextInput('Username',
-                            validator: (val) =>
-                            val == null || val.trim() == '' ? '' : null,
-                            onChanged: (val) => setState(() => username = val)),
-                        fryoTextInput('Full Name',
-                            validator: (val) =>
-                            val == null || val.trim() == '' ? '' : null,
-                            onChanged: (val) => setState(() => fullName = val)),
+                        Text('Welcome Back!', style: h3),
+                        Text('Howdy, let\'s authenticate', style: taglineText),
                         fryoEmailInput('Email Address',
                             validator: (val) =>
                             val == null || val.trim() == '' ? '' : null,
@@ -81,7 +70,12 @@ class _SignUpPageState extends State<SignUpPage> {
                         fryoPasswordInput('Password',
                             validator: (val) =>
                             val == null || val.trim() == '' ? '' : null,
-                            onChanged: (val) => setState(() => password = val))
+                            onChanged: (val) => setState(() => password = val)),
+
+                        // FlatButton(
+                        //   onPressed: () {},
+                        //   child: Text('Forgot Password?', style: contrastTextBold),
+                        // )
                       ],
                     ),
                     Positioned(
@@ -89,12 +83,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       right: -15,
                       child: FlatButton(
                         onPressed: () {
-                          // Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeft, child: Dashboard()));
-                          BoardingProvider boardingProvider =
-                          new BoardingProvider(
-                              username, fullName, email, password);
+                          // Navigator.pushReplacement(
+                          //     context,
+                          //     PageTransition(
+                          //         type: PageTransitionType.rightToLeft,
+                          //         child: Dashboard()));
 
-                          _register(boardingProvider);
+                          _login(email, password);
                         },
                         color: primaryColor,
                         padding: EdgeInsets.all(13),
@@ -105,7 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
               ),
-              height: 450,
+              height: 300,
               width: double.infinity,
               decoration: authPlateDecoration,
             ),
@@ -113,7 +108,7 @@ class _SignUpPageState extends State<SignUpPage> {
         ));
   }
 
-  void _register(boardingProvider) {
+  void _login(email, password) {
     if (!_formKey.currentState.validate()) {
       _scaffoldKey.currentState.showSnackBar(
         new SnackBar(
@@ -122,7 +117,8 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       );
     }
-    _restService.registerUser(boardingProvider).then((val) {
+
+    _restService.login(email, password).then((val) {
       val.data['success'] == true
           ? _scaffoldKey.currentState
           .showSnackBar(new SnackBar(

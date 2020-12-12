@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/register_page.dart';
+import 'package:flutter_app/screens/viewData/BoardingRegisterPage.dart';
 import 'package:flutter_app/shared/app_theme.dart';
-import 'package:flutter_app/screens/bottom_navigation_view/tabIcon_data.dart';
+import 'package:flutter_app/screens/bottom_navigation_view/TabIconData.dart';
 import 'package:flutter_app/shared/colors.dart';
 
 
