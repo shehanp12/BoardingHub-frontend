@@ -3,7 +3,7 @@ import 'package:flutter_app/models/AdsListData.dart';
 import 'package:flutter_app/screens/AdsPage.dart';
 import 'package:flutter_app/screens/auth/SignInPage.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/BottomBarView.dart';
-import 'package:flutter_app/shared/app_theme.dart';
+import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/TabIconData.dart';
 
 

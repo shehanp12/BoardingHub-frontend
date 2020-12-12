@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/shared/colors.dart';
+import 'package:flutter_app/shared/Colors.dart';
 
 class BoardingAppTheme {
   BoardingAppTheme._();
