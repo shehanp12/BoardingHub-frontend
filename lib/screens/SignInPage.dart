@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/utils/rest_service.dart';
 import '../shared/styles.dart';
 import '../shared/colors.dart';
 import '../shared/inputFields.dart';
@@ -20,6 +21,7 @@ class _SignInPageState extends State<SignInPage> {
   String password;
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final RestService _restService = new RestService();
 
   @override
   Widget build(BuildContext context) {
@@ -114,5 +116,26 @@ class _SignInPageState extends State<SignInPage> {
         ),
       );
     }
+
+    _restService.login(email, password).then((val) {
+      val.data['success'] == true
+          ? _scaffoldKey.currentState
+              .showSnackBar(new SnackBar(
+                content: new Text(val.data['msg']),
+                backgroundColor: Colors.deepOrangeAccent,
+              ))
+              .closed
+              .then(
+                (_) => Navigator.pushReplacement(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.rightToLeft, child: Dashboard()),
+                ),
+              )
+          : _scaffoldKey.currentState.showSnackBar(new SnackBar(
+              content: new Text(val.data['msg']),
+              backgroundColor: Colors.deepOrangeAccent,
+            ));
+    });
   }
 }

@@ -16,5 +16,18 @@ class RestService {
     } on DioError catch (e) {
       e.response.data['msg'];
     }
+    
+    
   }
+  
+  login(email,password) async {
+    
+    return await _dio.post(host+'user/login',data: {
+      "email":email,
+      "password":password
+
+    });
+  }
+
+
 }

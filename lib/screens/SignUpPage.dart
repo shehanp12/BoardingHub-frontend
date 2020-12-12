@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingProvider.dart';
 import 'package:flutter_app/screens/Dashboard.dart';
