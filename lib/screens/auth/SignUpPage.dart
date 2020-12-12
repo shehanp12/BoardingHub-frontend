@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingProvider.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 
-import 'package:flutter_app/utils/rest_service.dart';
+import 'package:flutter_app/utils/RestService.dart';
 import '../../shared/styles.dart';
 import '../../shared/colors.dart';
 import '../../shared/inputFields.dart';
