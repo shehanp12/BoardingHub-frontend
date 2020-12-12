@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/shared/buttons.dart';
 
-
 class Regbutton extends StatelessWidget {
   Regbutton({@required this.onPress, @required this.typeText});
 
