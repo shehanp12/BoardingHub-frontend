@@ -5,7 +5,6 @@ import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/TabIconData.dart';
 import 'package:flutter_app/shared/Colors.dart';
 
-
 class BottomBarView extends StatefulWidget {
   const BottomBarView(
       {Key key, this.tabIconsList, this.changeIndex, this.addClick})
@@ -25,8 +24,8 @@ class _BottomBarViewState extends State<BottomBarView>
   @override
   void initState() {
     animationController = AnimationController(
-
-      duration: const Duration(milliseconds: 1000), vsync: this,
+      duration: const Duration(milliseconds: 1000),
+      vsync: this,
     );
     animationController.forward();
     super.initState();
@@ -164,12 +163,11 @@ class _BottomBarViewState extends State<BottomBarView>
                           splashColor: Colors.white.withOpacity(0.1),
                           highlightColor: Colors.transparent,
                           focusColor: Colors.transparent,
-                          onTap: () 
-                            //widget.addClick();
-                            => Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                        builder: (_) =>RegisterFrom())),
-                          
+                          onTap: ()
+                              //widget.addClick();
+                              =>
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (_) => RegisterFrom())),
                           child: Icon(
                             Icons.add,
                             color: BoardingAppTheme.white,

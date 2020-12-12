@@ -7,7 +7,6 @@ import '../../shared/InputFields.dart';
 import 'package:page_transition/page_transition.dart';
 import 'SignUpPage.dart';
 
-
 class SignInPage extends StatefulWidget {
   final String pageTitle;
 
@@ -37,7 +36,6 @@ class _SignInPageState extends State<SignInPage> {
           actions: <Widget>[
             FlatButton(
               onPressed: () {
-                // Navigator.of(context).pushReplacementNamed('/signup');
                 Navigator.pushReplacement(
                     context,
                     PageTransition(
@@ -65,17 +63,13 @@ class _SignInPageState extends State<SignInPage> {
                         Text('Howdy, let\'s authenticate', style: taglineText),
                         fryoEmailInput('Email Address',
                             validator: (val) =>
-                            val == null || val.trim() == '' ? '' : null,
+                                val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => email = val)),
                         fryoPasswordInput('Password',
                             validator: (val) =>
-                            val == null || val.trim() == '' ? '' : null,
+                                val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => password = val)),
 
-                        // FlatButton(
-                        //   onPressed: () {},
-                        //   child: Text('Forgot Password?', style: contrastTextBold),
-                        // )
                       ],
                     ),
                     Positioned(
@@ -83,11 +77,6 @@ class _SignInPageState extends State<SignInPage> {
                       right: -15,
                       child: FlatButton(
                         onPressed: () {
-                          // Navigator.pushReplacement(
-                          //     context,
-                          //     PageTransition(
-                          //         type: PageTransitionType.rightToLeft,
-                          //         child: Dashboard()));
 
                           _login(email, password);
                         },
@@ -121,22 +110,22 @@ class _SignInPageState extends State<SignInPage> {
     _restService.login(email, password).then((val) {
       val.data['success'] == true
           ? _scaffoldKey.currentState
-          .showSnackBar(new SnackBar(
-        content: new Text(val.data['msg']),
-        backgroundColor: Colors.deepOrangeAccent,
-      ))
-          .closed
-          .then(
-            (_) => Navigator.pushReplacement(
-          context,
-          PageTransition(
-              type: PageTransitionType.rightToLeft, child: HomePage()),
-        ),
-      )
+              .showSnackBar(new SnackBar(
+                content: new Text(val.data['msg']),
+                backgroundColor: Colors.deepOrangeAccent,
+              ))
+              .closed
+              .then(
+                (_) => Navigator.pushReplacement(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.rightToLeft, child: HomePage()),
+                ),
+              )
           : _scaffoldKey.currentState.showSnackBar(new SnackBar(
-        content: new Text(val.data['msg']),
-        backgroundColor: Colors.deepOrangeAccent,
-      ));
+              content: new Text(val.data['msg']),
+              backgroundColor: Colors.deepOrangeAccent,
+            ));
     });
   }
 }
