@@ -130,8 +130,7 @@ class _SignUpPageState extends State<SignUpPage> {
       //     .then((_) => Navigator.of(context).pop());
     }).catchError((error) {
       // _loginButtonController.reverse();
-      final message =
-      error is MyHttpException ? error.message : 'Unknown error occurred';
+
       // _scaffoldKey.currentState.showSnackBar(
       //   new SnackBar(content: new Text(message)),
       // );
