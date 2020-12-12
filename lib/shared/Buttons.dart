@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'colors.dart';
+import 'Colors.dart';
 
 FlatButton froyoFlatBtn(String text, onPressed) {
   return FlatButton(

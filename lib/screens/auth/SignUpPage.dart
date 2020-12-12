@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingProvider.dart';
 import 'package:flutter_app/screens/HomePage.dart';
-
-import 'package:flutter_app/utils/rest_service.dart';
-import '../shared/styles.dart';
-import '../shared/colors.dart';
-import '../shared/inputFields.dart';
+import 'package:flutter_app/utils/RestService.dart';
+import '../../shared/Styles.dart';
+import '../../shared/Colors.dart';
+import '../../shared/InputFields.dart';
 import 'package:page_transition/page_transition.dart';
 import 'SignInPage.dart';
 
@@ -40,7 +39,6 @@ class _SignUpPageState extends State<SignUpPage> {
           actions: <Widget>[
             FlatButton(
               onPressed: () {
-                // Navigator.of(context).pushReplacementNamed('/signin');
                 Navigator.pushReplacement(
                     context,
                     PageTransition(
@@ -68,19 +66,19 @@ class _SignUpPageState extends State<SignUpPage> {
                         Text('Let\'s get started', style: taglineText),
                         fryoTextInput('Username',
                             validator: (val) =>
-                            val == null || val.trim() == '' ? '' : null,
+                                val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => username = val)),
                         fryoTextInput('Full Name',
                             validator: (val) =>
-                            val == null || val.trim() == '' ? '' : null,
+                                val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => fullName = val)),
                         fryoEmailInput('Email Address',
                             validator: (val) =>
-                            val == null || val.trim() == '' ? '' : null,
+                                val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => email = val)),
                         fryoPasswordInput('Password',
                             validator: (val) =>
-                            val == null || val.trim() == '' ? '' : null,
+                                val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => password = val))
                       ],
                     ),
@@ -89,10 +87,9 @@ class _SignUpPageState extends State<SignUpPage> {
                       right: -15,
                       child: FlatButton(
                         onPressed: () {
-                          // Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeft, child: Dashboard()));
                           BoardingProvider boardingProvider =
-                          new BoardingProvider(
-                              username, fullName, email, password);
+                              new BoardingProvider(
+                                  username, fullName, email, password);
 
                           _register(boardingProvider);
                         },
@@ -125,22 +122,22 @@ class _SignUpPageState extends State<SignUpPage> {
     _restService.registerUser(boardingProvider).then((val) {
       val.data['success'] == true
           ? _scaffoldKey.currentState
-          .showSnackBar(new SnackBar(
-        content: new Text(val.data['msg']),
-        backgroundColor: Colors.deepOrangeAccent,
-      ))
-          .closed
-          .then(
-            (_) => Navigator.pushReplacement(
-          context,
-          PageTransition(
-              type: PageTransitionType.rightToLeft, child: HomePage()),
-        ),
-      )
+              .showSnackBar(new SnackBar(
+                content: new Text(val.data['msg']),
+                backgroundColor: Colors.deepOrangeAccent,
+              ))
+              .closed
+              .then(
+                (_) => Navigator.pushReplacement(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.rightToLeft, child: HomePage()),
+                ),
+              )
           : _scaffoldKey.currentState.showSnackBar(new SnackBar(
-        content: new Text(val.data['msg']),
-        backgroundColor: Colors.deepOrangeAccent,
-      ));
+              content: new Text(val.data['msg']),
+              backgroundColor: Colors.deepOrangeAccent,
+            ));
     });
   }
 }

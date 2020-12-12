@@ -1,10 +1,9 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/register_page.dart';
-import 'package:flutter_app/shared/app_theme.dart';
-import 'package:flutter_app/screens/bottom_navigation_view/tabIcon_data.dart';
-import 'package:flutter_app/shared/colors.dart';
-
+import 'package:flutter_app/screens/viewData/BoardingRegisterPage.dart';
+import 'package:flutter_app/shared/AppTheme.dart';
+import 'package:flutter_app/screens/bottom_navigation_view/TabIconData.dart';
+import 'package:flutter_app/shared/Colors.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView(
@@ -25,8 +24,8 @@ class _BottomBarViewState extends State<BottomBarView>
   @override
   void initState() {
     animationController = AnimationController(
-
-      duration: const Duration(milliseconds: 1000), vsync: this,
+      duration: const Duration(milliseconds: 1000),
+      vsync: this,
     );
     animationController.forward();
     super.initState();
@@ -164,12 +163,11 @@ class _BottomBarViewState extends State<BottomBarView>
                           splashColor: Colors.white.withOpacity(0.1),
                           highlightColor: Colors.transparent,
                           focusColor: Colors.transparent,
-                          onTap: () 
-                            //widget.addClick();
-                            => Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                        builder: (_) =>RegisterFrom())),
-                          
+                          onTap: ()
+                              //widget.addClick();
+                              =>
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (_) => RegisterFrom())),
                           child: Icon(
                             Icons.add,
                             color: BoardingAppTheme.white,

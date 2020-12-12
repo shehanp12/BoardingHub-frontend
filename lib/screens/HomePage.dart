@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/models/ads_list_data.dart';
+import 'package:flutter_app/models/AdsListData.dart';
 import 'package:flutter_app/screens/AdsPage.dart';
-import 'package:flutter_app/screens/SignInPage.dart';
-import 'package:flutter_app/screens/bottom_navigation_view/bottom_bar_view.dart';
-import 'package:flutter_app/shared/app_theme.dart';
-import 'package:flutter_app/screens/bottom_navigation_view/tabIcon_data.dart';
+import 'package:flutter_app/screens/auth/SignInPage.dart';
+import 'package:flutter_app/screens/bottom_navigation_view/BottomBarView.dart';
+import 'package:flutter_app/shared/AppTheme.dart';
+import 'package:flutter_app/screens/bottom_navigation_view/TabIconData.dart';
 
 
 class HomePage extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/SignInPage.dart';
-import 'package:flutter_app/screens/register_page.dart';
-import 'package:flutter_app/shared/styles.dart';
-import 'package:flutter_app/widgets/regbutton.dart';
+import 'package:flutter_app/screens/auth/SignInPage.dart';
+import 'package:flutter_app/screens/viewData/BoardingRegisterPage.dart';
+import 'package:flutter_app/shared/Styles.dart';
+import 'package:flutter_app/widgets/RegButton.dart';
 
 
 class RegisterWidget extends StatefulWidget {
