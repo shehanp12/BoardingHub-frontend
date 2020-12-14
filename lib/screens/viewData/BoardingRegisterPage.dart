@@ -1,7 +1,6 @@
-import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
-import 'package:flutter_app/widgets/register_widget.dart';
+import 'package:flutter_app/widgets/RegisterWidget.dart';
 
 class RegisterFrom extends StatefulWidget {
   RegisterFrom();
@@ -46,7 +45,7 @@ class _RegisterPageState extends State<RegisterFrom> {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           //stops: [0.1, 0.5, 0.7, 0.9],
-          colors: [
+         colors: [
             Colors.black,
             Color(0xFFFB8C00),
             Color(0xFFFF6D00),

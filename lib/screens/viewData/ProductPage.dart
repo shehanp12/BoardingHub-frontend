@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../shared/Product.dart';
-import '../shared/styles.dart';
-import '../shared/colors.dart';
-import '../shared/partials.dart';
-import '../shared/buttons.dart';
+import '../../shared/Product.dart';
+import '../../shared/Styles.dart';
+import '../../shared/Colors.dart';
+import '../../shared/Partials.dart';
+import '../../shared/Buttons.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class ProductPage extends StatefulWidget {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'colors.dart';
-import 'styles.dart';
+import 'Colors.dart';
+import 'Styles.dart';
 
 Container fryoTextInput(String hintText,
-    {onTap, onChanged, onEditingComplete, onSubmitted}) {
+    {onTap, onChanged, onEditingComplete, onSubmitted, validator}) {
   return Container(
     margin: EdgeInsets.only(top: 13),
     child: TextFormField(
-
+      validator: validator,
       onTap: onTap,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
@@ -24,14 +24,14 @@ Container fryoTextInput(String hintText,
 }
 
 Container fryoEmailInput(String hintText,
-    {onTap, onChanged, onEditingComplete, onSubmitted}) {
+    {onTap, onChanged, onEditingComplete, onSubmitted, validator}) {
   return Container(
     margin: EdgeInsets.only(top: 13),
-    child: TextField(
+    child: TextFormField(
       onTap: onTap,
       onChanged: onChanged,
+      validator: validator,
       onEditingComplete: onEditingComplete,
-      onSubmitted: onSubmitted,
       keyboardType: TextInputType.emailAddress,
       cursorColor: primaryColor,
       style: inputFieldTextStyle,
@@ -45,16 +45,15 @@ Container fryoEmailInput(String hintText,
   );
 }
 
-
 Container fryoPasswordInput(String hintText,
-    {onTap, onChanged, onEditingComplete, onSubmitted}) {
+    {onTap, onChanged, onEditingComplete, onSubmitted, validator}) {
   return Container(
     margin: EdgeInsets.only(top: 13),
-    child: TextField(
+    child: TextFormField(
       onTap: onTap,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
-      onSubmitted: onSubmitted,
+      validator: validator,
       obscureText: true,
       cursorColor: primaryColor,
       style: inputFieldHintPaswordTextStyle,

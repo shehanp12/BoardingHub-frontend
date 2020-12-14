@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../shared/styles.dart';
-import '../shared/colors.dart';
-import '../shared/buttons.dart';
+import 'package:flutter_app/models/AdsListData.dart';
+import 'package:flutter_app/screens/AdsPage.dart';
+import 'package:flutter_app/screens/auth/SignInPage.dart';
+import 'package:flutter_app/screens/bottom_navigation_view/BottomBarView.dart';
+import 'package:flutter_app/shared/AppTheme.dart';
+import 'package:flutter_app/screens/bottom_navigation_view/TabIconData.dart';
 
-import 'package:page_transition/page_transition.dart';
-import 'SignUpPage.dart';
-import 'SignInPage.dart';
 
 class HomePage extends StatefulWidget {
   final String pageTitle;
@@ -16,54 +16,123 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with TickerProviderStateMixin {
+  AnimationController animationController;
+
+  List<TabIconData> tabIconsList = TabIconData.tabIconsList;
+  List<AdsListData> adList = AdsListData.adList;
+  Widget tabBody = Container(
+    color: BoardingAppTheme.background,
+  );
+
+  @override
+  void initState() {
+    tabIconsList.forEach((TabIconData tab) {
+      tab.isSelected = false;
+    });
+    tabIconsList[0].isSelected = true;
+
+    animationController = AnimationController(
+        duration: const Duration(milliseconds: 600), vsync: this);
+    tabBody = AdsScreen();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Image.asset('images/welcomenew.png', width: 190, height: 190),
-          Container(
-            margin: EdgeInsets.only(bottom: 10, top: 0),
-            child: Text('Welcome!', style: logoStyle),
-          ),
-          Container(
-            width: 200,
-            margin: EdgeInsets.only(bottom: 0),
-            child: froyoFlatBtn('Sign In', (){ 
-
-              Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rotate, duration: Duration(seconds: 1),  child: SignInPage()));
-            }),
-          ),
-          Container(
-            width: 200,
-            padding: EdgeInsets.all(0),
-            child: froyoOutlineBtn('Sign Up', (){
-              Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rotate, duration: Duration(seconds: 1),  child: SignUpPage()));
-              // Navigator.of(context).pushReplacementNamed('/signup');
-             }),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-
-              children: <Widget>[
-                Text('Langauage:', style: TextStyle(color: darkText)),
-                Container(
-                  margin: EdgeInsets.only(left: 6),
-                  child: Text('English ›', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500)),
-                )
-              ],
-            ),
-          )
-        ],
-      )),
-      backgroundColor: bgColor,
+    return Container(
+      color: BoardingAppTheme.background,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: FutureBuilder<bool>(
+          future: getData(),
+          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            if (!snapshot.hasData) {
+              return const SizedBox();
+            } else {
+              return Stack(
+                children: <Widget>[
+                  tabBody,
+                  bottomBar(),
+                ],
+              );
+            }
+          },
+        ),
+      ),
     );
   }
+
+  Future<bool> getData() async {
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    return true;
+  }
+
+
+  Widget bottomBar() {
+    return Column(
+      children: <Widget>[
+        const Expanded(
+          child: SizedBox(),
+        ),
+        BottomBarView(
+          tabIconsList: tabIconsList,
+          addClick: () {},
+          changeIndex: (int index) {
+            if (index == 0 ) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      AdsScreen();
+                });
+              });
+            } else if (index == 1) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      SignInPage();
+                });
+              });
+            }
+            /*else if (index == 2) {
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      TrainingScreen(animationController: animationController);
+                });
+              });
+            }*/
+            /*else if (index == 3){
+              animationController.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      MyDiaryScreen(animationController: animationController);
+                });
+              });
+            }*/
+          },
+        ),
+      ],
+    );
+  }
+
 }
