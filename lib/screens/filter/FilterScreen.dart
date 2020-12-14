@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/models/popular_filter_list.dart';
-import 'package:flutter_app/shared/app_theme.dart';
-import 'package:flutter_app/screens/filter/range_slider_view.dart';
-import 'package:flutter_app/screens/filter/slider_view.dart';
+import 'package:flutter_app/models/PopularFilterList.dart';
+import 'package:flutter_app/shared/AppTheme.dart';
+import 'package:flutter_app/screens/filter/RangeSliderView.dart';
+import 'package:flutter_app/screens/filter/SliderView.dart';
 
 
 class FiltersScreen extends StatefulWidget {

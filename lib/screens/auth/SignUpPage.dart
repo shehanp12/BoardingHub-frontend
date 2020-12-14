@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingProvider.dart';
-import 'package:flutter_app/utils/rest_service.dart';
-import '../shared/styles.dart';
-import '../shared/colors.dart';
-import '../shared/inputFields.dart';
+import 'package:flutter_app/screens/HomePage.dart';
+import 'package:flutter_app/utils/RestService.dart';
+import '../../shared/Styles.dart';
+import '../../shared/Colors.dart';
+import '../../shared/InputFields.dart';
 import 'package:page_transition/page_transition.dart';
 import 'SignInPage.dart';
-
-
-
 
 class SignUpPage extends StatefulWidget {
   final String pageTitle;
@@ -20,19 +18,18 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-
   String username;
   String fullName;
   String email;
   String password;
-  final RestService _restService =new RestService();
+  final RestService _restService = new RestService();
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: white,
@@ -42,7 +39,6 @@ class _SignUpPageState extends State<SignUpPage> {
           actions: <Widget>[
             FlatButton(
               onPressed: () {
-                // Navigator.of(context).pushReplacementNamed('/signin');
                 Navigator.pushReplacement(
                     context,
                     PageTransition(
@@ -69,12 +65,20 @@ class _SignUpPageState extends State<SignUpPage> {
                         Text('Welcome to Boarding Hub!', style: h3),
                         Text('Let\'s get started', style: taglineText),
                         fryoTextInput('Username',
+                            validator: (val) =>
+                                val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => username = val)),
                         fryoTextInput('Full Name',
+                            validator: (val) =>
+                                val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => fullName = val)),
                         fryoEmailInput('Email Address',
+                            validator: (val) =>
+                                val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => email = val)),
                         fryoPasswordInput('Password',
+                            validator: (val) =>
+                                val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => password = val))
                       ],
                     ),
@@ -83,12 +87,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       right: -15,
                       child: FlatButton(
                         onPressed: () {
-                          // Navigator.pushReplacement(context, PageTransition(type: PageTransitionType.rightToLeft, child: Dashboard()));
-                          BoardingProvider boardingProvider = new BoardingProvider( username, fullName, email, password);
+                          BoardingProvider boardingProvider =
+                              new BoardingProvider(
+                                  username, fullName, email, password);
 
                           _register(boardingProvider);
-
-
                         },
                         color: primaryColor,
                         padding: EdgeInsets.all(13),
@@ -99,42 +102,42 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
               ),
-              height: 360,
+              height: 450,
               width: double.infinity,
               decoration: authPlateDecoration,
             ),
           ],
         ));
   }
+
   void _register(boardingProvider) {
     if (!_formKey.currentState.validate()) {
       _scaffoldKey.currentState.showSnackBar(
-        new SnackBar(content: new Text('Invalid information')),
+        new SnackBar(
+          content: new Text('Invalid information'),
+          backgroundColor: Colors.deepOrangeAccent,
+        ),
       );
-      return;
     }
-
-    _formKey.currentState.save();
-
-
-    // debugPrint("$_name $_email $_password");
-    _restService.registerUser(boardingProvider).then((  response) {
-
-      print('User is registered');
-      // _loginButtonController.reverse();
-      // _scaffoldKey.currentState
-      //     .showSnackBar(
-      //   new SnackBar(content: new Text(response.message)),
-      // )
-      //     .closed
-      //     .then((_) => Navigator.of(context).pop());
-    }).catchError((error) {
-      // _loginButtonController.reverse();
-      final message =
-      error is MyHttpException ? error.message : 'Unknown error occurred';
-      // _scaffoldKey.currentState.showSnackBar(
-      //   new SnackBar(content: new Text(message)),
-      // );
+    _restService.registerUser(boardingProvider).then((val) {
+      val.data['success'] == true
+          ? _scaffoldKey.currentState
+              .showSnackBar(new SnackBar(
+                content: new Text(val.data['msg']),
+                backgroundColor: Colors.deepOrangeAccent,
+              ))
+              .closed
+              .then(
+                (_) => Navigator.pushReplacement(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.rightToLeft, child: HomePage()),
+                ),
+              )
+          : _scaffoldKey.currentState.showSnackBar(new SnackBar(
+              content: new Text(val.data['msg']),
+              backgroundColor: Colors.deepOrangeAccent,
+            ));
     });
   }
 }
