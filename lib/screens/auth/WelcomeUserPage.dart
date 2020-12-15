@@ -41,7 +41,7 @@ class _WelcomePageState extends State<WelcomePage> {
             Image.asset('images/welcomenew.png', width: 190, height: 190),
             Container(
               margin: EdgeInsets.only(bottom: 10, top: 0),
-              child: Text('Welcome!', style: logoStyle),
+              child: Text(getTranslated(context, 'create_your_new_account_for_future_uses.'), style: logoStyle),
             ),
             Container(
               width: 200,
@@ -71,14 +71,14 @@ class _WelcomePageState extends State<WelcomePage> {
             Container(
               child: Center(
                   child: DropdownButton<Language>(
-                    iconSize: 30,
-                    hint: Text(getTranslated(context, 'change_language')),
-                    onChanged: (Language language) {
-                      _changeLanguage(language);
-                    },
-                    items: Language.languageList()
-                        .map<DropdownMenuItem<Language>>(
-                          (e) => DropdownMenuItem<Language>(
+                iconSize: 30,
+                hint: Text(getTranslated(context, 'change_language')),
+                onChanged: (Language language) {
+                  _changeLanguage(language);
+                },
+                items: Language.languageList()
+                    .map<DropdownMenuItem<Language>>(
+                      (e) => DropdownMenuItem<Language>(
                         value: e,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -92,8 +92,9 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ),
                     )
-                        .toList(),
-                  )),)
+                    .toList(),
+              )),
+            )
           ],
         )),
         //backgroundColor: bgColor,

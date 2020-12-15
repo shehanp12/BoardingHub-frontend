@@ -48,7 +48,7 @@ class DemoLocalizationDelegate extends LocalizationsDelegate<DemoLocalizations> 
 
 
   @override
-  bool isSupported(Locale locale) => ['en', 'ar'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => ['en', 'si'].contains(locale.languageCode);
 
   @override
   Future<DemoLocalizations> load(Locale locale) async {
