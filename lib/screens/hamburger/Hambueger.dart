@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'aboutus.dart';
-import 'contactus.dart';
-import 'hotline.dart';
+import 'Aboutus.dart';
+import 'Contactus.dart';
+import 'Hotline.dart';
 import 'terms.dart';
 import 'privacy.dart';
-import 'guidelines.dart';
+import 'Guidelines.dart';
 
 class MenudrawerPage extends StatelessWidget {
   final String title;
