@@ -159,7 +159,7 @@ const kSpacingUnit = 10;
 final kTitleTextStyle = TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.w600,
-  color: primaryColor,
+  
 );
 
 BoxDecoration avatarDecoration = BoxDecoration(
