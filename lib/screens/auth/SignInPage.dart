@@ -46,54 +46,44 @@ class _SignInPageState extends State<SignInPage> {
             )
           ],
         ),
-        body: ListView(
-          shrinkWrap: true,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(left: 18, right: 18),
-              child: Form(
-                key: _formKey,
-                child: Column(
+        body: Container(
+          padding: EdgeInsets.only(left: 18, right: 18),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text('Welcome Back!', style: h3),
-                        Text('Howdy, let\'s authenticate', style: taglineText),
-                        fryoEmailInput('Email Address',
-                            validator: (val) =>
-                                val == null || val.trim() == '' ? '' : null,
-                            onChanged: (val) => setState(() => email = val)),
-                        fryoPasswordInput('Password',
-                            validator: (val) =>
-                                val == null || val.trim() == '' ? '' : null,
-                            onChanged: (val) => setState(() => password = val)),
-
-                      ],
-                    ),
-                    Positioned(
-                      bottom: 15,
-                      right: -15,
-                      child: FlatButton(
-                        onPressed: () {
-
-                          _login(email, password);
-                        },
-                        color: primaryColor,
-                        padding: EdgeInsets.all(13),
-                        shape: CircleBorder(),
-                        child: Icon(Icons.arrow_forward, color: white),
-                      ),
-                    )
+                    Text('Welcome Back!', style: h3),
+                    Text('Howdy, let\'s authenticate', style: taglineText),
+                    fryoEmailInput('Email Address',
+                        validator: (val) =>
+                            val == null || val.trim() == '' ? '' : null,
+                        onChanged: (val) => setState(() => email = val)),
+                    fryoPasswordInput('Password',
+                        validator: (val) =>
+                            val == null || val.trim() == '' ? '' : null,
+                        onChanged: (val) => setState(() => password = val)),
                   ],
                 ),
-              ),
-              height: 300,
-              width: double.infinity,
-              decoration: authPlateDecoration,
+                SizedBox(height:15 ),
+                FlatButton(
+                  onPressed: () {
+                    _login(email, password);
+                  },
+                  color: primaryColor,
+                  padding: EdgeInsets.all(13),
+                  shape: CircleBorder(),
+                  child: Icon(Icons.arrow_forward, color: white),
+                )
+              ],
             ),
-          ],
+          ),
+          height: 300,
+
+          decoration: authPlateDecoration,
         ));
   }
 
