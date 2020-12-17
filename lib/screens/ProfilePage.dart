@@ -104,7 +104,7 @@ class AvatarImage extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-              image: AssetImage('images/3.png'),
+              image: AssetImage('images/as.png'),
             ),
           ),
         ),
