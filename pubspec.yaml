@@ -37,6 +37,7 @@ dependencies:
   json_annotation: ^3.1.1
   http: ^0.12.2
   font_awesome_flutter: ^8.8.1
+  line_awesome_flutter: ^1.0.1
   
 dev_dependencies:
   flutter_test:
@@ -77,6 +78,7 @@ flutter:
     - images/room1.jpeg
     - images/room2.jpeg
     - images/background/dashboardbg.jpg
+    - images/as.png
 
 
 
