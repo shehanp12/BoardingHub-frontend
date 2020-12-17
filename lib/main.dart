@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/screens/viewData/BoardingRegisterPage.dart';
+import 'package:flutter_app/screens/viewData/ProfileEditPage.dart';
 import 'screens/auth/SignInPage.dart';
 import 'screens/auth/SignUpPage.dart';
 import 'screens/viewData/ProductPage.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
       ),
       //home: WelcomePage(pageTitle: 'Welcome'),
-      home: HomePage(),
+      home: ProfileeditPage(),
       routes: <String, WidgetBuilder>{
         '/signup': (BuildContext context) => SignUpPage(),
         '/signin': (BuildContext context) => SignInPage(),
