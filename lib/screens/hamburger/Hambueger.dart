@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'Aboutus.dart';
-import 'Contactus.dart';
-import 'Hotline.dart';
-import 'Terms.dart';
-import 'Privacy.dart';
-import 'Guidelines.dart';
+import 'package:flutter_app/screens/hamburger/aboutus.dart';
+import 'package:flutter_app/screens/hamburger/contactus.dart';
+import 'package:flutter_app/screens/hamburger/guidelines.dart';
+import 'package:flutter_app/screens/hamburger/hotline.dart';
+import 'package:flutter_app/screens/hamburger/privacy.dart';
+import 'package:flutter_app/screens/hamburger/terms.dart';
+
 
 class MenudrawerPage extends StatelessWidget {
   final String title;
