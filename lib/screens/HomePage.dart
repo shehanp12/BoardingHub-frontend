@@ -4,6 +4,7 @@ import 'package:flutter_app/screens/AdsPage.dart';
 import 'package:flutter_app/screens/ProfilePage.dart';
 import 'package:flutter_app/screens/auth/SignInPage.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/BottomBarView.dart';
+import 'package:flutter_app/screens/hamburger/Hambueger.dart';
 import 'package:flutter_app/screens/viewData/BoardingRegisterPage.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/TabIconData.dart';
@@ -127,7 +128,7 @@ class _HomePageState extends State<HomePage>
                 }
                 setState(() {
                   tabBody =
-                      RegisterFrom();
+                      MenudrawerPage();
                 });
               });
             }
