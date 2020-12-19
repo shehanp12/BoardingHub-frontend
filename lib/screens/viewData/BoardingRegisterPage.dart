@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/HomePage.dart';
+import 'package:flutter_app/shared/Styles.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
 import 'package:flutter_app/widgets/RegisterWidget.dart';
 
@@ -36,21 +38,30 @@ class _RegisterPageState extends State<RegisterFrom> {
     return loading
         ? Loading()
         : Scaffold(
+          appBar: AppBar(
+        
+     leading: BackButton(
+     color: Colors.black,
+     onPressed: () { Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );},
+   ), 
+        brightness: Brightness.light,
+        backgroundColor: Colors.transparent,
+        title: Text(
+          "Listing Information",
+                           style: h3,
+                            textAlign: TextAlign.right,
+          
+        ),
+        elevation: 0,
+      ),
             body: Stack(
               children: <Widget>[
                 SizedBox(height: 100),
                 Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          //stops: [0.1, 0.5, 0.7, 0.9],
-         colors: [
-            Colors.black,
-            Color(0xFFFB8C00),
-            Color(0xFFFF6D00),
-          ],
-        ),
                       /*image: DecorationImage(
                           image: AssetImage('Ecfinder_Assets/logo/mainbg.jpg'),
                           fit: BoxFit.cover)*/

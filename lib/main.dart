@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/HomePage.dart';
+
+import 'package:flutter_app/screens/hamburger/Hambueger.dart';
+
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'localization/language_constants.dart';
 import 'localization/demo_localization.dart';
@@ -10,6 +14,16 @@ import 'screens/auth/SignUpPage.dart';
 import 'screens/viewData/ProductPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+
+import 'package:flutter_app/screens/viewData/BoardingRegisterPage.dart';
+import 'package:flutter_app/screens/viewData/ProfileEditPage.dart';
+import 'screens/auth/SignInPage.dart';
+import 'screens/auth/SignUpPage.dart';
+import 'screens/viewData/ProductPage.dart';
+
+
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -65,7 +79,9 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.orange,
       ),
       //home: WelcomePage(pageTitle: 'Welcome'),
+
       home: WelcomePage(),
+
       routes: <String, WidgetBuilder>{
         '/signup': (BuildContext context) => SignUpPage(),
         '/signin': (BuildContext context) => SignInPage(),
