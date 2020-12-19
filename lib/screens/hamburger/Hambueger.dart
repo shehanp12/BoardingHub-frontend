@@ -3,8 +3,13 @@ import 'package:flutter_app/screens/hamburger/aboutus.dart';
 import 'package:flutter_app/screens/hamburger/contactus.dart';
 import 'package:flutter_app/screens/hamburger/guidelines.dart';
 import 'package:flutter_app/screens/hamburger/hotline.dart';
+
 import 'package:flutter_app/screens/hamburger/privacy.dart';
 import 'package:flutter_app/screens/hamburger/terms.dart';
+
+import 'terms.dart';
+import 'privacy.dart';
+
 
 
 class MenudrawerPage extends StatelessWidget {
