@@ -82,22 +82,19 @@ class _SignUpPageState extends State<SignUpPage> {
                             onChanged: (val) => setState(() => password = val))
                       ],
                     ),
-                    Positioned(
-                      bottom: 15,
-                      right: -15,
-                      child: FlatButton(
-                        onPressed: () {
-                          BoardingProvider boardingProvider =
-                              new BoardingProvider(
-                                  username, fullName, email, password);
+                    SizedBox(height: 15,),
+                    FlatButton(
+                      onPressed: () {
+                        BoardingProvider boardingProvider =
+                            new BoardingProvider(
+                                username, fullName, email, password);
 
-                          _register(boardingProvider);
-                        },
-                        color: primaryColor,
-                        padding: EdgeInsets.all(13),
-                        shape: CircleBorder(),
-                        child: Icon(Icons.arrow_forward, color: white),
-                      ),
+                        _register(boardingProvider);
+                      },
+                      color: primaryColor,
+                      padding: EdgeInsets.all(13),
+                      shape: CircleBorder(),
+                      child: Icon(Icons.arrow_forward, color: white),
                     )
                   ],
                 ),
