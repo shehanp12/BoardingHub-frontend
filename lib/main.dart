@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/HomePage.dart';
-import 'package:flutter_app/screens/splash.dart';
-
-import 'package:flutter_app/screens/hamburger/Hambueger.dart';
-
-import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
-
-import 'package:flutter_app/screens/viewData/BoardingRegisterPage.dart';
-import 'package:flutter_app/screens/viewData/ProfileEditPage.dart';
+import 'package:flutter_app/screens/Splash.dart';
 import 'screens/auth/SignInPage.dart';
 import 'screens/auth/SignUpPage.dart';
 import 'screens/viewData/ProductPage.dart';

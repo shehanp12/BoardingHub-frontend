@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
 import 'package:splashscreen/splashscreen.dart';
 

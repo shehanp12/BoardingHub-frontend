@@ -5,7 +5,7 @@ import 'package:flutter_app/screens/AdsListView.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/screens/filter/FilterScreen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
+
 
 class AdsScreen extends StatefulWidget {
   @override
