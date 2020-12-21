@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/utils/RestService.dart';
 import '../../shared/Styles.dart';
@@ -59,7 +60,8 @@ class _SignInPageState extends State<SignInPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Welcome Back!', style: h3),
+                        Text(getTranslated(context,'Welcome_Back!'),
+                            style: h3),
                         Text('Howdy, let\'s authenticate', style: taglineText),
                         fryoEmailInput('Email Address',
                             validator: (val) =>
