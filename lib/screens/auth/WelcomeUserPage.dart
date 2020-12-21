@@ -34,6 +34,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 image: AssetImage('images/background/dashboardbg.jpg'),
                 fit: BoxFit.cover)),
         child: Center(
+
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,8 +67,10 @@ class _WelcomePageState extends State<WelcomePage> {
                         duration: Duration(seconds: 1),
                         child: SignUpPage()));
                 // Navigator.of(context).pushReplacementNamed('/signup');
-              }),
+              }
+              ),
             ),
+
             Container(
               child: Center(
                   child: DropdownButton<Language>(
