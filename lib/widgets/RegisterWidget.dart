@@ -98,27 +98,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               child: SingleChildScrollView(
                 child: Column(children: <Widget>[
                   Padding(padding: EdgeInsets.all(10.0)),
-                  Column(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Container(
-                          child: Text(
-                            "Listing Information",
-                            style: TitleTextStyle,
-                            textAlign: TextAlign.right,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(padding: EdgeInsets.all(10.0)),
                   TextFormField(
+                    style: inputFieldTextStyle,
                     decoration: textInputDecoration.copyWith(
-                      labelText: "Title",
+                      hintText: "Title",
+                      hintStyle: inputFieldHintTextStyle,
                       labelStyle: TextStyle(),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(fieldRadius)),
+                     border: inputFieldDefaultBorderStyle,
                     ),
                     validator: (val) => val.isEmpty ? '' : null,
                     //onChanged: (val) => setState(() => fname = val),
@@ -127,10 +113,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: TextFormField(
+                      style: inputFieldTextStyle,
                       decoration: textInputDecoration.copyWith(
-                        labelText: "Price(Rs)",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(fieldRadius)),
+                        hintText: "Price(Rs)",
+                        hintStyle: inputFieldHintTextStyle,
+                        border: inputFieldDefaultBorderStyle,
                       ),
                       validator: (val) => val.isEmpty ? '' : null,
                       //onChanged: (val) => setState(() => uname = val),
@@ -140,12 +127,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: TextFormField(
+                      style: inputFieldTextStyle,
                       maxLines: 5,
                       decoration: textInputDecoration.copyWith(
                         //contentPadding: new EdgeInsets.symmetric(vertical: 30.0, horizontal: 10.0),
-                        labelText: "Discription",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(fieldRadius)),
+                        hintText: "Discription",
+                        hintStyle: inputFieldHintTextStyle,
+                        border: inputFieldDefaultBorderStyle,
                       ),
                       validator: (val) => val.isEmpty ? '' : null,
                       //onChanged: (val) => setState(() => email = val),
@@ -155,16 +143,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   Padding(padding: EdgeInsets.all(3.0)),
                   new Row(
                     children: <Widget>[
-                      Text("Close to"),
+                      Text("Close to",style: inputFieldTextStyle,),
                         SizedBox(width: MediaQuery.of(context).size.width/10,),
                         Container(
                           alignment: Alignment.centerLeft,
                     width: MediaQuery.of(context).size.width/1.5,
                     child: TextFormField(
+                      style: inputFieldTextStyle,
                       decoration: textInputDecoration.copyWith(
-                        labelText: "University",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(fieldRadius)),
+                        hintText: "University",
+                        hintStyle: inputFieldHintTextStyle,
+                        border: inputFieldDefaultBorderStyle,
                       ),
                       validator: (val) => val.isEmpty ? '' : null,
                       //onChanged: (val) => setState(() => uname = val),
@@ -181,10 +170,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           alignment: Alignment.centerLeft,
                     width: MediaQuery.of(context).size.width/1.5,
                     child: TextFormField(
+                      style: inputFieldTextStyle,
                       decoration: textInputDecoration.copyWith(
-                        labelText: "Town",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(fieldRadius)),
+                        hintText: "Town",
+                        hintStyle: inputFieldHintTextStyle,
+                        border: inputFieldDefaultBorderStyle,
                       ),
                       validator: (val) => val.isEmpty ? '' : null,
                       //onChanged: (val) => setState(() => uname = val),
@@ -198,7 +188,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   new Row(
                     children: <Widget>[
                       
-                      new Text("Girls Only"),
+                      new Text("Girls Only",style: inputFieldTextStyle,),
                       new Container(width: 50.0),
                       Checkbox(
                         value: checkBoxValue1,
@@ -215,7 +205,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   new Row(
                     children: <Widget>[
                       
-                      new Text("Parking"),
+                      new Text("Parking",style: inputFieldTextStyle,),
                       new Container(width: 60.0),
                       Checkbox(
                         value: checkBoxValue2,
@@ -232,7 +222,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   new Row(
                     children: <Widget>[
                       
-                      new Text("Attach Bathroom"),
+                      new Text("Attach Bathroom",style: inputFieldTextStyle,),
                       new Container(width: 5.0),
                       Checkbox(
                         value: checkBoxValue3,
@@ -250,7 +240,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   new Row(
                     children: <Widget>[
                       
-                      new Text("Kitchen"),
+                      new Text("Kitchen",style: inputFieldTextStyle,),
                       new Container(width: 60.0),
                       Checkbox(
                         value: checkBoxValue4,
@@ -275,7 +265,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         child: Container(
                           child: Text(
                             "Images",
-                            style: TitleTextStyle,
+                            style: h3,
                             textAlign: TextAlign.right,
                           ),
                         ),
@@ -302,7 +292,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         child: Container(
                           child: Text(
                             "Contact Details",
-                            style: TitleTextStyle,
+                            style: h3,
                             textAlign: TextAlign.right,
                           ),
                         ),
@@ -313,10 +303,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: TextFormField(
+                      style: inputFieldTextStyle,
                       decoration: textInputDecoration.copyWith(
-                        labelText: "Phone Number",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(fieldRadius)),
+                        hintText: "Phone Number",
+                        hintStyle: inputFieldHintTextStyle,
+                        border: inputFieldDefaultBorderStyle,
                       ),
                       //onChanged: (val) => setState(() => vehicleNumber = val),
                     ),
@@ -325,10 +316,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: TextFormField(
+                      style: inputFieldTextStyle,
                       decoration: textInputDecoration.copyWith(
-                        labelText: "Address",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(fieldRadius)),
+                        hintText: "Address",
+                        hintStyle: inputFieldHintTextStyle,
+                        border: inputFieldDefaultBorderStyle,
                       ),
                       validator: (val) => val.isEmpty ? '' : null,
                       //onChanged: (val) => setState(() => address = val),
@@ -347,7 +339,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     MaterialPageRoute(
                                         builder: (_) =>SignInPage())),
                                 child: Text(
-                                    "I agreed to the terms & conditions of Boarding Hub"),
+                                    "I agreed to the terms & conditions of Boarding Hub",
+                                    style: inputFieldTextStyle,),
                               ),
                               value: checkBoxValue,
                               onChanged: (newValue) {
@@ -362,7 +355,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       Regbutton(
                         typeText: Text(
                           "Submit",
-                          style: TitleTextStyle,
+                          style: h5,
                         ),
                         /*onPress: () {
             Navigator.push(
