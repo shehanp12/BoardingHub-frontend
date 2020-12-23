@@ -24,7 +24,7 @@ class _WelcomePageState extends State<WelcomePage> {
       body:Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/background/dashboardbg.jpg'),fit: BoxFit.cover)),
+                image: AssetImage('images/background/bg2.jpg'),fit: BoxFit.cover)),
          child:Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
