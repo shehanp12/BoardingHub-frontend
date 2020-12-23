@@ -6,7 +6,7 @@ class BoardingHouse {
   double distance = 0.0;
   double perMonth = 0.0;
   double keyMoney = 0.0;
-  List<FireImage> images;
+  String imageUrl = '';
 
   BoardingHouse(String title,
       String subtitle,
@@ -14,12 +14,13 @@ class BoardingHouse {
       double distance,
      double perMonth,
       double keyMoney,
-      List<FireImage> imageList){
+      String imageUrl){
     this.title= title;
     this.description=description;
     this.distance=distance;
     this.perMonth=perMonth;
     this.keyMoney=keyMoney;
+    this.imageUrl= imageUrl;
   }
 
 

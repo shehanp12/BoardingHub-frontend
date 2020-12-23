@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingHouse.dart';
 import 'package:flutter_app/screens/auth/SignInPage.dart';
 import 'package:flutter_app/shared/Styles.dart';
+import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/RegButton.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -16,12 +17,23 @@ class RegisterWidget extends StatefulWidget {
 }
 
 class _RegisterWidgetState extends State<RegisterWidget> {
+  final RestService _restService = new RestService();
   final _formKey = GlobalKey<FormState>();
   bool checkBoxValue = false;
   bool checkBoxValue1 = false;
   bool checkBoxValue2 = false;
   bool checkBoxValue3 = false;
   bool checkBoxValue4 = false;
+
+  String title= '';
+  String subtitle = '';
+  String description = '';
+  double distance = 0.0;
+  double perMonth = 0.0;
+  double keyMoney = 0.0;
+  String imageUrl = '';
+
+
 
   String error = '';
   firebase_storage.FirebaseStorage storage =
@@ -51,10 +63,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     UploadTask uploadTask = ref.putFile(_imageFile);
     await uploadTask.whenComplete(() async =>
         await storage.ref().child(fileName).getDownloadURL().then((fileURL) {
-          FireImage image = FireImage(path, fileURL);
-          List<FireImage> list = List<FireImage>();
-          list.add(image);
-          widget.boardingHouse.images = list;
+          imageUrl = fileURL;
+
           return 1;
         }));
   }
@@ -379,6 +389,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         ),
                         onPress: () async {
                           await uploadFile(_imageFile);
+                          BoardingHouse boardingHouse = new BoardingHouse(
+                              title, subtitle, description, distance, perMonth, keyMoney, imageUrl);
+
+                          _restService.registerBoarding(boardingHouse);
+
+
                         },
                       ),
                       SizedBox(height: 12.0),

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_app/models/BoardingHouse.dart';
 
 class RestService {
   Dio _dio = new Dio();
@@ -14,8 +15,14 @@ class RestService {
     });
   }
 
+
+
   login(email, password) async {
     return await _dio.post(host + 'user/login',
         data: {"email": email, "password": password});
+  }
+
+  void registerBoarding(BoardingHouse boardingHouse) {
+
   }
 }
