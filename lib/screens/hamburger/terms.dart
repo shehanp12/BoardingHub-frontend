@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 
 class TermsCondition extends StatefulWidget {
   @override
@@ -31,8 +32,8 @@ class _AboutusPageState extends State<TermsCondition> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
-                child: Text(
-                  'TERMS AND CONDITIONS',
+                child: Text(getTranslated(context,
+                  'TERMS_AND_CONDITIONS'),
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -43,42 +44,42 @@ class _AboutusPageState extends State<TermsCondition> {
                 child: ListView(
                   children: <Widget>[
                     
-                    Text(
-                        'Your access to and use of http://bordinghub/ is subject exclusively to these Terms and Conditions. These Terms and Conditions present the "General Conditions" applicable to the use of services offered by Pick Me, either through the site http://bordinghub/, application software for mobile phone handset (app) or phone (in addition to the "Website" ).  You will not use the Website for any purpose that is unlawful or prohibited by these Terms and Conditions. By using the Website you are fully accepting the terms, conditions and disclaimers contained in this notice. If you do not accept these Terms and Conditions you must immediately stop using the Website and all software that belong to Digital Boarding Hub Solutions Lanka (Pvt) Ltd.'),
+                    Text(getTranslated(context,
+                        'Terms_Description'),),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
-                      "Advice",
+                    Text(getTranslated(context,
+                      'Advice'),
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0),
                     ),
-                    Text(
-                        "The contents of http://bordinghub/ website do not constitute advice and should not be relied on in making or refraining from making, any decision."),
+                    Text(getTranslated(context,
+                        'Advice_first_paragraph'),),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
-                        "Change of Use http://bordinghub/ reserves the right to: change or remove (temporarily or permanently) the Website or any part of it without notice and you confirm that http://bordinghub/ shall not be liable to you for any such change or removal. The same applies to the changing of these Terms and Conditions at any time, and your continued use of the Website following any changes shall be deemed to be your acceptance of such change."),
+                    Text(getTranslated(context,
+                        'Advice_second_paragraph'),),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
-                        "Links to Third Party Websites http://bordinghub/ Website may include links to third party websites that are controlled and maintained by others. Any link to other websites is not an endorsement of such websites and you acknowledge and agree that we are not responsible for the content or availability of any such sites."),
+                    Text(getTranslated(context,
+                        'Advice_Third_paragraph'),),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
-                      "Copyright",
+                    Text(getTranslated(context,
+                      'Copyright'),
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0),
                     ),
-                    Text(
-                        "All copyright, trade marks and all other intellectual property rights in the Website and its content (including without limitation the Website design, text, graphics and all software and source codes connected with the Website) are owned by or licensed to http://bordinghub/ or otherwise used byhttp://bordinghub/ as permitted by law.")
+                    Text(getTranslated(context,
+                        'Copyright_description'),)
                   ],
                 ),
               ),

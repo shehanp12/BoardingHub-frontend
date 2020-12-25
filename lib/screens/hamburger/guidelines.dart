@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 
 class Guidelines extends StatefulWidget {
   @override
@@ -31,8 +32,8 @@ class _AboutusPageState extends State<Guidelines> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
-                child: Text(
-                  'User Guidelines ',
+                child: Text(getTranslated(context,
+                  'User_Guidelines'),
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -42,37 +43,36 @@ class _AboutusPageState extends State<Guidelines> {
               Flexible(
                 child: ListView(
                   children: <Widget>[
-                    Text(
-                        'Please respect BORDING HUB, the owners of the Content, and other users of the BORDING HUB Service. Don’t engage in any activity, post any User Content, or register and/or use a username, which is or includes material that:'),
+                    Text(getTranslated(context,
+                        'Guidelines_first_para'),),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
-                        'Is offensive, abusive, defamatory, pornographic, threatening, or obscene; '),
+                    Text(getTranslated(context,
+                        'Guidelines_second_para'),),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
-                        'Is illegal, or intended to promote or commit an illegal act of any kind, including violations of intellectual property rights, privacy rights, or proprietary rights of BORDING HUB or a third party;'),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    
-                    Text(
-                        "Includes your password or purposely includes any other user’s password or purposely includes personal data of third parties or is intended to solicit such personal data;"),
+                    Text(getTranslated(context,
+                        'Guidelines_third_para'),),
                     SizedBox(
                       height: 15,
                     ),
                     
-                    
-                    Text(
-                        "You acknowledge and agree that posting any User Content that violates these User guidelines (or that BORDING HUB reasonably believes violates these User guidelines) may result in immediate termination or suspension of your BORDING HUB account. You also agree that BORDING HUB may reclaim your username for any reason."),
+                    Text(getTranslated(context,
+                        'Guidelines_fourth_para'),),
+                    SizedBox(
+                      height: 15,
+                    ),
+
+                    Text(getTranslated(context,
+                        'Guidelines_fifth_para'),),
                     SizedBox(
                       height: 15,
                     ),
                     
-                    Text(
-                        "Impersonates or misrepresents your affiliation with another user, person, or entity, or is otherwise fraudulent, false, deceptive, or misleading;")
+                    Text(getTranslated(context,
+                        'Guidelines_sixth_para'),)
                   ],
                 ),
               ),

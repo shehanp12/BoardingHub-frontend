@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/widgets/Profile_List_item.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -123,27 +124,27 @@ class ProfileListItems extends StatelessWidget {
         children: <Widget>[
           ProfileListItem(
            icon: LineAwesomeIcons.user_shield,
-            text: 'My Ads',
+            text:getTranslated(context, 'My_Ads'),
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.history,
-            text: 'Purchase History',
+            text:getTranslated(context,'Purchase_History'),
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.question_circle,
-            text: 'Help & Support',
+            text:getTranslated(context,'Help_&_Support'),
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.cog,
-            text: 'Settings',
+            text:getTranslated(context,'Settings'),
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.user_plus,
-            text: 'Invite a Friend',
+            text:getTranslated(context, 'Invite_a_Friend'),
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.alternate_sign_out,
-            text: 'Logout',
+            text:getTranslated(context,'Logout'),
             hasNavigation: false,
           ),
         ],
