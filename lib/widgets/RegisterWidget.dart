@@ -1,17 +1,23 @@
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
+import 'package:flutter_app/models/BoardingHouse.dart';
 import 'package:flutter_app/screens/auth/SignInPage.dart';
 import 'package:flutter_app/shared/Styles.dart';
+import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/RegButton.dart';
-
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class RegisterWidget extends StatefulWidget {
   RegisterWidget();
-
+  BoardingHouse boardingHouse;
   @override
   _RegisterWidgetState createState() => _RegisterWidgetState();
 }
 
 class _RegisterWidgetState extends State<RegisterWidget> {
+  final RestService _restService = new RestService();
   final _formKey = GlobalKey<FormState>();
   bool checkBoxValue = false;
   bool checkBoxValue1 = false;
@@ -19,34 +25,52 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   bool checkBoxValue3 = false;
   bool checkBoxValue4 = false;
 
+  String title= '';
+  String subtitle = '';
+  String description = '';
+  double distance = 0.0;
+  double perMonth = 0.0;
+  double keyMoney = 0.0;
+  String imageUrl = '';
+
+
+
   String error = '';
+  firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
 
   double fieldRadius = 20;
-  //File _imageFile;
+  File _imageFile;
+  final picker = ImagePicker();
 
-  /*Future<void> captureImage(ImagePicker imageSource) async {
-    try {
-      final imageFile = await ImagePicker.pickImage(source: imageSource);
-      setState(() {
-        _imageFile = imageFile;
-        print('Image Path $_imageFile');
-      });
-    } catch (e) {
-      print(e);
-    }
-  }*/
+  Future<void> captureImage(ImageSource imageSource) async {
+    final imageFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (imageFile != null) {
+        _imageFile = File(imageFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  Future uploadFile(File _imageFile) async {
+    String path = DateTime.now().microsecondsSinceEpoch.toString() + '.png';
+    String fileName = 'BoardingHouse/${path}';
+    FirebaseStorage storage = FirebaseStorage.instance;
+    Reference ref = storage.ref().child(fileName + path);
+    UploadTask uploadTask = ref.putFile(_imageFile);
+    await uploadTask.whenComplete(() async =>
+        await storage.ref().child(fileName).getDownloadURL().then((fileURL) {
+          imageUrl = fileURL;
+
+          return 1;
+        }));
+  }
 
   @override
   Widget build(BuildContext context) {
-   /* Widget _buildImage() {
-      if (_imageFile != null) {
-        return Image.file(_imageFile);
-      } else {
-        return Text("iqama_Scanned_Copy/Snapshot",
-            style: TextStyle(fontSize: 18.0));
-      }
-    }*/
-
     Widget _buildActionButton({Key key, String text, Function onPressed}) {
       return Expanded(
         child: OutlineButton(
@@ -64,7 +88,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
     Widget _buildButtons() {
       return ConstrainedBox(
-          constraints: BoxConstraints.expand(height: 35.0,width: MediaQuery.of(context).size.width/1.5,),
+          constraints: BoxConstraints.expand(
+            height: 35.0,
+            width: MediaQuery.of(context).size.width / 1.5,
+          ),
           child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -72,7 +99,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 _buildActionButton(
                   key: Key('retake'),
                   text: "gallery",
-                  //onPressed: () => captureImage(ImageSource.gallery),
+                  onPressed: () => captureImage(ImageSource.gallery),
                 ),
               ]));
     }
@@ -104,7 +131,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       hintText: "Title",
                       hintStyle: inputFieldHintTextStyle,
                       labelStyle: TextStyle(),
-                     border: inputFieldDefaultBorderStyle,
+                      border: inputFieldDefaultBorderStyle,
                     ),
                     validator: (val) => val.isEmpty ? '' : null,
                     //onChanged: (val) => setState(() => fname = val),
@@ -139,56 +166,61 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       //onChanged: (val) => setState(() => email = val),
                     ),
                   ),
-                  
                   Padding(padding: EdgeInsets.all(3.0)),
                   new Row(
                     children: <Widget>[
-                      Text("Close to",style: inputFieldTextStyle,),
-                        SizedBox(width: MediaQuery.of(context).size.width/10,),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                    width: MediaQuery.of(context).size.width/1.5,
-                    child: TextFormField(
-                      style: inputFieldTextStyle,
-                      decoration: textInputDecoration.copyWith(
-                        hintText: "University",
-                        hintStyle: inputFieldHintTextStyle,
-                        border: inputFieldDefaultBorderStyle,
+                      Text(
+                        "Close to",
+                        style: inputFieldTextStyle,
                       ),
-                      validator: (val) => val.isEmpty ? '' : null,
-                      //onChanged: (val) => setState(() => uname = val),
-                    ),
-                  ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 10,
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        width: MediaQuery.of(context).size.width / 1.5,
+                        child: TextFormField(
+                          style: inputFieldTextStyle,
+                          decoration: textInputDecoration.copyWith(
+                            hintText: "University",
+                            hintStyle: inputFieldHintTextStyle,
+                            border: inputFieldDefaultBorderStyle,
+                          ),
+                          validator: (val) => val.isEmpty ? '' : null,
+                          //onChanged: (val) => setState(() => uname = val),
+                        ),
+                      ),
                     ],
                   ),
-                   Padding(padding: EdgeInsets.all(3.0)),
-                  new Row(
-                    children: <Widget>[
-                      
-                        SizedBox(width: MediaQuery.of(context).size.width/4.2,),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                    width: MediaQuery.of(context).size.width/1.5,
-                    child: TextFormField(
-                      style: inputFieldTextStyle,
-                      decoration: textInputDecoration.copyWith(
-                        hintText: "Town",
-                        hintStyle: inputFieldHintTextStyle,
-                        border: inputFieldDefaultBorderStyle,
-                      ),
-                      validator: (val) => val.isEmpty ? '' : null,
-                      //onChanged: (val) => setState(() => uname = val),
-                    ),
-                  ),
-                    ],
-                  ),
-                  
-                    
                   Padding(padding: EdgeInsets.all(3.0)),
                   new Row(
                     children: <Widget>[
-                      
-                      new Text("Girls Only",style: inputFieldTextStyle,),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 4.2,
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        width: MediaQuery.of(context).size.width / 1.5,
+                        child: TextFormField(
+                          style: inputFieldTextStyle,
+                          decoration: textInputDecoration.copyWith(
+                            hintText: "Town",
+                            hintStyle: inputFieldHintTextStyle,
+                            border: inputFieldDefaultBorderStyle,
+                          ),
+                          validator: (val) => val.isEmpty ? '' : null,
+                          //onChanged: (val) => setState(() => uname = val),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(padding: EdgeInsets.all(3.0)),
+                  new Row(
+                    children: <Widget>[
+                      new Text(
+                        "Girls Only",
+                        style: inputFieldTextStyle,
+                      ),
                       new Container(width: 50.0),
                       Checkbox(
                         value: checkBoxValue1,
@@ -198,14 +230,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           });
                         },
                       ),
-                      
                     ],
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
                   new Row(
                     children: <Widget>[
-                      
-                      new Text("Parking",style: inputFieldTextStyle,),
+                      new Text(
+                        "Parking",
+                        style: inputFieldTextStyle,
+                      ),
                       new Container(width: 60.0),
                       Checkbox(
                         value: checkBoxValue2,
@@ -215,14 +248,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           });
                         },
                       ),
-                      
                     ],
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
                   new Row(
                     children: <Widget>[
-                      
-                      new Text("Attach Bathroom",style: inputFieldTextStyle,),
+                      new Text(
+                        "Attach Bathroom",
+                        style: inputFieldTextStyle,
+                      ),
                       new Container(width: 5.0),
                       Checkbox(
                         value: checkBoxValue3,
@@ -232,15 +266,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           });
                         },
                       ),
-                      
                     ],
                   ),
-
                   Padding(padding: EdgeInsets.all(3.0)),
                   new Row(
                     children: <Widget>[
-                      
-                      new Text("Kitchen",style: inputFieldTextStyle,),
+                      new Text(
+                        "Kitchen",
+                        style: inputFieldTextStyle,
+                      ),
                       new Container(width: 60.0),
                       Checkbox(
                         value: checkBoxValue4,
@@ -250,13 +284,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           });
                         },
                       ),
-                      
                     ],
                   ),
-
-
-                 
-
                   Padding(padding: EdgeInsets.all(3.0)),
                   Row(
                     children: <Widget>[
@@ -337,10 +366,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               title: InkWell(
                                 onTap: () => Navigator.of(context).push(
                                     MaterialPageRoute(
-                                        builder: (_) =>SignInPage())),
+                                        builder: (_) => SignInPage())),
                                 child: Text(
-                                    "I agreed to the terms & conditions of Boarding Hub",
-                                    style: inputFieldTextStyle,),
+                                  "I agreed to the terms & conditions of Boarding Hub",
+                                  style: inputFieldTextStyle,
+                                ),
                               ),
                               value: checkBoxValue,
                               onChanged: (newValue) {
@@ -357,12 +387,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           "Submit",
                           style: h5,
                         ),
-                        /*onPress: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => RegisterFrom()),
-            );
-          },*/
+                        onPress: () async {
+                          await uploadFile(_imageFile);
+                          BoardingHouse boardingHouse = new BoardingHouse(
+                              title, subtitle, description, distance, perMonth, keyMoney, imageUrl);
+
+                          _restService.registerBoarding(boardingHouse);
+
+
+                        },
                       ),
                       SizedBox(height: 12.0),
                       Text(
