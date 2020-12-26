@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/HomePage.dart';
+
+import 'package:flutter_app/screens/ProfilePage.dart';
+
+import 'package:flutter_app/screens/hamburger/Hambueger.dart';
+
+import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
+
+
 import 'package:flutter_app/widgets/Loading_Screen.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'localization/language_constants.dart';
 import 'localization/demo_localization.dart';
@@ -58,6 +67,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
     return FutureBuilder(
       future: Firebase.initializeApp(),
       builder: (context, snapshot) {
@@ -95,6 +105,7 @@ class _MyAppState extends State<MyApp> {
               return supportedLocales.first;
             },
           );
+
         }
         return Loading();
 

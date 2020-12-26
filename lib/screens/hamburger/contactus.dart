@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 
 class ContactUs extends StatefulWidget {
   @override
@@ -31,8 +32,8 @@ class _ContactusPageState extends State<ContactUs> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
-                child: Text(
-                  "Contact Infomation",
+                child: Text(getTranslated(context,
+                  'Contact_Information'),
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -74,25 +75,25 @@ class _ContactusPageState extends State<ContactUs> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text("Boarding Hub Solutions",
+                                Text(getTranslated(context,'Boarding_Hub_Solutions'),
                                     style: TextStyle(
                                         color: Colors.black,
                                         //fontWeight: FontWeight.bold,
                                         fontSize: 15.0,
                                         fontFamily: 'Pacifico')),
-                                Text("(Pvt) Ltd.",
+                                Text(getTranslated(context,'(_Pvt_)_Ltd.'),
                                     style: TextStyle(
                                         color: Colors.black,
                                         //fontWeight: FontWeight.bold,
                                         fontSize: 15.0,
                                         fontFamily: 'Pacifico')),
-                                Text("No 309, High Level Road,",
+                                Text(getTranslated(context,'No_309_High_Level_Road'),
                                     style: TextStyle(
                                         color: Colors.black,
                                         //fontWeight: FontWeight.bold,
                                         fontSize: 15.0,
                                         fontFamily: 'Pacifico')),
-                                Text("Colombo 06, Sri Lanka.",
+                                Text(getTranslated(context,'Colombo_06_Sri_Lanka.'),
                                     style: TextStyle(
                                         color: Colors.black,
                                         //fontWeight: FontWeight.bold,

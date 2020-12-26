@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 
 class AboutUs extends StatefulWidget {
   @override
@@ -31,8 +32,8 @@ class _AboutusPageState extends State<AboutUs> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
-                child: Text(
-                  'About Us',
+                child: Text(getTranslated(context,
+                  'About_Us'),
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -42,30 +43,30 @@ class _AboutusPageState extends State<AboutUs> {
               Flexible(
                 child: ListView(
                   children: <Widget>[
-                    Text(
-                        'Boarding Hub is to help university students to manage their hostel needs in a busy learning style. And this can also be used to manage boarding advertisements and renting houses for university students easily, effectively and reliably. So, our main objective is to build a mobile application for to select their boarding needs online in a reliable and user-friendly environment. The students will be able to select their boarding houses or rooms and boarding houses owners have the benefit of doing their business to a large group of customers.'),
+                    Text(getTranslated(context,
+                        'About_us_description'),),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
-                      "Our Vision",
+                    Text(getTranslated(context,
+                      "Our_Vision"),
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0),
                     ),
-                    Text("Problem-Solving & helps to university students to manage their hostel needs in a busy learning style THROUGH TECHNOLOGY."),
+                    Text(getTranslated(context,"Our_Vision_description"),),
                     SizedBox(
                       height: 15,
                     ),
-                    Text(
-                      "Our Mission",
+                    Text(getTranslated(context,
+                      "Our_Mission"),
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0),
                     ),
-                    Text("To offer the Benefit of Digital Technologies to university students through Localized Digital Innovations.")
+                    Text(getTranslated(context,"Our_Mission_description"),),
                   ],
                 ),
               ),
