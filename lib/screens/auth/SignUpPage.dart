@@ -68,7 +68,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         fryoTextInput(getTranslated(context,'Username'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
-                            onChanged: (val) => setState(() => username = val)),
+                            onChanged: (val) => setState(() => username = val)
+                        ),
                         fryoTextInput(getTranslated(context,'Full_Name'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,

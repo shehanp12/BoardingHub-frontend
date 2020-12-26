@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/HomePage.dart';
-
-import 'package:flutter_app/screens/ProfilePage.dart';
-
-import 'package:flutter_app/screens/hamburger/Hambueger.dart';
-
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
-
-
 import 'package:flutter_app/widgets/Loading_Screen.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'localization/language_constants.dart';
 import 'localization/demo_localization.dart';
@@ -77,7 +69,7 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
               primarySwatch: Colors.orange,
             ),
-            home: HomePage(),
+            home: WelcomePage(),
 
             routes: <String, WidgetBuilder>{
               '/signup': (BuildContext context) => SignUpPage(),

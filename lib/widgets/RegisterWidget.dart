@@ -20,10 +20,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   final RestService _restService = new RestService();
   final _formKey = GlobalKey<FormState>();
   bool checkBoxValue = false;
-  bool checkBoxValue1 = false;
-  bool checkBoxValue2 = false;
-  bool checkBoxValue3 = false;
-  bool checkBoxValue4 = false;
+  bool checkGirlsOnly = false;
+  bool checkParkingOnly = false;
+  bool checkAttachBathroom = false;
+  bool checkKitchen = false;
 
   String title= '';
   String subtitle = '';
@@ -133,8 +133,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       labelStyle: TextStyle(),
                       border: inputFieldDefaultBorderStyle,
                     ),
-                    validator: (val) => val.isEmpty ? '' : null,
-                    //onChanged: (val) => setState(() => fname = val),
+                    validator: (val) =>
+                    val == null || val.trim() == '' ? '' : null,
+                      onChanged: (val) => setState(() => title = val)
+
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
                   Container(
@@ -146,8 +148,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         hintStyle: inputFieldHintTextStyle,
                         border: inputFieldDefaultBorderStyle,
                       ),
-                      validator: (val) => val.isEmpty ? '' : null,
-                      //onChanged: (val) => setState(() => uname = val),
+                      validator: (val) =>
+                      val == null || val.trim() == '' ? '' : null,
+                      onChanged: (val) => setState(() => subtitle = val),
                     ),
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
@@ -162,34 +165,35 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         hintStyle: inputFieldHintTextStyle,
                         border: inputFieldDefaultBorderStyle,
                       ),
-                      validator: (val) => val.isEmpty ? '' : null,
-                      //onChanged: (val) => setState(() => email = val),
+                      validator: (val) =>
+                      val == null || val.trim() == '' ? '' : null,
+                      onChanged: (val) => setState(() => description = val),
                     ),
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
                   new Row(
                     children: <Widget>[
-                      Text(
-                        "Close to",
-                        style: inputFieldTextStyle,
-                      ),
+                      // Text(
+                      //   "Close to",
+                      //   style: inputFieldTextStyle,
+                      // ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 10,
                       ),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        width: MediaQuery.of(context).size.width / 1.5,
-                        child: TextFormField(
-                          style: inputFieldTextStyle,
-                          decoration: textInputDecoration.copyWith(
-                            hintText: "University",
-                            hintStyle: inputFieldHintTextStyle,
-                            border: inputFieldDefaultBorderStyle,
-                          ),
-                          validator: (val) => val.isEmpty ? '' : null,
-                          //onChanged: (val) => setState(() => uname = val),
-                        ),
-                      ),
+                      // Container(
+                      //   alignment: Alignment.centerLeft,
+                      //   width: MediaQuery.of(context).size.width / 1.5,
+                      //   child: TextFormField(
+                      //     style: inputFieldTextStyle,
+                      //     decoration: textInputDecoration.copyWith(
+                      //       hintText: "University",
+                      //       hintStyle: inputFieldHintTextStyle,
+                      //       border: inputFieldDefaultBorderStyle,
+                      //     ),
+                      //     validator: (val) => val.isEmpty ? '' : null,
+                      //     //onChanged: (val) => setState(() => uname = val),
+                      //   ),
+                      // ),
                     ],
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
@@ -198,20 +202,20 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 4.2,
                       ),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        width: MediaQuery.of(context).size.width / 1.5,
-                        child: TextFormField(
-                          style: inputFieldTextStyle,
-                          decoration: textInputDecoration.copyWith(
-                            hintText: "Town",
-                            hintStyle: inputFieldHintTextStyle,
-                            border: inputFieldDefaultBorderStyle,
-                          ),
-                          validator: (val) => val.isEmpty ? '' : null,
-                          //onChanged: (val) => setState(() => uname = val),
-                        ),
-                      ),
+                      // Container(
+                      //   alignment: Alignment.centerLeft,
+                      //   width: MediaQuery.of(context).size.width / 1.5,
+                      //   child: TextFormField(
+                      //     style: inputFieldTextStyle,
+                      //     decoration: textInputDecoration.copyWith(
+                      //       hintText: "Town",
+                      //       hintStyle: inputFieldHintTextStyle,
+                      //       border: inputFieldDefaultBorderStyle,
+                      //     ),
+                      //     validator: (val) => val.isEmpty ? '' : null,
+                      //     //onChanged: (val) => setState(() => uname = val),
+                      //   ),
+                      // ),
                     ],
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
@@ -223,10 +227,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       ),
                       new Container(width: 50.0),
                       Checkbox(
-                        value: checkBoxValue1,
+                        value: checkGirlsOnly,
                         onChanged: (newValue) {
                           setState(() {
-                            checkBoxValue1 = newValue;
+                            checkGirlsOnly = newValue;
                           });
                         },
                       ),
@@ -241,10 +245,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       ),
                       new Container(width: 60.0),
                       Checkbox(
-                        value: checkBoxValue2,
+                        value: checkParkingOnly,
                         onChanged: (newValue) {
                           setState(() {
-                            checkBoxValue2 = newValue;
+                            checkParkingOnly = newValue;
                           });
                         },
                       ),
@@ -259,10 +263,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       ),
                       new Container(width: 5.0),
                       Checkbox(
-                        value: checkBoxValue3,
+                        value: checkAttachBathroom,
                         onChanged: (newValue) {
                           setState(() {
-                            checkBoxValue3 = newValue;
+                            checkAttachBathroom = newValue;
                           });
                         },
                       ),
@@ -277,10 +281,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       ),
                       new Container(width: 60.0),
                       Checkbox(
-                        value: checkBoxValue4,
+                        value: checkKitchen,
                         onChanged: (newValue) {
                           setState(() {
-                            checkBoxValue4 = newValue;
+                            checkKitchen = newValue;
                           });
                         },
                       ),
@@ -313,48 +317,48 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                     ),
                   ),
                   _buildButtons(),
-                  Padding(padding: EdgeInsets.all(3.0)),
-                  Column(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Container(
-                          child: Text(
-                            "Contact Details",
-                            style: h3,
-                            textAlign: TextAlign.right,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(padding: EdgeInsets.all(3.0)),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: TextFormField(
-                      style: inputFieldTextStyle,
-                      decoration: textInputDecoration.copyWith(
-                        hintText: "Phone Number",
-                        hintStyle: inputFieldHintTextStyle,
-                        border: inputFieldDefaultBorderStyle,
-                      ),
-                      //onChanged: (val) => setState(() => vehicleNumber = val),
-                    ),
-                  ),
-                  Padding(padding: EdgeInsets.all(3.0)),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: TextFormField(
-                      style: inputFieldTextStyle,
-                      decoration: textInputDecoration.copyWith(
-                        hintText: "Address",
-                        hintStyle: inputFieldHintTextStyle,
-                        border: inputFieldDefaultBorderStyle,
-                      ),
-                      validator: (val) => val.isEmpty ? '' : null,
-                      //onChanged: (val) => setState(() => address = val),
-                    ),
-                  ),
+                  // Padding(padding: EdgeInsets.all(3.0)),
+                  // Column(
+                  //   children: <Widget>[
+                  //     Align(
+                  //       alignment: Alignment.centerLeft,
+                  //       child: Container(
+                  //         child: Text(
+                  //           "Contact Details",
+                  //           style: h3,
+                  //           textAlign: TextAlign.right,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Padding(padding: EdgeInsets.all(3.0)),
+                  // Container(
+                  //   width: MediaQuery.of(context).size.width,
+                  //   child: TextFormField(
+                  //     style: inputFieldTextStyle,
+                  //     decoration: textInputDecoration.copyWith(
+                  //       hintText: "Phone Number",
+                  //       hintStyle: inputFieldHintTextStyle,
+                  //       border: inputFieldDefaultBorderStyle,
+                  //     ),
+                  //     //onChanged: (val) => setState(() => vehicleNumber = val),
+                  //   ),
+                  // ),
+                  // Padding(padding: EdgeInsets.all(3.0)),
+                  // Container(
+                  //   width: MediaQuery.of(context).size.width,
+                  //   child: TextFormField(
+                  //     style: inputFieldTextStyle,
+                  //     decoration: textInputDecoration.copyWith(
+                  //       hintText: "Address",
+                  //       hintStyle: inputFieldHintTextStyle,
+                  //       border: inputFieldDefaultBorderStyle,
+                  //     ),
+                  //     validator: (val) => val.isEmpty ? '' : null,
+                  //     //onChanged: (val) => setState(() => address = val),
+                  //   ),
+                  // ),
                   Padding(padding: EdgeInsets.only(top: 10.0)),
                   Column(
                     children: <Widget>[
