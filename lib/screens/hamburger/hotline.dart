@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 
 
 class Hotline extends StatefulWidget {
@@ -33,8 +34,8 @@ class _AboutusPageState extends State<Hotline> {
               
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
-                child: Text(
-                  "Hotlines",
+                child: Text(getTranslated(context,
+                  "Hotlines"),
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -76,7 +77,7 @@ class _AboutusPageState extends State<Hotline> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text("General Inquiries",
+                                Text(getTranslated(context,"General_Inquiries"),
                                     style: TextStyle(
                                         color: Colors.black,
                                         //fontWeight: FontWeight.bold,
@@ -140,8 +141,8 @@ class _AboutusPageState extends State<Hotline> {
                                 Text(
                                   '',
                                 ),
-                                Text(
-                                  'Business Inquiries',
+                                Text(getTranslated(context,
+                                  'Business_Inquiries'),
                                   style: TextStyle(
                                       color: Colors.black,
                                       //fontWeight: FontWeight.bold,
@@ -203,8 +204,8 @@ class _AboutusPageState extends State<Hotline> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Text(
-                                  'Careers',
+                                Text(getTranslated(context,
+                                  'Careers'),
                                   style: TextStyle(
                                       color: Colors.black,
                                       //fontWeight: FontWeight.bold,
