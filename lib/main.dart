@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/HomePage.dart';
+import 'package:flutter_app/screens/ProfilePage.dart';
 
 import 'package:flutter_app/screens/hamburger/Hambueger.dart';
 
@@ -82,7 +83,7 @@ class _MyAppState extends State<MyApp> {
       ),
       //home: WelcomePage(pageTitle: 'Welcome'),
 
-      home: WelcomePage(),
+      home: HomePage(),
 
       routes: <String, WidgetBuilder>{
         '/signup': (BuildContext context) => SignUpPage(),

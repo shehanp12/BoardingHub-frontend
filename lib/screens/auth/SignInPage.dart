@@ -31,7 +31,7 @@ class _SignInPageState extends State<SignInPage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: white,
-          title: Text('Sign In',
+          title: Text(getTranslated(context,'Sign_In'),
               style: TextStyle(
                   color: Colors.grey, fontFamily: 'Poppins', fontSize: 15)),
           actions: <Widget>[
@@ -43,7 +43,7 @@ class _SignInPageState extends State<SignInPage> {
                         type: PageTransitionType.rightToLeft,
                         child: SignUpPage()));
               },
-              child: Text('Sign Up', style: contrastText),
+              child: Text(getTranslated(context,'Sign_Up'), style: contrastText),
             )
           ],
         ),
@@ -62,12 +62,12 @@ class _SignInPageState extends State<SignInPage> {
                       children: <Widget>[
                         Text(getTranslated(context,'Welcome_Back!'),
                             style: h3),
-                        Text('Howdy, let\'s authenticate', style: taglineText),
-                        fryoEmailInput('Email Address',
+                        Text(getTranslated(context,'Howdy,_lets_authenticate'), style: taglineText),
+                        fryoEmailInput(getTranslated(context,'Email_Address'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => email = val)),
-                        fryoPasswordInput('Password',
+                        fryoPasswordInput(getTranslated(context,'Password'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => password = val)),
@@ -100,7 +100,7 @@ class _SignInPageState extends State<SignInPage> {
     if (!_formKey.currentState.validate()) {
       _scaffoldKey.currentState.showSnackBar(
         new SnackBar(
-          content: new Text('Invalid information'),
+          content: new Text(getTranslated(context,'Invalid_information'),),
           backgroundColor: Colors.deepOrangeAccent,
         ),
       );
