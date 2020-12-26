@@ -29,12 +29,12 @@ class BoardingHouse {
 }
 
 
-class FireImage {
-  String id = '';
-  String url = '';
-
-  FireImage(String imgId, String imgUrl) {
-    this.id = imgId;
-    this.url = imgUrl;
-  }
-}
+// class FireImage {
+//   String id = '';
+//   String url = '';
+//
+//   FireImage(String imgId, String imgUrl) {
+//     this.id = imgId;
+//     this.url = imgUrl;
+//   }
+// }
