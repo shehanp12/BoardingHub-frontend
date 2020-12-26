@@ -34,6 +34,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 image: AssetImage('images/background/dashboardbg.jpg'),
                 fit: BoxFit.cover)),
         child: Center(
+
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,7 +47,7 @@ class _WelcomePageState extends State<WelcomePage> {
             Container(
               width: 200,
               margin: EdgeInsets.only(bottom: 0),
-              child: froyoFlatBtn('Sign In', () {
+              child: froyoFlatBtn(getTranslated(context,'Sign_In'), () {
                 Navigator.pushReplacement(
                     context,
                     PageTransition(
@@ -58,7 +59,7 @@ class _WelcomePageState extends State<WelcomePage> {
             Container(
               width: 200,
               padding: EdgeInsets.all(0),
-              child: froyoOutlineBtn('Sign Up', () {
+              child: froyoOutlineBtn(getTranslated(context,'Sign_Up'), () {
                 Navigator.pushReplacement(
                     context,
                     PageTransition(
@@ -66,8 +67,10 @@ class _WelcomePageState extends State<WelcomePage> {
                         duration: Duration(seconds: 1),
                         child: SignUpPage()));
                 // Navigator.of(context).pushReplacementNamed('/signup');
-              }),
+              }
+              ),
             ),
+
             Container(
               child: Center(
                   child: DropdownButton<Language>(
