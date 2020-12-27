@@ -61,15 +61,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     String path = DateTime.now().microsecondsSinceEpoch.toString() + '.png';
     String fileName = 'BoardingHouse/${path}';
     FirebaseStorage storage = FirebaseStorage.instance;
-    Reference ref = storage.ref().child(fileName + path);
+    Reference ref = storage.ref().child(fileName);
     UploadTask uploadTask = ref.putFile(_imageFile);
-    await uploadTask.whenComplete(() async =>
-        await storage.ref().child(fileName).getDownloadURL().then((fileURL) {
-          imageUrl = fileURL;
-
-
-          return 1;
-        }));
+    var url = await (await uploadTask).ref.getDownloadURL();
+    imageUrl= url.toString();
+    print(imageUrl);
   }
 
   @override
@@ -415,7 +411,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 distance,
                                 perMonth,
                                 keyMoney,
-                                imageUrl);
+                                imageUrl,
+                              checkGirlsOnly,
+                              checkParkingOnly,
+                              checkAttachBathroom,
+                              checkKitchen
+                            );
                             _registerBoarding(boardingHouse, _imageFile);
                           }
                         // },
