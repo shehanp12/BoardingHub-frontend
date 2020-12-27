@@ -1,6 +1,8 @@
+import 'package:flutter_app/localization/language_constants.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingHouse.dart';
+import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/screens/auth/SignInPage.dart';
 import 'package:flutter_app/shared/Styles.dart';
 import 'package:flutter_app/utils/RestService.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_app/widgets/RegButton.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:page_transition/page_transition.dart';
 
 class RegisterWidget extends StatefulWidget {
   RegisterWidget();
@@ -18,6 +21,7 @@ class RegisterWidget extends StatefulWidget {
 
 class _RegisterWidgetState extends State<RegisterWidget> {
   final RestService _restService = new RestService();
+  final _scaffoldKey = new GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
   bool checkBoxValue = false;
   bool checkGirlsOnly = false;
@@ -25,15 +29,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   bool checkAttachBathroom = false;
   bool checkKitchen = false;
 
-  String title= '';
+  String title = '';
   String subtitle = '';
   String description = '';
   double distance = 0.0;
   double perMonth = 0.0;
   double keyMoney = 0.0;
   String imageUrl = '';
-
-
 
   String error = '';
   firebase_storage.FirebaseStorage storage =
@@ -65,13 +67,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         await storage.ref().child(fileName).getDownloadURL().then((fileURL) {
           imageUrl = fileURL;
 
+
           return 1;
         }));
   }
 
   @override
   Widget build(BuildContext context) {
-
     Widget _buildImage() {
       if (_imageFile != null) {
         return Image.file(_imageFile);
@@ -82,6 +84,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         );
       }
     }
+
     Widget _buildActionButton({Key key, String text, Function onPressed}) {
       return Expanded(
         child: OutlineButton(
@@ -115,9 +118,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               ]));
     }
 
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: Stack(
+    return Scaffold(
+      key: _scaffoldKey,
+      body: Stack(
         children: <Widget>[
           Container(
             height: MediaQuery.of(context).size.height * 1,
@@ -137,18 +140,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 child: Column(children: <Widget>[
                   Padding(padding: EdgeInsets.all(10.0)),
                   TextFormField(
-                    style: inputFieldTextStyle,
-                    decoration: textInputDecoration.copyWith(
-                      hintText: "Title",
-                      hintStyle: inputFieldHintTextStyle,
-                      labelStyle: TextStyle(),
-                      border: inputFieldDefaultBorderStyle,
-                    ),
-                    validator: (val) =>
-                    val == null || val.trim() == '' ? '' : null,
-                      onChanged: (val) => setState(() => title = val)
-
-                  ),
+                      style: inputFieldTextStyle,
+                      decoration: textInputDecoration.copyWith(
+                        hintText: "Title",
+                        hintStyle: inputFieldHintTextStyle,
+                        labelStyle: TextStyle(),
+                        border: inputFieldDefaultBorderStyle,
+                      ),
+                      validator: (val) =>
+                          val == null || val.trim() == '' ? '' : null,
+                      onChanged: (val) => setState(() => title = val)),
                   Padding(padding: EdgeInsets.all(3.0)),
                   Container(
                     width: MediaQuery.of(context).size.width,
@@ -160,7 +161,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         border: inputFieldDefaultBorderStyle,
                       ),
                       validator: (val) =>
-                      val == null || val.trim() == '' ? '' : null,
+                          val == null || val.trim() == '' ? '' : null,
                       onChanged: (val) => setState(() => subtitle = val),
                     ),
                   ),
@@ -177,7 +178,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         border: inputFieldDefaultBorderStyle,
                       ),
                       validator: (val) =>
-                      val == null || val.trim() == '' ? '' : null,
+                          val == null || val.trim() == '' ? '' : null,
                       onChanged: (val) => setState(() => description = val),
                     ),
                   ),
@@ -402,22 +403,22 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           "Submit",
                           style: h5,
                         ),
-                        onPress: () async {
-                          // await uploadFile(_imageFile);
+                        onPress: () {
 
-                          if(_formKey.currentState.validate() && checkBoxValue){
 
-                              BoardingHouse boardingHouse = new BoardingHouse(
-                                  title, subtitle, description, distance, perMonth, keyMoney, imageUrl);
-                              _restService.registerBoarding(boardingHouse);
+                          // if (_formKey.currentState.validate() &&
+                          //     checkBoxValue) {
+                            BoardingHouse boardingHouse = new BoardingHouse(
+                                title,
+                                subtitle,
+                                description,
+                                distance,
+                                perMonth,
+                                keyMoney,
+                                imageUrl);
+                            _registerBoarding(boardingHouse, _imageFile);
                           }
-
-
-
-
-
-
-                        },
+                        // },
                       ),
                       SizedBox(height: 12.0),
                       Text(
@@ -433,5 +434,42 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         ],
       ),
     );
+  }
+
+  void _registerBoarding(boardingHouse, imageFile) async {
+    // if (!_formKey.currentState.validate()) {
+    //   _scaffoldKey.currentState.showSnackBar(
+    //     new SnackBar(
+    //       content: new Text(
+    //         getTranslated(context, 'Invalid_information'),
+    //       ),
+    //       backgroundColor: Colors.deepOrangeAccent,
+    //     ),
+    //   );
+    // } else {
+
+      await uploadFile(_imageFile);
+      _restService.registerBoarding(boardingHouse).then((val) {
+        val.data['success'] == true
+            ? _scaffoldKey.currentState
+                .showSnackBar(new SnackBar(
+                  content: new Text(val.data['msg']),
+                  backgroundColor: Colors.deepOrangeAccent,
+                ))
+                .closed
+                .then(
+                  (_) => Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.rightToLeft,
+                        child: HomePage()),
+                  ),
+                )
+            : _scaffoldKey.currentState.showSnackBar(new SnackBar(
+                content: new Text(val.data['msg']),
+                backgroundColor: Colors.deepOrangeAccent,
+              ));
+      });
+    // }
   }
 }
