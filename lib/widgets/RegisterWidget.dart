@@ -392,9 +392,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           style: h5,
                         ),
                         onPress: () async {
-                          await uploadFile(_imageFile);
-                          BoardingHouse boardingHouse = new BoardingHouse(
-                              title, subtitle, description, distance, perMonth, keyMoney, imageUrl);
+                          // await uploadFile(_imageFile);
+
+                          if(_formKey.currentState.validate() && checkBoxValue){
+
+                              BoardingHouse boardingHouse = new BoardingHouse(
+                                  title, subtitle, description, distance, perMonth, keyMoney, imageUrl);
+
+                          }
+
+
 
                           _restService.registerBoarding(boardingHouse);
 

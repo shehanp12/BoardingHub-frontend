@@ -7,6 +7,8 @@ class BoardingHouse {
   double perMonth = 0.0;
   double keyMoney = 0.0;
   String imageUrl = '';
+  bool checkGirlsOnly;
+
 
   BoardingHouse(String title,
       String subtitle,
