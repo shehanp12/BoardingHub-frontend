@@ -71,6 +71,17 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+    Widget _buildImage() {
+      if (_imageFile != null) {
+        return Image.file(_imageFile);
+      } else {
+        return Center(
+          child: Text("Please upload your image here",
+              style: TextStyle(fontSize: 18.0)),
+        );
+      }
+    }
     Widget _buildActionButton({Key key, String text, Function onPressed}) {
       return Expanded(
         child: OutlineButton(
@@ -312,7 +323,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                     height: MediaQuery.of(context).size.height / 2,
                     child: Column(
                       children: [
-                        //Expanded(child: Center(child: _buildImage())),
+                        Expanded(child: Center(child: _buildImage())),
                       ],
                     ),
                   ),
