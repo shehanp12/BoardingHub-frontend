@@ -398,12 +398,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
                               BoardingHouse boardingHouse = new BoardingHouse(
                                   title, subtitle, description, distance, perMonth, keyMoney, imageUrl);
-
+                              _restService.registerBoarding(boardingHouse);
                           }
 
 
 
-                          _restService.registerBoarding(boardingHouse);
+
 
 
                         },

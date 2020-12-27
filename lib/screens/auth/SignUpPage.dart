@@ -23,6 +23,8 @@ class _SignUpPageState extends State<SignUpPage> {
   String fullName;
   String email;
   String password;
+  String address;
+  String contactNumber;
   final RestService _restService = new RestService();
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
@@ -87,9 +89,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(height: 15,),
                     FlatButton(
                       onPressed: () {
+
                         BoardingProvider boardingProvider =
                             new BoardingProvider(
-                                username, fullName, email, password);
+                                username, fullName, email, password,address,contactNumber);
 
                         _register(boardingProvider);
                       },

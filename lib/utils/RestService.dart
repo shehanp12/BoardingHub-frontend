@@ -22,7 +22,7 @@ class RestService {
         data: {"email": email, "password": password});
   }
 
-  void registerBoarding(BoardingHouse boardingHouse) {
+  void registerBoarding(boardingHouse) {
 
   }
 }
