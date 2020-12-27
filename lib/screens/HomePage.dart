@@ -9,6 +9,8 @@ import 'package:flutter_app/screens/viewData/BoardingRegisterPage.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/TabIconData.dart';
 
+import 'package:flutter_app/screens/feed/NewFeed.dart';
+
 
 class HomePage extends StatefulWidget {
   final String pageTitle;
@@ -106,7 +108,7 @@ class _HomePageState extends State<HomePage>
                 }
                 setState(() {
                   tabBody =
-                      SignInPage();
+                      CarouselDemo();
                 });
               });
             }

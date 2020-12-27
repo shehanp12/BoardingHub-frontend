@@ -19,6 +19,8 @@ import 'screens/viewData/ProductPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'package:flutter_app/screens/feed/NewFeed.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
