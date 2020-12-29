@@ -12,10 +12,6 @@ class BoardingHouse {
   bool checkAttachBathroom = false;
   bool checkKitchen = false;
 
-
-
-
-
   BoardingHouse(String title,
       String subtitle,
       String description,
