@@ -33,6 +33,9 @@ class RestService {
         "keyMoney":boardingHouse.keyMoney,
         "imageUrl":boardingHouse.imageUrl,
         "checkGirlsOnly":boardingHouse.checkGirlsOnly,
+        "checkParkingOnly":boardingHouse.checkParkingOnly,
+        "checkAttachBathroom":boardingHouse.checkAttachBathroom,
+        "checkKitchen":boardingHouse.checkKitchen,
         "userId":4
 
     }

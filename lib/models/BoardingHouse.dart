@@ -12,7 +12,8 @@ class BoardingHouse {
   bool checkAttachBathroom = false;
   bool checkKitchen = false;
 
-  BoardingHouse(String title,
+  BoardingHouse(
+      String title,
       String subtitle,
       String description,
       double distance,
@@ -24,10 +25,9 @@ class BoardingHouse {
       bool checkAttachBathroom,
       bool checkKitchen
 
-
-
       ){
     this.title= title;
+    this.subtitle=subtitle;
     this.description=description;
     this.distance=distance;
     this.perMonth=perMonth;
