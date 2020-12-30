@@ -32,7 +32,9 @@ class RestService {
         "perMonth":boardingHouse.perMonth,
         "keyMoney":boardingHouse.keyMoney,
         "imageUrl":boardingHouse.imageUrl,
-        "checkGirlsOnly":boardingHouse.checkGirlsOnly
+        "checkGirlsOnly":boardingHouse.checkGirlsOnly,
+        "userId":4
+
     }
     );
 

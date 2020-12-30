@@ -32,9 +32,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   String title = '';
   String subtitle = '';
   String description = '';
-  double distance = 0.0;
-  double perMonth = 0.0;
-  double keyMoney = 0.0;
+  String distance = '';
+  String perMonth = '';
+  String keyMoney = '';
   String imageUrl = '';
 
   String error = '';
@@ -64,8 +64,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     Reference ref = storage.ref().child(fileName);
     UploadTask uploadTask = ref.putFile(_imageFile);
     var url = await (await uploadTask).ref.getDownloadURL();
-    imageUrl = url.toString();
-    print(imageUrl);
+    setState(() {
+      imageUrl = url.toString();
+      print(imageUrl);
+    });
   }
 
   @override
@@ -178,7 +180,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       onChanged: (val) => setState(() => description = val),
                     ),
                   ),
-
                   Padding(padding: EdgeInsets.all(3.0)),
                   new Column(
                     children: <Widget>[
@@ -189,14 +190,14 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         width: MediaQuery.of(context).size.width,
                         child: TextFormField(
                           style: inputFieldTextStyle,
+                          autofocus: true,
+                          keyboardType: TextInputType.number,
                           decoration: textInputDecoration.copyWith(
                             hintText: "Distance",
                             hintStyle: inputFieldHintTextStyle,
                             border: inputFieldDefaultBorderStyle,
                           ),
-                          validator: (val) =>
-                              val == null || val.trim() == '' ? '' : null,
-                          onChanged: (val) => setState(() => distance),
+                          onChanged: (val) => setState(() => distance = val),
                         ),
                       ),
                     ],
@@ -211,14 +212,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         width: MediaQuery.of(context).size.width,
                         child: TextFormField(
                           style: inputFieldTextStyle,
+                          keyboardType: TextInputType.number,
                           decoration: textInputDecoration.copyWith(
                             hintText: "Per Month",
                             hintStyle: inputFieldHintTextStyle,
                             border: inputFieldDefaultBorderStyle,
                           ),
                           validator: (val) =>
-                          val == null || val.trim() == '' ? '' : null,
-                          onChanged: (val) => setState(() => perMonth),
+                              val == null || val.trim() == '' ? '' : null,
+                          onChanged: (val) =>
+                              setState(() => perMonth = val),
                         ),
                       ),
                     ],
@@ -233,19 +236,20 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         width: MediaQuery.of(context).size.width,
                         child: TextFormField(
                           style: inputFieldTextStyle,
+                          keyboardType: TextInputType.number,
                           decoration: textInputDecoration.copyWith(
                             hintText: "Key Money",
                             hintStyle: inputFieldHintTextStyle,
                             border: inputFieldDefaultBorderStyle,
                           ),
                           validator: (val) =>
-                          val == null || val.trim() == '' ? '' : null,
-                          onChanged: (val) => setState(() => keyMoney),
+                              val == null || val.trim() == '' ? '' : null,
+                          onChanged: (val) =>
+                              setState(() => keyMoney = val),
                         ),
                       ),
                     ],
                   ),
-
                   new Row(
                     children: <Widget>[
                       new Text(
@@ -376,22 +380,23 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           "Submit",
                           style: h5,
                         ),
-                        onPress: () {
+                        onPress: () async {
                           if (_formKey.currentState.validate() &&
                               checkBoxValue) {
+                            await uploadFile(_imageFile);
                             BoardingHouse boardingHouse = new BoardingHouse(
                                 title,
                                 subtitle,
                                 description,
-                                distance,
-                                perMonth,
-                                keyMoney,
+                                double.parse(distance),
+                                double.parse(perMonth),
+                                double.parse(keyMoney),
                                 imageUrl,
                                 checkGirlsOnly,
                                 checkParkingOnly,
                                 checkAttachBathroom,
                                 checkKitchen);
-                            _registerBoarding(boardingHouse, _imageFile);
+                            _registerBoarding(boardingHouse);
                           }
                         },
                       ),
@@ -411,7 +416,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     );
   }
 
-  void _registerBoarding(boardingHouse, imageFile) async {
+  void _registerBoarding(boardingHouse) async {
     if (!_formKey.currentState.validate()) {
       _scaffoldKey.currentState.showSnackBar(
         new SnackBar(
@@ -422,7 +427,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         ),
       );
     } else {
-      await uploadFile(_imageFile);
+
       _restService.registerBoarding(boardingHouse).then((val) {
         val.data['success'] == true
             ? _scaffoldKey.currentState
