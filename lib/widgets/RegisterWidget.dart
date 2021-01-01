@@ -417,6 +417,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   }
 
   void _registerBoarding(boardingHouse) async {
+
     if (!_formKey.currentState.validate()) {
       _scaffoldKey.currentState.showSnackBar(
         new SnackBar(
