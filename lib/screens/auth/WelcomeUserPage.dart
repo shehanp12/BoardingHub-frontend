@@ -34,7 +34,6 @@ class _WelcomePageState extends State<WelcomePage> {
                 image: AssetImage('images/background/dashboardbg.jpg'),
                 fit: BoxFit.cover)),
         child: Center(
-
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,12 +41,15 @@ class _WelcomePageState extends State<WelcomePage> {
             Image.asset('images/welcomenew.png', width: 190, height: 190),
             Container(
               margin: EdgeInsets.only(bottom: 10, top: 0),
-              child: Text(getTranslated(context, 'create_your_new_account_for_future_uses.'), style: logoStyle),
+              child: Text(
+                  getTranslated(
+                      context, 'create_your_new_account_for_future_uses.'),
+                  style: logoStyle),
             ),
             Container(
               width: 200,
               margin: EdgeInsets.only(bottom: 0),
-              child: froyoFlatBtn(getTranslated(context,'Sign_In'), () {
+              child: froyoFlatBtn('BoardingProvider', () {
                 Navigator.pushReplacement(
                     context,
                     PageTransition(
@@ -59,7 +61,7 @@ class _WelcomePageState extends State<WelcomePage> {
             Container(
               width: 200,
               padding: EdgeInsets.all(0),
-              child: froyoOutlineBtn(getTranslated(context,'Sign_Up'), () {
+              child: froyoOutlineBtn('Employee', () {
                 Navigator.pushReplacement(
                     context,
                     PageTransition(
@@ -67,10 +69,8 @@ class _WelcomePageState extends State<WelcomePage> {
                         duration: Duration(seconds: 1),
                         child: SignUpPage()));
                 // Navigator.of(context).pushReplacementNamed('/signup');
-              }
-              ),
+              }),
             ),
-
             Container(
               child: Center(
                   child: DropdownButton<Language>(

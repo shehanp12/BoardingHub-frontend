@@ -1,6 +1,8 @@
+import 'package:flutter_app/localization/language_constants.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingHouse.dart';
+import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/screens/auth/SignInPage.dart';
 import 'package:flutter_app/shared/Styles.dart';
 import 'package:flutter_app/utils/RestService.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_app/widgets/RegButton.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:page_transition/page_transition.dart';
 
 class RegisterWidget extends StatefulWidget {
   RegisterWidget();
@@ -18,22 +21,21 @@ class RegisterWidget extends StatefulWidget {
 
 class _RegisterWidgetState extends State<RegisterWidget> {
   final RestService _restService = new RestService();
+  final _scaffoldKey = new GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
   bool checkBoxValue = false;
-  bool checkBoxValue1 = false;
-  bool checkBoxValue2 = false;
-  bool checkBoxValue3 = false;
-  bool checkBoxValue4 = false;
+  bool checkGirlsOnly = false;
+  bool checkParkingOnly = false;
+  bool checkAttachBathroom = false;
+  bool checkKitchen = false;
 
-  String title= '';
+  String title = '';
   String subtitle = '';
   String description = '';
-  double distance = 0.0;
-  double perMonth = 0.0;
-  double keyMoney = 0.0;
+  String distance = '';
+  String perMonth = '';
+  String keyMoney = '';
   String imageUrl = '';
-
-
 
   String error = '';
   firebase_storage.FirebaseStorage storage =
@@ -59,18 +61,28 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     String path = DateTime.now().microsecondsSinceEpoch.toString() + '.png';
     String fileName = 'BoardingHouse/${path}';
     FirebaseStorage storage = FirebaseStorage.instance;
-    Reference ref = storage.ref().child(fileName + path);
+    Reference ref = storage.ref().child(fileName);
     UploadTask uploadTask = ref.putFile(_imageFile);
-    await uploadTask.whenComplete(() async =>
-        await storage.ref().child(fileName).getDownloadURL().then((fileURL) {
-          imageUrl = fileURL;
-
-          return 1;
-        }));
+    var url = await (await uploadTask).ref.getDownloadURL();
+    setState(() {
+      imageUrl = url.toString();
+      print(imageUrl);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    Widget _buildImage() {
+      if (_imageFile != null) {
+        return Image.file(_imageFile);
+      } else {
+        return Center(
+          child: Text("Please upload your image here",
+              style: TextStyle(fontSize: 18.0)),
+        );
+      }
+    }
+
     Widget _buildActionButton({Key key, String text, Function onPressed}) {
       return Expanded(
         child: OutlineButton(
@@ -104,9 +116,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               ]));
     }
 
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: Stack(
+    return Scaffold(
+      key: _scaffoldKey,
+      body: Stack(
         children: <Widget>[
           Container(
             height: MediaQuery.of(context).size.height * 1,
@@ -126,28 +138,29 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 child: Column(children: <Widget>[
                   Padding(padding: EdgeInsets.all(10.0)),
                   TextFormField(
-                    style: inputFieldTextStyle,
-                    decoration: textInputDecoration.copyWith(
-                      hintText: "Title",
-                      hintStyle: inputFieldHintTextStyle,
-                      labelStyle: TextStyle(),
-                      border: inputFieldDefaultBorderStyle,
-                    ),
-                    validator: (val) => val.isEmpty ? '' : null,
-                    //onChanged: (val) => setState(() => fname = val),
-                  ),
+                      style: inputFieldTextStyle,
+                      decoration: textInputDecoration.copyWith(
+                        hintText: "Title",
+                        hintStyle: inputFieldHintTextStyle,
+                        labelStyle: TextStyle(),
+                        border: inputFieldDefaultBorderStyle,
+                      ),
+                      validator: (val) =>
+                          val == null || val.trim() == '' ? '' : null,
+                      onChanged: (val) => setState(() => title = val)),
                   Padding(padding: EdgeInsets.all(3.0)),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     child: TextFormField(
                       style: inputFieldTextStyle,
                       decoration: textInputDecoration.copyWith(
-                        hintText: "Price(Rs)",
+                        hintText: "SubTitle",
                         hintStyle: inputFieldHintTextStyle,
                         border: inputFieldDefaultBorderStyle,
                       ),
-                      validator: (val) => val.isEmpty ? '' : null,
-                      //onChanged: (val) => setState(() => uname = val),
+                      validator: (val) =>
+                          val == null || val.trim() == '' ? '' : null,
+                      onChanged: (val) => setState(() => subtitle = val),
                     ),
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
@@ -158,63 +171,85 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       maxLines: 5,
                       decoration: textInputDecoration.copyWith(
                         //contentPadding: new EdgeInsets.symmetric(vertical: 30.0, horizontal: 10.0),
-                        hintText: "Discription",
+                        hintText: "Description",
                         hintStyle: inputFieldHintTextStyle,
                         border: inputFieldDefaultBorderStyle,
                       ),
-                      validator: (val) => val.isEmpty ? '' : null,
-                      //onChanged: (val) => setState(() => email = val),
+                      validator: (val) =>
+                          val == null || val.trim() == '' ? '' : null,
+                      onChanged: (val) => setState(() => description = val),
                     ),
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
-                  new Row(
+                  new Column(
                     children: <Widget>[
-                      Text(
-                        "Close to",
-                        style: inputFieldTextStyle,
-                      ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 10,
                       ),
                       Container(
-                        alignment: Alignment.centerLeft,
-                        width: MediaQuery.of(context).size.width / 1.5,
+                        width: MediaQuery.of(context).size.width,
                         child: TextFormField(
                           style: inputFieldTextStyle,
+                          autofocus: true,
+                          keyboardType: TextInputType.number,
                           decoration: textInputDecoration.copyWith(
-                            hintText: "University",
+                            hintText: "Distance",
                             hintStyle: inputFieldHintTextStyle,
                             border: inputFieldDefaultBorderStyle,
                           ),
-                          validator: (val) => val.isEmpty ? '' : null,
-                          //onChanged: (val) => setState(() => uname = val),
+                          onChanged: (val) => setState(() => distance = val),
                         ),
                       ),
                     ],
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
-                  new Row(
+                  new Column(
                     children: <Widget>[
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 4.2,
+                        width: MediaQuery.of(context).size.width / 10,
                       ),
                       Container(
-                        alignment: Alignment.centerLeft,
-                        width: MediaQuery.of(context).size.width / 1.5,
+                        width: MediaQuery.of(context).size.width,
                         child: TextFormField(
                           style: inputFieldTextStyle,
+                          keyboardType: TextInputType.number,
                           decoration: textInputDecoration.copyWith(
-                            hintText: "Town",
+                            hintText: "Per Month",
                             hintStyle: inputFieldHintTextStyle,
                             border: inputFieldDefaultBorderStyle,
                           ),
-                          validator: (val) => val.isEmpty ? '' : null,
-                          //onChanged: (val) => setState(() => uname = val),
+                          validator: (val) =>
+                              val == null || val.trim() == '' ? '' : null,
+                          onChanged: (val) =>
+                              setState(() => perMonth = val),
                         ),
                       ),
                     ],
                   ),
                   Padding(padding: EdgeInsets.all(3.0)),
+                  new Column(
+                    children: <Widget>[
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 10,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: TextFormField(
+                          style: inputFieldTextStyle,
+                          keyboardType: TextInputType.number,
+                          decoration: textInputDecoration.copyWith(
+                            hintText: "Key Money",
+                            hintStyle: inputFieldHintTextStyle,
+                            border: inputFieldDefaultBorderStyle,
+                          ),
+                          validator: (val) =>
+                              val == null || val.trim() == '' ? '' : null,
+                          onChanged: (val) =>
+                              setState(() => keyMoney = val),
+                        ),
+                      ),
+                    ],
+                  ),
                   new Row(
                     children: <Widget>[
                       new Text(
@@ -223,10 +258,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       ),
                       new Container(width: 50.0),
                       Checkbox(
-                        value: checkBoxValue1,
+                        value: checkGirlsOnly,
                         onChanged: (newValue) {
                           setState(() {
-                            checkBoxValue1 = newValue;
+                            checkGirlsOnly = newValue;
                           });
                         },
                       ),
@@ -241,10 +276,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       ),
                       new Container(width: 60.0),
                       Checkbox(
-                        value: checkBoxValue2,
+                        value: checkParkingOnly,
                         onChanged: (newValue) {
                           setState(() {
-                            checkBoxValue2 = newValue;
+                            checkParkingOnly = newValue;
                           });
                         },
                       ),
@@ -259,10 +294,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       ),
                       new Container(width: 5.0),
                       Checkbox(
-                        value: checkBoxValue3,
+                        value: checkAttachBathroom,
                         onChanged: (newValue) {
                           setState(() {
-                            checkBoxValue3 = newValue;
+                            checkAttachBathroom = newValue;
                           });
                         },
                       ),
@@ -277,10 +312,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       ),
                       new Container(width: 60.0),
                       Checkbox(
-                        value: checkBoxValue4,
+                        value: checkKitchen,
                         onChanged: (newValue) {
                           setState(() {
-                            checkBoxValue4 = newValue;
+                            checkKitchen = newValue;
                           });
                         },
                       ),
@@ -308,53 +343,11 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                     height: MediaQuery.of(context).size.height / 2,
                     child: Column(
                       children: [
-                        //Expanded(child: Center(child: _buildImage())),
+                        Expanded(child: Center(child: _buildImage())),
                       ],
                     ),
                   ),
                   _buildButtons(),
-                  Padding(padding: EdgeInsets.all(3.0)),
-                  Column(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Container(
-                          child: Text(
-                            "Contact Details",
-                            style: h3,
-                            textAlign: TextAlign.right,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(padding: EdgeInsets.all(3.0)),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: TextFormField(
-                      style: inputFieldTextStyle,
-                      decoration: textInputDecoration.copyWith(
-                        hintText: "Phone Number",
-                        hintStyle: inputFieldHintTextStyle,
-                        border: inputFieldDefaultBorderStyle,
-                      ),
-                      //onChanged: (val) => setState(() => vehicleNumber = val),
-                    ),
-                  ),
-                  Padding(padding: EdgeInsets.all(3.0)),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: TextFormField(
-                      style: inputFieldTextStyle,
-                      decoration: textInputDecoration.copyWith(
-                        hintText: "Address",
-                        hintStyle: inputFieldHintTextStyle,
-                        border: inputFieldDefaultBorderStyle,
-                      ),
-                      validator: (val) => val.isEmpty ? '' : null,
-                      //onChanged: (val) => setState(() => address = val),
-                    ),
-                  ),
                   Padding(padding: EdgeInsets.only(top: 10.0)),
                   Column(
                     children: <Widget>[
@@ -388,13 +381,23 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                           style: h5,
                         ),
                         onPress: () async {
-                          await uploadFile(_imageFile);
-                          BoardingHouse boardingHouse = new BoardingHouse(
-                              title, subtitle, description, distance, perMonth, keyMoney, imageUrl);
-
-                          _restService.registerBoarding(boardingHouse);
-
-
+                          if (_formKey.currentState.validate() &&
+                              checkBoxValue) {
+                            await uploadFile(_imageFile);
+                            BoardingHouse boardingHouse = new BoardingHouse(
+                                title,
+                                subtitle,
+                                description,
+                                double.parse(distance),
+                                double.parse(perMonth),
+                                double.parse(keyMoney),
+                                imageUrl,
+                                checkGirlsOnly,
+                                checkParkingOnly,
+                                checkAttachBathroom,
+                                checkKitchen);
+                            _registerBoarding(boardingHouse);
+                          }
                         },
                       ),
                       SizedBox(height: 12.0),
@@ -411,5 +414,42 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         ],
       ),
     );
+  }
+
+  void _registerBoarding(boardingHouse) async {
+
+    if (!_formKey.currentState.validate()) {
+      _scaffoldKey.currentState.showSnackBar(
+        new SnackBar(
+          content: new Text(
+            getTranslated(context, 'Invalid_information'),
+          ),
+          backgroundColor: Colors.deepOrangeAccent,
+        ),
+      );
+    } else {
+
+      _restService.registerBoarding(boardingHouse).then((val) {
+        val.data['success'] == true
+            ? _scaffoldKey.currentState
+                .showSnackBar(new SnackBar(
+                  content: new Text(val.data['msg']),
+                  backgroundColor: Colors.deepOrangeAccent,
+                ))
+                .closed
+                .then(
+                  (_) => Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.rightToLeft,
+                        child: HomePage()),
+                  ),
+                )
+            : _scaffoldKey.currentState.showSnackBar(new SnackBar(
+                content: new Text(val.data['msg']),
+                backgroundColor: Colors.deepOrangeAccent,
+              ));
+      });
+    }
   }
 }
