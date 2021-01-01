@@ -13,8 +13,7 @@ class RegisterFrom extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterFrom> {
   bool loading = false;
- 
-  
+
   showAlertDialog(BuildContext context) {
     AlertDialog alert = AlertDialog(
       content: new Row(
@@ -38,25 +37,25 @@ class _RegisterPageState extends State<RegisterFrom> {
     return loading
         ? Loading()
         : Scaffold(
-          appBar: AppBar(
-        
-     leading: BackButton(
-     color: Colors.black,
-     onPressed: () { Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomePage()),
-            );},
-   ), 
-        brightness: Brightness.light,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          "Listing Information",
-                           style: h3,
-                            textAlign: TextAlign.right,
-          
-        ),
-        elevation: 0,
-      ),
+            appBar: AppBar(
+              leading: BackButton(
+                color: Colors.black,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                },
+              ),
+              brightness: Brightness.light,
+              backgroundColor: Colors.transparent,
+              title: Text(
+                "Listing Information",
+                style: h3,
+                textAlign: TextAlign.right,
+              ),
+              elevation: 0,
+            ),
             body: Stack(
               children: <Widget>[
                 SizedBox(height: 100),
@@ -65,9 +64,8 @@ class _RegisterPageState extends State<RegisterFrom> {
                       /*image: DecorationImage(
                           image: AssetImage('Ecfinder_Assets/logo/mainbg.jpg'),
                           fit: BoxFit.cover)*/
-                          ),
+                      ),
                 ),
-                
                 RegisterWidget()
               ],
             ),

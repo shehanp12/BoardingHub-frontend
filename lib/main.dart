@@ -1,31 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/HomePage.dart';
-import 'package:flutter_app/screens/ProfilePage.dart';
-
-import 'package:flutter_app/screens/hamburger/Hambueger.dart';
-
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
-
+import 'package:flutter_app/widgets/Loading_Screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'localization/language_constants.dart';
 import 'localization/demo_localization.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/auth/SignInPage.dart';
 import 'screens/auth/SignUpPage.dart';
 import 'screens/viewData/ProductPage.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-
-import 'package:flutter_app/screens/viewData/BoardingRegisterPage.dart';
-import 'package:flutter_app/screens/viewData/ProfileEditPage.dart';
-import 'screens/auth/SignInPage.dart';
-import 'screens/auth/SignUpPage.dart';
-import 'screens/viewData/ProductPage.dart';
-
-
-
 
 void main() => runApp(MyApp());
 
@@ -35,8 +19,7 @@ class MyApp extends StatefulWidget {
   static void setLocale(BuildContext context, Locale newlocale) {
     _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
     state.setLocale(newlocale);
-    // Navigator.of(context)
-    //     .push(MaterialPageRoute(builder: (_) => VisitorPage()));
+
   }
 
   static void setLocaleSettings(BuildContext context, Locale newlocale) {
@@ -76,40 +59,49 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fryo',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-      ),
-      //home: WelcomePage(pageTitle: 'Welcome'),
 
-      home: HomePage(),
+    return FutureBuilder(
+      future: Firebase.initializeApp(),
+      builder: (context, snapshot) {
+        if(snapshot.connectionState == ConnectionState.done){
+          return MaterialApp(
+            title: 'Fryo',
+            theme: ThemeData(
+              primarySwatch: Colors.orange,
+            ),
+            home: HomePage(),
 
-      routes: <String, WidgetBuilder>{
-        '/signup': (BuildContext context) => SignUpPage(),
-        '/signin': (BuildContext context) => SignInPage(),
-        '/productPage': (BuildContext context) => ProductPage(),
-      },
-      locale: _locale,
-      supportedLocales: [
-        Locale('en', 'US'),
-        Locale('si', 'SN'),
-      ],
-      localizationsDelegates: [
-        DemoLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode &&
-              supportedLocale.countryCode == locale.countryCode) {
-            return supportedLocale;
-          }
+            routes: <String, WidgetBuilder>{
+              '/signup': (BuildContext context) => SignUpPage(),
+              '/signin': (BuildContext context) => SignInPage(),
+              '/productPage': (BuildContext context) => ProductPage(),
+            },
+            locale: _locale,
+            supportedLocales: [
+              Locale('en', 'US'),
+              Locale('si', 'SN'),
+            ],
+            localizationsDelegates: [
+              DemoLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            localeResolutionCallback: (locale, supportedLocales) {
+              for (var supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale.languageCode &&
+                    supportedLocale.countryCode == locale.countryCode) {
+                  return supportedLocale;
+                }
+              }
+              return supportedLocales.first;
+            },
+          );
+
         }
-        return supportedLocales.first;
-      },
+        return Loading();
+
+      }
     );
   }
 

@@ -23,6 +23,8 @@ class _SignUpPageState extends State<SignUpPage> {
   String fullName;
   String email;
   String password;
+  String address;
+  String contactNumber;
   final RestService _restService = new RestService();
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
@@ -68,7 +70,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         fryoTextInput(getTranslated(context,'Username'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
-                            onChanged: (val) => setState(() => username = val)),
+                            onChanged: (val) => setState(() => username = val)
+                        ),
                         fryoTextInput(getTranslated(context,'Full_Name'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
@@ -86,9 +89,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(height: 15,),
                     FlatButton(
                       onPressed: () {
+
                         BoardingProvider boardingProvider =
                             new BoardingProvider(
-                                username, fullName, email, password);
+                                username, fullName, email, password,address,contactNumber);
 
                         _register(boardingProvider);
                       },
