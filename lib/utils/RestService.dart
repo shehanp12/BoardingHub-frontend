@@ -4,7 +4,7 @@ import 'package:flutter_app/models/BoardingHouse.dart';
 class RestService {
   Dio _dio = new Dio();
 
-  final String host = 'http://192.168.8.172:3000/';
+  final String host = 'http://192.168.1.107:3000/';
 
   registerUser(boardingProvider) async {
     return await _dio.post(host + 'user/register', data: {
@@ -40,7 +40,15 @@ class RestService {
 
     }
     );
+}
 
+
+  getBoarding() async{
+    return await _dio.get(host+'boardingHouse');
 
   }
+
+
+
+
 }
