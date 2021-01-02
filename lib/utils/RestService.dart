@@ -49,12 +49,6 @@ class RestService {
     );
 }
 
-
-  // getBoarding() async{
-  //   return await _dio.get(host+'boardingHouse',
-  //     );
-  // }
-
   static Future<List<BoardingHouse>> fetchData() async {
     Future.delayed(
       Duration.zero,

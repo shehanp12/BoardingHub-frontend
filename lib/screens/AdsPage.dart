@@ -19,9 +19,7 @@ class AdsScreen extends StatefulWidget {
 class _AdsScreenState extends State<AdsScreen> with TickerProviderStateMixin {
   AnimationController animationController;
   final BoardingService boardingService = BoardingService();
-  // Future<List<BoardingHouse>> boardingHouse;
 
-  // List<AdsListData> hotelList = AdsListData.adList;
   final ScrollController _scrollController = ScrollController();
 
   DateTime startDate = DateTime.now();
