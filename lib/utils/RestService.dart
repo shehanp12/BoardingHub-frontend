@@ -24,5 +24,26 @@ class RestService {
                 });
   }
 
+  registerBoarding(boardingHouse) async{
+    return await _dio.post(host+'boardingHouse/register',
+      data: {
+      "title":boardingHouse.title,
+        "subtitle":boardingHouse.subtitle,
+        "description":boardingHouse.description,
+        "distance":boardingHouse.distance,
+        "perMonth":boardingHouse.perMonth,
+        "keyMoney":boardingHouse.keyMoney,
+        "imageUrl":boardingHouse.imageUrl,
+        "checkGirlsOnly":boardingHouse.checkGirlsOnly,
+        "checkParkingOnly":boardingHouse.checkParkingOnly,
+        "checkAttachBathroom":boardingHouse.checkAttachBathroom,
+        "checkKitchen":boardingHouse.checkKitchen,
+        "userId":4
+
+    }
+    );
+
+
+  }
 
 }
