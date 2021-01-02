@@ -1,26 +1,26 @@
+
 import 'package:flutter_app/models/BoardingHouse.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_app/utils/RestService.dart';
+import 'package:get/get.dart';
+class BoardingService extends GetxController{
+  List<BoardingHouse> listData = List <BoardingHouse>().obs;
 
-class BoardingService{
-  final RestService restService = RestService();
-  Dio _dio = new Dio();
-  Response response ;
-List<BoardingHouse> list = List <BoardingHouse>();
+  var _x;
 
- Future<List<BoardingHouse>> getBoarding() async {
+  get x => _x;
 
-   if(response.statusCode == 200){
-     for(var item in response.data){
-       list.add(BoardingHouse.fromJson(item));
-     }
-     return list;
-   }
+  static get to =>Get.find<BoardingService>();
 
-
-}
-
+  @override
+  void onInit() {
+    RestService.fetchData();
+    super.onInit();
+  }
 
 
 
 }
+
+
+
+

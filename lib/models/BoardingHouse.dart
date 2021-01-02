@@ -42,7 +42,7 @@ class BoardingHouse {
       json["description"],
       json["distance"].toDouble(),
       json["perMonth"].toDouble(),
-      json["keyMoney"],
+      json["keyMoney"].toDouble(),
       json["imageUrl"],
       json["checkGirlsOnly"],
       json["checkParkingOnly"] == null ? null : json["checkParkingOnly"],

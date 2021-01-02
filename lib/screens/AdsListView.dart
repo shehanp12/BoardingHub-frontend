@@ -4,7 +4,7 @@ import 'package:flutter_app/models/BoardingHouse.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 
 class AdsListView extends StatelessWidget {
   const AdsListView(
@@ -57,9 +57,9 @@ class AdsListView extends StatelessWidget {
                           children: <Widget>[
                             AspectRatio(
                               aspectRatio: 2,
-                              child: Image.asset(
-                                hotelData.imageUrl,
-                                fit: BoxFit.cover,
+                              child: CachedNetworkImage(
+
+                                fit: BoxFit.cover, imageUrl: hotelData.imageUrl,
                               ),
                             ),
                             Container(

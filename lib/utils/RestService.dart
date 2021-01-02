@@ -1,5 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingHouse.dart';
+import 'package:flutter_app/utils/BoardingService.dart';
+ import 'package:get/get.dart' as a;
+
+
+var _controller = BoardingService.to;
 
 class RestService {
   Dio _dio = new Dio();
@@ -43,11 +50,33 @@ class RestService {
 }
 
 
-  getBoarding() async{
-    return await _dio.get(host+'boardingHouse',
-      );
-  }
+  // getBoarding() async{
+  //   return await _dio.get(host+'boardingHouse',
+  //     );
+  // }
 
+  static Future<List<BoardingHouse>> fetchData() async {
+    Future.delayed(
+      Duration.zero,
+        () => a.Get.dialog(Center(child: CircularProgressIndicator(),)
+        ));
+
+    Dio _dio = Dio();
+
+
+    Response response = await _dio.get('http://192.168.1.107:3000/boardingHouse');
+    a.Get.back();
+
+    if(response.statusCode == 200){
+      for (var item in response.data){
+        _controller.listData.add(BoardingHouse.fromJson(item));
+
+      }
+      return _controller.listData;
+    }
+
+
+  }
 
 
 
