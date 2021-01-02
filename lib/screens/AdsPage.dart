@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/models/AdsListData.dart';
 import 'package:flutter_app/screens/AdsListView.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
@@ -223,7 +224,7 @@ class _AdsScreenState extends State<AdsScreen>
                     cursorColor: CardAppTheme.buildLightTheme().primaryColor,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'City',
+                      hintText:getTranslated(context,'City'),
                     ),
                   ),
                 ),
@@ -296,8 +297,8 @@ class _AdsScreenState extends State<AdsScreen>
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      '20 rooms found',
+                    child: Text(getTranslated(context,
+                      '20_rooms_found'),
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 16,
@@ -328,8 +329,8 @@ class _AdsScreenState extends State<AdsScreen>
                       padding: const EdgeInsets.only(left: 8),
                       child: Row(
                         children: <Widget>[
-                          Text(
-                            'Filter',
+                          Text(getTranslated(context,
+                            'Filter'),
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,

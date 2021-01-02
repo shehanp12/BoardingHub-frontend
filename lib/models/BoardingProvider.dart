@@ -5,6 +5,8 @@ class BoardingProvider {
   String userName = '';
   String address = '';
   String password = '';
+  String address = '';
+  String contactNumber = '';
 
   BoardingProvider(
     String fullName,
@@ -20,5 +22,7 @@ class BoardingProvider {
     this.userName = userName;
     this.address = address;
     this.password = password;
+    this.address= address;
+    this.contactNumber= contactNumber;
   }
 }
