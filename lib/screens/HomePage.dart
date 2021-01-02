@@ -26,13 +26,13 @@ class _HomePageState extends State<HomePage>
   AnimationController animationController;
   final BoardingService boardingService = BoardingService();
 
-  Future<List<BoardingHouse>> boardingHouse;
+  // Future<List<BoardingHouse>> boardingHouse;
   List<TabIconData> tabIconsList = TabIconData.tabIconsList;
-  List<AdsListData> adList = AdsListData.adList;
+  // List<AdsListData> adList = AdsListData.adList;
 
-  Future<List<BoardingHouse>> fetchBoardingHouse() async{
-    return await boardingService.getBoarding();
-  }
+  // Future<List<BoardingHouse>> fetchBoardingHouse() async{
+  //   return await boardingService.getBoarding();
+  // }
 
 
   Widget tabBody = Container(

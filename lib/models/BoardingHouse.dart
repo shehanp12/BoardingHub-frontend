@@ -1,6 +1,5 @@
 class BoardingHouse {
 
-
   BoardingHouse(
     String title,
     String subtitle,
@@ -27,10 +26,6 @@ class BoardingHouse {
     this.checkKitchen=checkKitchen;
   }
 
-
-
-
-
   String title = '';
   String subtitle = '';
   String description = '';
@@ -43,41 +38,6 @@ class BoardingHouse {
   bool checkAttachBathroom = false;
   bool checkKitchen = false;
 
-
-  // static List<BoardingHouse> adList = <BoardingHouse>[
-  //
-  //   // BoardingHouse(
-  //   //   title: 'sacds',
-  //   //   subtitle: 'sdvc',
-  //   //   description: 'sfcdsv',
-  //   //   distance: 3,
-  //   //   perMonth: 4,
-  //   //   keyMoney: 4,
-  //   //   imageUrl: 'images/room1.jpeg',
-  //   //   checkGirlsOnly: true,
-  //   //   checkParkingOnly: true,
-  //   //   checkAttachBathroom: true,
-  //   //   checkKitchen: true
-  //   //
-  //   //
-  //   // )
-  //
-  // ];
-
-
-
-
-
-
 }
 
 
-// class FireImage {
-//   String id = '';
-//   String url = '';
-//
-//   FireImage(String imgId, String imgUrl) {
-//     this.id = imgId;
-//     this.url = imgUrl;
-//   }
-// }

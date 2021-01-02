@@ -2,9 +2,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/models/AdsListData.dart';
+import 'package:flutter_app/models/BoardingHouse.dart';
 import 'package:flutter_app/screens/AdsListView.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/screens/filter/FilterScreen.dart';
+import 'package:flutter_app/utils/BoardingService.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
@@ -13,20 +15,30 @@ class AdsScreen extends StatefulWidget {
   _AdsScreenState createState() => _AdsScreenState();
 }
 
-class _AdsScreenState extends State<AdsScreen>
-    with TickerProviderStateMixin {
+class _AdsScreenState extends State<AdsScreen> with TickerProviderStateMixin {
   AnimationController animationController;
-  List<AdsListData> hotelList = AdsListData.adList;
+  final BoardingService boardingService = BoardingService();
+  // Future<List<BoardingHouse>> boardingHouse;
+
+  // List<AdsListData> hotelList = AdsListData.adList;
   final ScrollController _scrollController = ScrollController();
+
+  Future fetchBoardingHouse() async {
+    List<BoardingHouse> adList =  await boardingService.getBoarding();
+    return adList;
+  }
 
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now().add(const Duration(days: 5));
 
   @override
   void initState() {
+     fetchBoardingHouse();
     animationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
     super.initState();
+
+
   }
 
   Future<bool> getData() async {
@@ -38,6 +50,7 @@ class _AdsScreenState extends State<AdsScreen>
   void dispose() {
     animationController.dispose();
     super.dispose();
+
   }
 
   @override
@@ -76,30 +89,61 @@ class _AdsScreenState extends State<AdsScreen>
                           ];
                         },
                         body: Container(
-                          color:
-                              CardAppTheme.buildLightTheme().backgroundColor,
-                          child: ListView.builder(
-                            itemCount: hotelList.length,
-                            padding: const EdgeInsets.only(top: 8),
-                            scrollDirection: Axis.vertical,
-                            itemBuilder: (BuildContext context, int index) {
-                              final int count =
-                                  hotelList.length > 10 ? 10 : hotelList.length;
-                              final Animation<double> animation =
-                                  Tween<double>(begin: 0.0, end: 1.0).animate(
-                                      CurvedAnimation(
-                                          parent: animationController,
-                                          curve: Interval(
-                                              (1 / count) * index, 1.0,
-                                              curve: Curves.fastOutSlowIn)));
-                              animationController.forward();
-                              return AdsListView(
-                                callback: () {},
-                                hotelData: hotelList[index],
-                                animation: animation,
-                                animationController: animationController,
+                          color: CardAppTheme.buildLightTheme().backgroundColor,
+                          child: FutureBuilder(
+                            builder: (context, snapshot) {
+
+                              // if (snapshot.connectionState ==
+                              //     ConnectionState.waiting) {
+                              //   return Container();
+                              // } else if (snapshot.hasError) {
+                              //   return Container(
+                              //       child: Center(
+                              //     child: Text(
+                              //       'sacsdv ',
+                              //     ),
+                              //   ));
+                              // } else if (!snapshot.hasData) {
+                              //   return Container(
+                              //     child: Center(
+                              //       child: Column(
+                              //         mainAxisAlignment:
+                              //             MainAxisAlignment.center,
+                              //         children: [
+                              //           Text('sdvdsfb'),
+                              //           Text('sdgesf')
+                              //         ],
+                              //       ),
+                              //     ),
+                              //   );
+                              // }
+
+                              return ListView.builder(
+                                itemCount: snapshot.data.length,
+                                padding: const EdgeInsets.only(top: 8),
+                                scrollDirection: Axis.vertical,
+                                itemBuilder: (BuildContext context, int index) {
+                                  final int count =
+                                      snapshot.data.length > 10 ? 10 : snapshot.data.length;
+                                  final Animation<double> animation =
+                                      Tween<double>(begin: 0.0, end: 1.0)
+                                          .animate(CurvedAnimation(
+                                              parent: animationController,
+                                              curve: Interval(
+                                                  (1 / count) * index, 1.0,
+                                                  curve:
+                                                      Curves.fastOutSlowIn)));
+                                  animationController.forward();
+                                  return AdsListView(
+                                    callback: () {},
+                                    hotelData:snapshot.data[index],
+                                    animation: animation,
+                                    animationController: animationController,
+                                  );
+                                },
                               );
                             },
+                            future: fetchBoardingHouse(),
                           ),
                         ),
                       ),
@@ -114,83 +158,83 @@ class _AdsScreenState extends State<AdsScreen>
     );
   }
 
-  Widget getListUI() {
-    return Container(
-      decoration: BoxDecoration(
-        color: CardAppTheme.buildLightTheme().backgroundColor,
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              offset: const Offset(0, -2),
-              blurRadius: 8.0),
-        ],
-      ),
-      child: Column(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height - 156 - 50,
-            child: FutureBuilder<bool>(
-              future: getData(),
-              builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-                if (!snapshot.hasData) {
-                  return const SizedBox();
-                } else {
-                  return ListView.builder(
-                    itemCount: hotelList.length,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (BuildContext context, int index) {
-                      final int count =
-                          hotelList.length > 10 ? 10 : hotelList.length;
-                      final Animation<double> animation =
-                          Tween<double>(begin: 0.0, end: 1.0).animate(
-                              CurvedAnimation(
-                                  parent: animationController,
-                                  curve: Interval((1 / count) * index, 1.0,
-                                      curve: Curves.fastOutSlowIn)));
-                      animationController.forward();
+  // Widget getListUI() {
+  //   return Container(
+  //     decoration: BoxDecoration(
+  //       color: CardAppTheme.buildLightTheme().backgroundColor,
+  //       boxShadow: <BoxShadow>[
+  //         BoxShadow(
+  //             color: Colors.grey.withOpacity(0.2),
+  //             offset: const Offset(0, -2),
+  //             blurRadius: 8.0),
+  //       ],
+  //     ),
+  //     child: Column(
+  //       children: <Widget>[
+  //         Container(
+  //           height: MediaQuery.of(context).size.height - 156 - 50,
+  //           child: FutureBuilder<bool>(
+  //             future: getData(),
+  //             builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+  //               if (!snapshot.hasData) {
+  //                 return const SizedBox();
+  //               } else {
+  //                 return ListView.builder(
+  //                   itemCount: adList.length,
+  //                   scrollDirection: Axis.vertical,
+  //                   itemBuilder: (BuildContext context, int index) {
+  //                     final int count =
+  //                         hotelList.length > 10 ? 10 : hotelList.length;
+  //                     final Animation<double> animation =
+  //                         Tween<double>(begin: 0.0, end: 1.0).animate(
+  //                             CurvedAnimation(
+  //                                 parent: animationController,
+  //                                 curve: Interval((1 / count) * index, 1.0,
+  //                                     curve: Curves.fastOutSlowIn)));
+  //                     animationController.forward();
+  //
+  //                     return AdsListView(
+  //                       callback: () {},
+  //                       hotelData: hotelList[index],
+  //                       animation: animation,
+  //                       animationController: animationController,
+  //                     );
+  //                   },
+  //                 );
+  //               }
+  //             },
+  //           ),
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 
-                      return AdsListView(
-                        callback: () {},
-                        hotelData: hotelList[index],
-                        animation: animation,
-                        animationController: animationController,
-                      );
-                    },
-                  );
-                }
-              },
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget getHotelViewList() {
-    final List<Widget> hotelListViews = <Widget>[];
-    for (int i = 0; i < hotelList.length; i++) {
-      final int count = hotelList.length;
-      final Animation<double> animation =
-          Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(
-          parent: animationController,
-          curve: Interval((1 / count) * i, 1.0, curve: Curves.fastOutSlowIn),
-        ),
-      );
-      hotelListViews.add(
-        AdsListView(
-          callback: () {},
-          hotelData: hotelList[i],
-          animation: animation,
-          animationController: animationController,
-        ),
-      );
-    }
-    animationController.forward();
-    return Column(
-      children: hotelListViews,
-    );
-  }
+  // Widget getHotelViewList() {
+  //   final List<Widget> hotelListViews = <Widget>[];
+  //   for (int i = 0; i < hotelList.length; i++) {
+  //     final int count = hotelList.length;
+  //     final Animation<double> animation =
+  //         Tween<double>(begin: 0.0, end: 1.0).animate(
+  //       CurvedAnimation(
+  //         parent: animationController,
+  //         curve: Interval((1 / count) * i, 1.0, curve: Curves.fastOutSlowIn),
+  //       ),
+  //     );
+  //     hotelListViews.add(
+  //       AdsListView(
+  //         callback: () {},
+  //         hotelData: hotelList[i],
+  //         animation: animation,
+  //         animationController: animationController,
+  //       ),
+  //     );
+  //   }
+  //   animationController.forward();
+  //   return Column(
+  //     children: hotelListViews,
+  //   );
+  // }
 
   Widget getSearchBarUI() {
     return Padding(
@@ -224,7 +268,7 @@ class _AdsScreenState extends State<AdsScreen>
                     cursorColor: CardAppTheme.buildLightTheme().primaryColor,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText:getTranslated(context,'City'),
+                      hintText: getTranslated(context, 'City'),
                     ),
                   ),
                 ),
@@ -297,8 +341,8 @@ class _AdsScreenState extends State<AdsScreen>
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(getTranslated(context,
-                      '20_rooms_found'),
+                    child: Text(
+                      getTranslated(context, '20_rooms_found'),
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 16,
@@ -329,8 +373,8 @@ class _AdsScreenState extends State<AdsScreen>
                       padding: const EdgeInsets.only(left: 8),
                       child: Row(
                         children: <Widget>[
-                          Text(getTranslated(context,
-                            'Filter'),
+                          Text(
+                            getTranslated(context, 'Filter'),
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
@@ -362,8 +406,6 @@ class _AdsScreenState extends State<AdsScreen>
       ],
     );
   }
-
-  
 
   Widget getAppBarUI() {
     return Container(
