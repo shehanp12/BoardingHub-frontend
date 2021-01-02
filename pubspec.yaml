@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
         
+  flutter_localizations:
+    sdk: flutter
 
 
 
@@ -38,8 +40,13 @@ dependencies:
   json_annotation: ^3.1.1
   http: ^0.12.2
   font_awesome_flutter: ^8.8.1
+  image_picker: ^0.6.7+17
+  shared_preferences: ^0.5.12+4
+  firebase_storage: ^5.2.0
+
   line_awesome_flutter: ^1.0.1
   splashscreen:
+
   
 dev_dependencies:
   flutter_test:
@@ -81,6 +88,10 @@ flutter:
     - images/room1.jpeg
     - images/room2.jpeg
     - images/background/dashboardbg.jpg
+
+    - lib/lang/en.json
+    - lib/lang/si.json
+
     - images/as.png
     - images/background/bg2.jpg
    

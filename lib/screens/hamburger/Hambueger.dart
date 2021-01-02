@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/screens/hamburger/aboutus.dart';
 import 'package:flutter_app/screens/hamburger/contactus.dart';
 import 'package:flutter_app/screens/hamburger/guidelines.dart';
@@ -53,8 +54,8 @@ class MenudrawerPage extends StatelessWidget {
                   color: Colors.deepOrangeAccent,
                   size: 25.0,
                 ),
-                title: Text(
-                  'About Us',
+                title: Text(getTranslated(context,
+                  'About_Us'),
                 ),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
@@ -87,7 +88,7 @@ class MenudrawerPage extends StatelessWidget {
                   color: Colors.deepOrangeAccent,
                   size: 25.0,
                 ),
-                title: Text('Contact Us'),
+                title: Text(getTranslated(context,'Contact_Us'),),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.deepOrangeAccent,
@@ -119,7 +120,7 @@ class MenudrawerPage extends StatelessWidget {
                   color: Colors.deepOrangeAccent,
                   size: 25.0,
                 ),
-                title: Text('Hotlines'),
+                title: Text(getTranslated(context,'Hotlines'),),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.deepOrangeAccent,
@@ -151,7 +152,7 @@ class MenudrawerPage extends StatelessWidget {
                   color: Colors.deepOrangeAccent,
                   size: 25.0,
                 ),
-                title: Text('Terms & Conditions'),
+                title: Text(getTranslated(context,'Terms_&_Conditions'),),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.deepOrangeAccent,
@@ -183,7 +184,7 @@ class MenudrawerPage extends StatelessWidget {
                   color: Colors.deepOrangeAccent,
                   size: 25.0,
                 ),
-                title: Text('Privacy Policy'),
+                title: Text(getTranslated(context,'Privacy_Policy'),),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.deepOrangeAccent,
@@ -215,7 +216,7 @@ class MenudrawerPage extends StatelessWidget {
                   color: Colors.deepOrangeAccent,
                   size: 25.0,
                 ),
-                title: Text('Guidelines'),
+                title: Text(getTranslated(context,'Guidelines'),),
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.deepOrangeAccent,

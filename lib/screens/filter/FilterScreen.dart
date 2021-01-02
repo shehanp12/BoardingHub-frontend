@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/models/PopularFilterList.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/screens/filter/RangeSliderView.dart';
@@ -78,8 +79,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
                       Navigator.pop(context);
                     },
                     child: Center(
-                      child: Text(
-                        'Apply',
+                      child: Text(getTranslated(context,
+                        'Apply'),
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 18,
@@ -104,8 +105,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
         Padding(
           padding:
               const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
-          child: Text(
-            'Type of Accommodation',
+          child: Text(getTranslated(context,
+            'Type_of_Accommodation'),
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.grey,
@@ -217,8 +218,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
         Padding(
           padding:
               const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
-          child: Text(
-            'Distance from city center',
+          child: Text(getTranslated(context,
+            'Distance_from_city_center'),
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.grey,
@@ -247,8 +248,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
         Padding(
           padding:
               const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
-          child: Text(
-            'Popular filters',
+          child: Text(getTranslated(context,
+            'Popular_filters'),
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.grey,
@@ -342,8 +343,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Text(
-            'Price (for 1 night)',
+          child: Text(getTranslated(context,
+            'Price_(_for_1_night_)'),
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.grey,
@@ -402,8 +403,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
             ),
             Expanded(
               child: Center(
-                child: Text(
-                  'Filters',
+                child: Text(getTranslated(context,
+                  'Filters'),
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 22,
