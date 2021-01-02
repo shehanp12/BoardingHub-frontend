@@ -5,8 +5,7 @@ class BoardingProvider {
   String userName = '';
   String address = '';
   String password = '';
-  String address = '';
-  String contactNumber = '';
+  
 
   BoardingProvider(
     String fullName,
