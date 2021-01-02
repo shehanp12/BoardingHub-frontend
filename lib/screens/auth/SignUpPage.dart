@@ -18,9 +18,11 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  String username;
-  String fullName;
+  String userName;
+  String fullName="anjana";
+  String contactNumber = "077834272";
   String email;
+  String address="pahala bomiriya";
   String password;
   final RestService _restService = new RestService();
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -67,7 +69,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         fryoTextInput('Username',
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
-                            onChanged: (val) => setState(() => username = val)),
+                            onChanged: (val) => setState(() => userName = val)),
                         fryoTextInput('Full Name',
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
@@ -82,13 +84,14 @@ class _SignUpPageState extends State<SignUpPage> {
                             onChanged: (val) => setState(() => password = val))
                       ],
                     ),
-                    SizedBox(height: 15,),
+                    SizedBox(
+                      height: 15,
+                    ),
                     FlatButton(
                       onPressed: () {
                         BoardingProvider boardingProvider =
-                            new BoardingProvider(
-                                username, fullName, email, password);
-
+                            new BoardingProvider(fullName, email, contactNumber,
+                                userName, address, password);
                         _register(boardingProvider);
                       },
                       color: primaryColor,
@@ -99,7 +102,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
               ),
-              height: 450,
+              height: MediaQuery.of(context).size.height / 1,
               width: double.infinity,
               decoration: authPlateDecoration,
             ),

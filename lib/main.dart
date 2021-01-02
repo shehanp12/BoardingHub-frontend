@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/Splash.dart';
+import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
 import 'screens/auth/SignInPage.dart';
 import 'screens/auth/SignUpPage.dart';
 import 'screens/viewData/ProductPage.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
       ),
       //home: WelcomePage(pageTitle: 'Welcome'),
-      home: Splashscreen(),
+      home: WelcomePage(),
 
       routes: <String, WidgetBuilder>{
         '/signup': (BuildContext context) => SignUpPage(),
