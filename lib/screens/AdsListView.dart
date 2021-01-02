@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/AdsListData.dart';
+import 'package:flutter_app/models/BoardingHouse.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 
 class AdsListView extends StatelessWidget {
   const AdsListView(
@@ -15,7 +16,7 @@ class AdsListView extends StatelessWidget {
       : super(key: key);
 
   final VoidCallback callback;
-  final AdsListData hotelData;
+  final BoardingHouse hotelData;
   final AnimationController animationController;
   final Animation<dynamic> animation;
 
@@ -56,9 +57,9 @@ class AdsListView extends StatelessWidget {
                           children: <Widget>[
                             AspectRatio(
                               aspectRatio: 2,
-                              child: Image.asset(
-                                hotelData.imagePath,
-                                fit: BoxFit.cover,
+                              child: CachedNetworkImage(
+
+                                fit: BoxFit.cover, imageUrl: hotelData.imageUrl,
                               ),
                             ),
                             Container(
@@ -80,7 +81,7 @@ class AdsListView extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: <Widget>[
                                             Text(
-                                              hotelData.titleTxt,
+                                              hotelData.title,
                                               textAlign: TextAlign.left,
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w600,
@@ -94,7 +95,7 @@ class AdsListView extends StatelessWidget {
                                                   MainAxisAlignment.start,
                                               children: <Widget>[
                                                 Text(
-                                                  hotelData.subTxt,
+                                                  hotelData.subtitle,
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       color: Colors.grey
@@ -112,7 +113,7 @@ class AdsListView extends StatelessWidget {
                                                 ),
                                                 Expanded(
                                                   child: Text(
-                                                    '${hotelData.dist.toStringAsFixed(1)} km to city',
+                                                    '${hotelData.distance.toStringAsFixed(1)} km to city',
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: TextStyle(
@@ -131,7 +132,7 @@ class AdsListView extends StatelessWidget {
                                                   SmoothStarRating(
                                                     allowHalfRating: true,
                                                     starCount: 5,
-                                                    rating: hotelData.rating,
+                                                     rating:4.4 ,
                                                     size: 20,
                                                     color: CardAppTheme
                                                             .buildLightTheme()
@@ -141,7 +142,7 @@ class AdsListView extends StatelessWidget {
                                                         .primaryColor,
                                                   ),
                                                   Text(
-                                                    ' ${hotelData.reviews} Reviews',
+                                                    ' ${80} Reviews',
                                                     style: TextStyle(
                                                         fontSize: 14,
                                                         color: Colors.grey
@@ -165,7 +166,7 @@ class AdsListView extends StatelessWidget {
                                           CrossAxisAlignment.end,
                                       children: <Widget>[
                                         Text(
-                                          '\$${hotelData.perMounth}',
+                                          ' ${5} Reviews',
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
