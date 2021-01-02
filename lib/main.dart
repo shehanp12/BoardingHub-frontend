@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
+import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'localization/language_constants.dart';
 import 'localization/demo_localization.dart';
@@ -34,7 +36,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   SharedPreferences prefs;
-
+RestService restService = RestService();
   Locale _locale;
 
   setLocale(Locale locale) {
@@ -46,6 +48,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    // restService.getBoarding();
+
   }
 
   void didChangeDependencies() {
@@ -64,7 +68,7 @@ class _MyAppState extends State<MyApp> {
       future: Firebase.initializeApp(),
       builder: (context, snapshot) {
         if(snapshot.connectionState == ConnectionState.done){
-          return MaterialApp(
+          return GetMaterialApp(
             title: 'Fryo',
             theme: ThemeData(
               primarySwatch: Colors.orange,
