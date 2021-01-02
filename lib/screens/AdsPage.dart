@@ -23,22 +23,15 @@ class _AdsScreenState extends State<AdsScreen> with TickerProviderStateMixin {
   // List<AdsListData> hotelList = AdsListData.adList;
   final ScrollController _scrollController = ScrollController();
 
-  Future fetchBoardingHouse() async {
-    List<BoardingHouse> adList =  await boardingService.getBoarding();
-    return adList;
-  }
-
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now().add(const Duration(days: 5));
 
   @override
   void initState() {
-     fetchBoardingHouse();
+    fetchBoardingHouse();
     animationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
     super.initState();
-
-
   }
 
   Future<bool> getData() async {
@@ -50,7 +43,6 @@ class _AdsScreenState extends State<AdsScreen> with TickerProviderStateMixin {
   void dispose() {
     animationController.dispose();
     super.dispose();
-
   }
 
   @override
@@ -92,7 +84,6 @@ class _AdsScreenState extends State<AdsScreen> with TickerProviderStateMixin {
                           color: CardAppTheme.buildLightTheme().backgroundColor,
                           child: FutureBuilder(
                             builder: (context, snapshot) {
-
                               // if (snapshot.connectionState ==
                               //     ConnectionState.waiting) {
                               //   return Container();
@@ -123,8 +114,9 @@ class _AdsScreenState extends State<AdsScreen> with TickerProviderStateMixin {
                                 padding: const EdgeInsets.only(top: 8),
                                 scrollDirection: Axis.vertical,
                                 itemBuilder: (BuildContext context, int index) {
-                                  final int count =
-                                      snapshot.data.length > 10 ? 10 : snapshot.data.length;
+                                  final int count = snapshot.data.length > 10
+                                      ? 10
+                                      : snapshot.data.length;
                                   final Animation<double> animation =
                                       Tween<double>(begin: 0.0, end: 1.0)
                                           .animate(CurvedAnimation(
@@ -136,7 +128,7 @@ class _AdsScreenState extends State<AdsScreen> with TickerProviderStateMixin {
                                   animationController.forward();
                                   return AdsListView(
                                     callback: () {},
-                                    hotelData:snapshot.data[index],
+                                    hotelData: snapshot.data[index],
                                     animation: animation,
                                     animationController: animationController,
                                   );

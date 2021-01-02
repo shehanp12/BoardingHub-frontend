@@ -43,14 +43,14 @@ class RestService {
 }
 
 
-  getBoarding(BoardingHouse boardingHouse) async{
+  getBoarding() async{
     return await _dio.get(host+'boardingHouse',
-      queryParameters:{
-      "title":boardingHouse.perMonth
-      }
       );
-
   }
+
+
+
+
 
 
 
