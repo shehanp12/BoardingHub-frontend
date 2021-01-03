@@ -23,7 +23,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-        
   flutter_localizations:
     sdk: flutter
 
@@ -46,13 +45,11 @@ dependencies:
   firebase_storage: ^5.2.0
   cached_network_image: ^2.5.0
   line_awesome_flutter: ^1.0.1
-  splashscreen:
 
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
-    
 
 
 # For information on the generic Dart part of this file, see the
@@ -94,8 +91,7 @@ flutter:
     - lib/lang/si.json
 
     - images/as.png
-    - images/background/bg2.jpg
-   
+
 
 
 
