@@ -7,6 +7,7 @@ import '../../shared/Colors.dart';
 import '../../shared/InputFields.dart';
 import 'package:page_transition/page_transition.dart';
 import 'SignInPage.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 
 class SignUpPage extends StatefulWidget {
   final String pageTitle;
@@ -35,7 +36,7 @@ class _SignUpPageState extends State<SignUpPage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: white,
-          title: Text('Sign Up',
+          title: Text(getTranslated(context,'Sign_Up'),
               style: TextStyle(
                   color: Colors.grey, fontFamily: 'Poppins', fontSize: 15)),
           actions: <Widget>[
@@ -47,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         type: PageTransitionType.rightToLeft,
                         child: SignInPage()));
               },
-              child: Text('Sign In', style: contrastText),
+              child: Text(getTranslated(context,'Sign_In'), style: contrastText),
             )
           ],
         ),
@@ -64,21 +65,21 @@ class _SignUpPageState extends State<SignUpPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Welcome to Boarding Hub!', style: h3),
-                        Text('Let\'s get started', style: taglineText),
-                        fryoTextInput('Username',
+                        Text(getTranslated(context,'Welcome_to_Boarding_Hub!'), style: h3),
+                        Text(getTranslated(context,'Lets_get_started'), style: taglineText),
+                        fryoTextInput(getTranslated(context,'Username'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => userName = val)),
-                        fryoTextInput('Full Name',
+                        fryoTextInput(getTranslated(context,'Full_Name'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => fullName = val)),
-                        fryoEmailInput('Email Address',
+                        fryoEmailInput(getTranslated(context,'Email_Address'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => email = val)),
-                        fryoPasswordInput('Password',
+                        fryoPasswordInput(getTranslated(context,'Password'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => password = val))
@@ -114,7 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
     if (!_formKey.currentState.validate()) {
       _scaffoldKey.currentState.showSnackBar(
         new SnackBar(
-          content: new Text('Invalid information'),
+          content: new Text(getTranslated(context,'Invalid_information')),
           backgroundColor: Colors.deepOrangeAccent,
         ),
       );
