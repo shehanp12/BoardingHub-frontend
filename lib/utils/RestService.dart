@@ -1,32 +1,27 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_app/models/BoardingHouse.dart';
-import 'package:flutter_app/utils/BoardingService.dart';
- import 'package:get/get.dart' as a;
-
-
-var _controller = BoardingService.to;
 
 class RestService {
   Dio _dio = new Dio();
 
-  final String host = 'http://192.168.1.107:3000/';
+  final String host = 'http://192.168.8.100:3000/';
+  
 
   registerUser(boardingProvider) async {
-    return await _dio.post(host + 'user/register', data: {
-      "username": boardingProvider.username,
+    return await _dio.post(host + 'boardingProvider/signUp', data: {
       "fullName": boardingProvider.fullName,
       "email": boardingProvider.email,
+      "contactNumber": boardingProvider.contactNumber,
+      "username": boardingProvider.userName,
+      "address": boardingProvider.address,
       "password": boardingProvider.password
     });
   }
 
-
-
   login(email, password) async {
-    return await _dio.post(host + 'employee/login',
-        data: {"email": email, "password": password});
+    return await _dio.post( host + 'boardingProvider/login',
+        data: {"email": email, 
+               "password": password
+                });
   }
 
   registerBoarding(boardingHouse) async{
@@ -71,11 +66,5 @@ class RestService {
 
 
   }
-
-
-
-
-
-
 
 }
