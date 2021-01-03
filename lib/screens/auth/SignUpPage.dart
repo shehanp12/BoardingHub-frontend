@@ -118,7 +118,7 @@ class _SignUpPageState extends State<SignUpPage> {
       _scaffoldKey.currentState.showSnackBar(
         new SnackBar(
           content: new Text(getTranslated(context,'Invalid_information'),),
-      );
+      ));
     _restService.registerUser(boardingProvider).then((val) {
       val.data['success'] == true
           ? _scaffoldKey.currentState
@@ -140,4 +140,5 @@ class _SignUpPageState extends State<SignUpPage> {
             ));
     });
   }
-}
+  }
+      }
