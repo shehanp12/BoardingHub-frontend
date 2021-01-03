@@ -28,8 +28,12 @@ class RestService {
 
 
   login(email, password) async {
-    return await _dio.post(host + 'employee/login',
-        data: {"email": email, "password": password});
+    return await _dio.post(host + 'boardingProvider/login',
+        data: {
+      "email": email,
+          "password": password
+    }
+          );
   }
 
   registerBoarding(boardingHouse) async{

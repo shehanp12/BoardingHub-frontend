@@ -110,7 +110,7 @@ class _SignInPageState extends State<SignInPage> {
       val.data['success'] == true
           ? _scaffoldKey.currentState
               .showSnackBar(new SnackBar(
-                content: new Text(val.data['msg']),
+                content: new Text(val.data['message']),
                 backgroundColor: Colors.deepOrangeAccent,
               ))
               .closed
@@ -122,7 +122,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
               )
           : _scaffoldKey.currentState.showSnackBar(new SnackBar(
-              content: new Text(val.data['msg']),
+              content: new Text(val.data['message']),
               backgroundColor: Colors.deepOrangeAccent,
             ));
     });
