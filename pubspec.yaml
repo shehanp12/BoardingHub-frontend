@@ -86,7 +86,7 @@ flutter:
     - images/room1.jpeg
     - images/room2.jpeg
     - images/background/dashboardbg.jpg
-
+    - images/background/bg2.jpg
     - lib/lang/en.json
     - lib/lang/si.json
 
