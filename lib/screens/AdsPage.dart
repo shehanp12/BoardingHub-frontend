@@ -8,6 +8,7 @@ import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/screens/filter/FilterScreen.dart';
 import 'package:flutter_app/utils/BoardingService.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 
 class AdsScreen extends StatefulWidget {
   @override

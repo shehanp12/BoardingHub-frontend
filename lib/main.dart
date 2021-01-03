@@ -71,7 +71,7 @@ RestService restService = RestService();
             theme: ThemeData(
               primarySwatch: Colors.orange,
             ),
-            home: HomePage(),
+            home: WelcomePage(),
 
             routes: <String, WidgetBuilder>{
               '/signup': (BuildContext context) => SignUpPage(),
