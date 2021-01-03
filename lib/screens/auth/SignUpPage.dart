@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/models/BoardingProvider.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/utils/RestService.dart';
@@ -19,12 +20,12 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  String userName;
-  String fullName="anjana";
-  String contactNumber = "077834272";
+  String username;
+  String fullName;
   String email;
-  String address="pahala bomiriya";
   String password;
+  String address;
+  String contactNumber;
   final RestService _restService = new RestService();
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
@@ -70,7 +71,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         fryoTextInput(getTranslated(context,'Username'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
-                            onChanged: (val) => setState(() => userName = val)),
+                            onChanged: (val) => setState(() => username = val)
+                        ),
                         fryoTextInput(getTranslated(context,'Full_Name'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
@@ -85,14 +87,14 @@ class _SignUpPageState extends State<SignUpPage> {
                             onChanged: (val) => setState(() => password = val))
                       ],
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
+                    SizedBox(height: 15,),
                     FlatButton(
                       onPressed: () {
+
                         BoardingProvider boardingProvider =
-                            new BoardingProvider(fullName, email, contactNumber,
-                                userName, address, password);
+                            new BoardingProvider(
+                                username, fullName, email, password,address,contactNumber);
+
                         _register(boardingProvider);
                       },
                       color: primaryColor,
@@ -103,7 +105,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
               ),
-              height: MediaQuery.of(context).size.height / 1,
+              height: 450,
               width: double.infinity,
               decoration: authPlateDecoration,
             ),
@@ -115,11 +117,8 @@ class _SignUpPageState extends State<SignUpPage> {
     if (!_formKey.currentState.validate()) {
       _scaffoldKey.currentState.showSnackBar(
         new SnackBar(
-          content: new Text(getTranslated(context,'Invalid_information')),
-          backgroundColor: Colors.deepOrangeAccent,
-        ),
+          content: new Text(getTranslated(context,'Invalid_information'),),
       );
-    }
     _restService.registerUser(boardingProvider).then((val) {
       val.data['success'] == true
           ? _scaffoldKey.currentState
