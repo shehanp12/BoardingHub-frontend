@@ -85,16 +85,14 @@ const inputFieldHintPaswordTextStyle = TextStyle(
 //////////////////////////////////
 
 const authPlateDecoration = BoxDecoration(
-  image: DecorationImage(
-                image: AssetImage('images/background/bg2.jpg'),fit: BoxFit.cover),
-   // color: white,
-   // boxShadow: [
-    //  BoxShadow(
-    //      color: Color.fromRGBO(0, 0, 0, .1),
-     //     blurRadius: 10,
-     //     spreadRadius: 5,
-    //      offset: Offset(0, 1))
-   // ],
+    color: white,
+    boxShadow: [
+      BoxShadow(
+          color: Color.fromRGBO(0, 0, 0, .1),
+          blurRadius: 10,
+          spreadRadius: 5,
+          offset: Offset(0, 1))
+    ],
     borderRadius: BorderRadiusDirectional.only(
         bottomEnd: Radius.circular(20), bottomStart: Radius.circular(20)));
 

@@ -48,6 +48,8 @@ RestService restService = RestService();
   @override
   void initState() {
     super.initState();
+    // restService.getBoarding();
+
   }
 
   void didChangeDependencies() {
