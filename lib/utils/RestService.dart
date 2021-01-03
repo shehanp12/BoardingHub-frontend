@@ -14,11 +14,14 @@ class RestService {
   final String host = 'http://192.168.1.107:3000/';
 
   registerUser(boardingProvider) async {
-    return await _dio.post(host + 'user/register', data: {
-      "username": boardingProvider.username,
+    return await _dio.post(host + 'boardingProvider/signup', data: {
+      "userName": boardingProvider.userName,
       "fullName": boardingProvider.fullName,
       "email": boardingProvider.email,
-      "password": boardingProvider.password
+      "password": boardingProvider.password,
+      "address":boardingProvider.address,
+      "contactNumber":boardingProvider.contactNumber
+
     });
   }
 

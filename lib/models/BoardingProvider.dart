@@ -1,6 +1,6 @@
 class BoardingProvider {
 
-  String username = '';
+  String userName = '';
   String fullName = '';
   String email = '';
   String password = '';
@@ -8,8 +8,8 @@ class BoardingProvider {
   String contactNumber = '';
 
   BoardingProvider(
-      String username, String fullName, String email, String password,String address,String contactNumber) {
-    this.username = username;
+      String userName, String fullName, String email, String password,String address,String contactNumber) {
+    this.userName = userName;
     this.fullName = fullName;
     this.email = email;
     this.password = password;
