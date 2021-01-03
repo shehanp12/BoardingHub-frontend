@@ -88,7 +88,7 @@ class _SignInPageState extends State<SignInPage> {
                   ],
                 ),
               ),
-              height: 300,
+              height: MediaQuery.of(context).size.height / 1,
               width: double.infinity,
               decoration: authPlateDecoration,
             ),
