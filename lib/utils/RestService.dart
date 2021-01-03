@@ -7,7 +7,7 @@ class RestService {
   
 
   registerUser(boardingProvider) async {
-    return await _dio.post(host + 'provider/signUp', data: {
+    return await _dio.post(host + 'boardingProvider/signUp', data: {
       "fullName": boardingProvider.fullName,
       "email": boardingProvider.email,
       "contactNumber": boardingProvider.contactNumber,
@@ -18,7 +18,7 @@ class RestService {
   }
 
   login(email, password) async {
-    return await _dio.post( host + 'employee/login',
+    return await _dio.post( host + 'boardingProvider/login',
         data: {"email": email, 
                "password": password
                 });
