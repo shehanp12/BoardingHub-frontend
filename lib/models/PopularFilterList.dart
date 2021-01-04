@@ -9,7 +9,7 @@ class PopularFilterListData {
 
   static List<PopularFilterListData> popularFList = <PopularFilterListData>[
     PopularFilterListData(
-      titleTxt: 'Free Breakfast',
+      titleTxt: 'Girls Only',
       isSelected: false,
     ),
     PopularFilterListData(
@@ -17,15 +17,11 @@ class PopularFilterListData {
       isSelected: false,
     ),
     PopularFilterListData(
-      titleTxt: 'Pool',
-      isSelected: true,
-    ),
-    PopularFilterListData(
-      titleTxt: 'Pet Friendly',
+      titleTxt: 'Attach Bathroom',
       isSelected: false,
     ),
     PopularFilterListData(
-      titleTxt: 'Free wifi',
+      titleTxt: 'Kitchen',
       isSelected: false,
     ),
   ];
@@ -36,7 +32,7 @@ class PopularFilterListData {
       isSelected: false,
     ),
     PopularFilterListData(
-      titleTxt: 'Apartment',
+      titleTxt: 'Boarding house',
       isSelected: false,
     ),
     PopularFilterListData(
@@ -44,15 +40,7 @@ class PopularFilterListData {
       isSelected: true,
     ),
     PopularFilterListData(
-      titleTxt: 'Villa',
-      isSelected: false,
-    ),
-    PopularFilterListData(
       titleTxt: 'Hotel',
-      isSelected: false,
-    ),
-    PopularFilterListData(
-      titleTxt: 'Resort',
       isSelected: false,
     ),
   ];

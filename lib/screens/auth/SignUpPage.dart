@@ -8,7 +8,6 @@ import '../../shared/Colors.dart';
 import '../../shared/InputFields.dart';
 import 'package:page_transition/page_transition.dart';
 import 'SignInPage.dart';
-import 'package:flutter_app/localization/language_constants.dart';
 
 class SignUpPage extends StatefulWidget {
   final String pageTitle;

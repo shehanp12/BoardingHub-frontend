@@ -344,7 +344,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(getTranslated(context,
-            'Price_(_for_1_night_)'),
+            'Price_(_for_1_mounth_)'),
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Colors.grey,
