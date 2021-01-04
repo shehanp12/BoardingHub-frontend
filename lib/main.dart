@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
+import 'package:flutter_app/screens/filter/FilterScreen.dart';
 import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
 import 'package:get/get.dart';
@@ -73,7 +74,7 @@ RestService restService = RestService();
             theme: ThemeData(
               primarySwatch: Colors.orange,
             ),
-            home: HomePage(),
+            home: FiltersScreen(),
 
             routes: <String, WidgetBuilder>{
               '/signup': (BuildContext context) => SignUpPage(),

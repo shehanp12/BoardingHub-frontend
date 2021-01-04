@@ -78,6 +78,7 @@ class _BottomBarViewState extends State<BottomBarView>
                                     widget.changeIndex(1);
                                   }),
                             ),
+
                             SizedBox(
                               width: Tween<double>(begin: 0.0, end: 1.0)
                                       .animate(CurvedAnimation(
@@ -86,6 +87,7 @@ class _BottomBarViewState extends State<BottomBarView>
                                       .value *
                                   64.0,
                             ),
+
                             Expanded(
                               child: TabIcons(
                                   tabIconData: widget.tabIconsList[2],
@@ -95,6 +97,7 @@ class _BottomBarViewState extends State<BottomBarView>
                                     widget.changeIndex(2);
                                   }),
                             ),
+                            
                             Expanded(
                               child: TabIcons(
                                   tabIconData: widget.tabIconsList[3],

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../shared/Styles.dart';
-import '../../shared/Colors.dart';
 import '../../shared/Buttons.dart';
 import 'package:flutter_app/localization/language_constants.dart';
-
 import 'package:page_transition/page_transition.dart';
 import 'SignUpPage.dart';
 import 'SignInPage.dart';
