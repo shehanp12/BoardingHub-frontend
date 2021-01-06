@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/utils/RestService.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../shared/Styles.dart';
 import '../../shared/Colors.dart';
 import '../../shared/InputFields.dart';
 import 'package:page_transition/page_transition.dart';
 import 'SignUpPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInPage extends StatefulWidget {
   final String pageTitle;
@@ -23,7 +25,7 @@ class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
   final RestService _restService = new RestService();
-
+  SharedPreferences sharedPreferences;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +44,10 @@ class _SignInPageState extends State<SignInPage> {
                     PageTransition(
                         type: PageTransitionType.rightToLeft,
                         child: SignUpPage()));
+                sharedPreferences.clear();
+                sharedPreferences.commit();
+
+
               },
               child: Text(getTranslated(context,'Sign_Up'), style: contrastText),
             )
@@ -106,9 +112,12 @@ class _SignInPageState extends State<SignInPage> {
       );
     }
 
-    _restService.login(email, password).then((val) {
-      val.data['success'] == true
-          ? _scaffoldKey.currentState
+    _restService.login(email, password).then((val)  {
+
+      // sharedPreferences.setString("token", val.data['token']);
+
+      val.data["success"] == true ?
+      _scaffoldKey.currentState
               .showSnackBar(new SnackBar(
                 content: new Text(val.data['message']),
                 backgroundColor: Colors.deepOrangeAccent,
@@ -120,6 +129,7 @@ class _SignInPageState extends State<SignInPage> {
                   PageTransition(
                       type: PageTransitionType.rightToLeft, child: HomePage()),
                 ),
+
               )
           : _scaffoldKey.currentState.showSnackBar(new SnackBar(
               content: new Text(val.data['message']),

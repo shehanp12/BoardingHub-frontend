@@ -29,7 +29,7 @@ class MyApp extends StatefulWidget {
     state.setLocale(newlocale);
   }
 
-  // This widget is the root of your application.
+
   @override
   _MyAppState createState() => _MyAppState();
 }

@@ -1,9 +1,14 @@
 
 import 'package:flutter_app/models/BoardingHouse.dart';
+import 'package:flutter_app/models/Token.dart';
 import 'package:flutter_app/utils/RestService.dart';
 import 'package:get/get.dart';
 class BoardingService extends GetxController{
   List<BoardingHouse> listData = List <BoardingHouse>().obs;
+  List<Token> listToken = List<Token>().obs;
+
+
+
 
   var _x;
 
