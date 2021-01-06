@@ -45,6 +45,7 @@ dependencies:
   firebase_storage: ^5.2.0
   cached_network_image: ^2.5.0
   line_awesome_flutter: ^1.0.1
+  rect_getter: ^0.0.1
 
   
 dev_dependencies:
