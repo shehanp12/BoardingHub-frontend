@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/suit_models.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -305,4 +305,4 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-}
+}*/
