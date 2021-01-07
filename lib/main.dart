@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/FeedPage.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
@@ -63,6 +64,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
+<<<<<<< Updated upstream
         future: Firebase.initializeApp(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
@@ -96,6 +98,39 @@ class _MyAppState extends State<MyApp> {
                       supportedLocale.countryCode == locale.countryCode) {
                     return supportedLocale;
                   }
+=======
+      future: Firebase.initializeApp(),
+      builder: (context, snapshot) {
+        if(snapshot.connectionState == ConnectionState.done){
+          return GetMaterialApp(
+            title: 'Fryo',
+            theme: ThemeData(
+              primarySwatch: Colors.orange,
+            ),
+            home: FeedPage(),
+
+            routes: <String, WidgetBuilder>{
+              '/signup': (BuildContext context) => SignUpPage(),
+              '/signin': (BuildContext context) => SignInPage(),
+              '/productPage': (BuildContext context) => ProductPage(),
+            },
+            locale: _locale,
+            supportedLocales: [
+              Locale('en', 'US'),
+              Locale('si', 'SN'),
+            ],
+            localizationsDelegates: [
+              DemoLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            localeResolutionCallback: (locale, supportedLocales) {
+              for (var supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale.languageCode &&
+                    supportedLocale.countryCode == locale.countryCode) {
+                  return supportedLocale;
+>>>>>>> Stashed changes
                 }
                 return supportedLocales.first;
               },
