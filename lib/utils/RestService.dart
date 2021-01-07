@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingHouse.dart';
+import 'package:flutter_app/models/BoardingProvider.dart';
 
 import 'package:flutter_app/utils/BoardingService.dart';
 import 'package:get/get.dart' as a;
@@ -70,7 +71,9 @@ class RestService {
         },
         options: Options(headers: {
           'Authorization': 'Bearer ${sharedPreferences.get("token")}'
-        }));
+        }
+        )
+    );
   }
 
   static Future<List<BoardingHouse>> fetchBoardingdetails() async {
@@ -94,7 +97,8 @@ class RestService {
     }
   }
 
-  static Future<List<BoardingHouse>> fetchMyAds() async {
+  static Future<List<BoardingProvider>> fetchMyDetails() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Future.delayed(
         Duration.zero,
         () => a.Get.dialog(Center(
@@ -103,7 +107,13 @@ class RestService {
     Dio _dio = Dio();
 
     Response response =
-        await _dio.get('http://192.168.1.107:3000/boardingHouse');
+        await _dio.get('http://192.168.1.107:3000/boardingProvider/',
+            options: Options(headers: {
+              'Authorization': 'Bearer ${sharedPreferences.get("token")}'
+            }
+            )
+
+        );
     a.Get.back();
   }
 }
