@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/models/suit_models.dart';
-import 'package:flutter_app/screens/AdsPage.dart';
 import 'package:flutter_app/screens/HomePage.dart';
-import 'package:flutter_app/screens/ad_view/details_screen.dart';
-import 'package:flutter_app/screens/ad_view/home_screen.dart';
-import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
-import 'package:flutter_app/screens/filter/FilterScreen.dart';
 import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
 import 'package:get/get.dart';
