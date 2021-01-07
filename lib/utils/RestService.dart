@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingHouse.dart';
-import 'package:flutter_app/models/Token.dart';
+
 import 'package:flutter_app/utils/BoardingService.dart';
 import 'package:get/get.dart' as a;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -73,7 +73,7 @@ class RestService {
         }));
   }
 
-  static Future<List<BoardingHouse>> fetchData() async {
+  static Future<List<BoardingHouse>> fetchBoardingdetails() async {
     Future.delayed(
         Duration.zero,
         () => a.Get.dialog(Center(
@@ -92,5 +92,18 @@ class RestService {
       }
       return _controller.listData;
     }
+  }
+
+  static Future<List<BoardingHouse>> fetchMyAds() async {
+    Future.delayed(
+        Duration.zero,
+        () => a.Get.dialog(Center(
+              child: CircularProgressIndicator(),
+            )));
+    Dio _dio = Dio();
+
+    Response response =
+        await _dio.get('http://192.168.1.107:3000/boardingHouse');
+    a.Get.back();
   }
 }

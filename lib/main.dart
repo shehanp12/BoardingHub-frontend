@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/HomePage.dart';
+import 'package:flutter_app/screens/ProfilePage.dart';
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
+import 'package:flutter_app/screens/viewData/ProfileEditPage.dart';
 import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
 import 'package:get/get.dart';
@@ -21,7 +23,6 @@ class MyApp extends StatefulWidget {
   static void setLocale(BuildContext context, Locale newlocale) {
     _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
     state.setLocale(newlocale);
-
   }
 
   static void setLocaleSettings(BuildContext context, Locale newlocale) {
@@ -29,14 +30,13 @@ class MyApp extends StatefulWidget {
     state.setLocale(newlocale);
   }
 
-
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
   SharedPreferences prefs;
-RestService restService = RestService();
+  RestService restService = RestService();
   Locale _locale;
 
   setLocale(Locale locale) {
@@ -49,7 +49,6 @@ RestService restService = RestService();
   void initState() {
     super.initState();
     // restService.getBoarding();
-
   }
 
   void didChangeDependencies() {
@@ -63,50 +62,44 @@ RestService restService = RestService();
 
   @override
   Widget build(BuildContext context) {
-
     return FutureBuilder(
-      future: Firebase.initializeApp(),
-      builder: (context, snapshot) {
-        if(snapshot.connectionState == ConnectionState.done){
-          return GetMaterialApp(
-            title: 'Fryo',
-            theme: ThemeData(
-              primarySwatch: Colors.orange,
-            ),
-            home: WelcomePage(),
-
-            routes: <String, WidgetBuilder>{
-              '/signup': (BuildContext context) => SignUpPage(),
-              '/signin': (BuildContext context) => SignInPage(),
-              '/productPage': (BuildContext context) => ProductPage(),
-            },
-            locale: _locale,
-            supportedLocales: [
-              Locale('en', 'US'),
-              Locale('si', 'SN'),
-            ],
-            localizationsDelegates: [
-              DemoLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            localeResolutionCallback: (locale, supportedLocales) {
-              for (var supportedLocale in supportedLocales) {
-                if (supportedLocale.languageCode == locale.languageCode &&
-                    supportedLocale.countryCode == locale.countryCode) {
-                  return supportedLocale;
+        future: Firebase.initializeApp(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return GetMaterialApp(
+              title: 'Fryo',
+              theme: ThemeData(
+                primarySwatch: Colors.orange,
+              ),
+              home:  ProfilePage(),
+              routes: <String, WidgetBuilder>{
+                '/signup': (BuildContext context) => SignUpPage(),
+                '/signin': (BuildContext context) => SignInPage(),
+                '/productPage': (BuildContext context) => ProductPage(),
+              },
+              locale: _locale,
+              supportedLocales: [
+                Locale('en', 'US'),
+                Locale('si', 'SN'),
+              ],
+              localizationsDelegates: [
+                DemoLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              localeResolutionCallback: (locale, supportedLocales) {
+                for (var supportedLocale in supportedLocales) {
+                  if (supportedLocale.languageCode == locale.languageCode &&
+                      supportedLocale.countryCode == locale.countryCode) {
+                    return supportedLocale;
+                  }
                 }
-              }
-              return supportedLocales.first;
-            },
-          );
-
-        }
-        return Loading();
-
-      }
-    );
+                return supportedLocales.first;
+              },
+            );
+          }
+          return Loading();
+        });
   }
-
 }
