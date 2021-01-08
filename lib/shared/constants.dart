@@ -3,7 +3,7 @@ const FOOD_DATA = [
     "name":"Homagama",
     "brand":"Two Person",
     "price":4000,
-    "image":"burger.png"
+    "image":"room1.jpeg"
   },{
     "name":"Kottawa",
     "brand":"One Person",

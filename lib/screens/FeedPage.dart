@@ -34,7 +34,7 @@ class _FeedPageState extends State<FeedPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Column(
+                /*Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
@@ -57,7 +57,7 @@ class _FeedPageState extends State<FeedPage> {
                           fontWeight: FontWeight.bold),
                     )
                   ],
-                ),
+                ),*/
                 Image.asset(
                   "assets/images/${post["image"]}",
                   height: double.infinity,
@@ -92,45 +92,10 @@ class _FeedPageState extends State<FeedPage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text(
-            "Feed",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          elevation: 0,
-          backgroundColor: Colors.deepOrange.shade300,
-          leading: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          /*actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search, color: Colors.black),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.person, color: Colors.black),
-              onPressed: () {},
-            )
-          ],*/
-        ),
         body: Container(
           height: size.height,
           child: Column(
             children: <Widget>[
-              /*Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Text(
-                    "Loyality Cards",
-                    style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Text(
-                    "Menu",
-                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                ],
-              ),*/
               const SizedBox(
                 height: 10,
               ),
