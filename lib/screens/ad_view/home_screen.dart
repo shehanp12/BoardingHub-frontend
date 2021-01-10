@@ -4,7 +4,6 @@ import 'package:flutter_app/models/suit_models.dart';
 import 'package:flutter_app/screens/ad_view/details_screen.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
 
 class HomePagea extends StatefulWidget {

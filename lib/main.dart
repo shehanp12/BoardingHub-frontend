@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/FeedPage.dart';
 import 'package:flutter_app/screens/HomePage.dart';
+import 'package:flutter_app/screens/Splashscreen.dart';
+import 'package:flutter_app/screens/hamburger/Hambueger.dart';
 import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
 import 'package:get/get.dart';
@@ -73,7 +75,7 @@ class _MyAppState extends State<MyApp> {
                 primarySwatch: Colors.orange,
               ),
               //home: AdsScreen(),
-              home: FeedPage(),
+              home: MenudrawerPage(),
              
 
               routes: <String, WidgetBuilder>{

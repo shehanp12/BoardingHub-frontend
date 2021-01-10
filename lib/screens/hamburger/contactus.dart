@@ -57,7 +57,7 @@ class _ContactusPageState extends State<ContactUs> {
                                 spreadRadius: 1,
                                 offset: Offset(0, 1))
                           ]),
-                      height: MediaQuery.of(context).size.height / 6,
+                      height: MediaQuery.of(context).size.height / 5,
                       child: Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
