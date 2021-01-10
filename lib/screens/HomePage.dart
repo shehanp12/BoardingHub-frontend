@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/models/AdsListData.dart';
 import 'package:flutter_app/models/BoardingHouse.dart';
 import 'package:flutter_app/screens/AdsPage.dart';
+import 'package:flutter_app/screens/FeedPage.dart';
 import 'package:flutter_app/screens/ProfilePage.dart';
 import 'package:flutter_app/screens/auth/SignInPage.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/BottomBarView.dart';
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage>
                 }
                 setState(() {
                   tabBody =
-                      SignInPage();
+                      FeedPage();
                 });
               });
             }

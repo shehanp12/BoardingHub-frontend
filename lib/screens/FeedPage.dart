@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/shared/Colors.dart';
 import 'package:flutter_app/shared/constants.dart';
 
 
@@ -142,7 +143,7 @@ class CategoriesScroller extends StatelessWidget {
                 margin: EdgeInsets.only(right: 20),
                 height: categoryHeight,
                 decoration: BoxDecoration(
-                    color: Colors.deepOrange.shade300,
+                    color: primaryColor,
                     borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
@@ -172,7 +173,7 @@ class CategoriesScroller extends StatelessWidget {
                 margin: EdgeInsets.only(right: 20),
                 height: categoryHeight,
                 decoration: BoxDecoration(
-                    color: Colors.deepOrange.shade300,
+                    color: primaryColor,
                     borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 child: Container(
                   child: Padding(
@@ -204,7 +205,7 @@ class CategoriesScroller extends StatelessWidget {
                 margin: EdgeInsets.only(right: 20),
                 height: categoryHeight,
                 decoration: BoxDecoration(
-                    color: Colors.deepOrange.shade300,
+                    color: primaryColor,
                     borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),

@@ -21,17 +21,13 @@ class MenudrawerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        
-      ),
       
       body: Center(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             SizedBox(
-              height: 20,
+              height: 80,
             ),
             Container(
               height: 55,

@@ -48,6 +48,7 @@ dependencies:
   rect_getter: ^0.0.1
   provider: ^3.1.0
   splashscreen:
+  animated_text_kit: 
 
   
 dev_dependencies:
@@ -92,8 +93,13 @@ flutter:
     - images/background/bg2.jpg
     - lib/lang/en.json
     - lib/lang/si.json
-
     - images/as.png
+    - images/welcomenewicon.png
+    - images/ads3.jpg
+    - images/ads4.jpg
+    - images/ads5.jpg
+    - images/ads6.jpg
+    
 
 
 

@@ -1,14 +1,15 @@
 const FOOD_DATA = [
   {
-    "image":"Ads2.jpg"
+    "image":"ads3.jpg"
   },
   {
-    "image":"welcomenew.png"
+    "image":"ads4.jpg"
   },
   {
-    "image":"welcomenew.png"
+    "image":"ads5.jpg"
   },
   {
-    "image":"welcomenew.png"
+    "image":"ads6.jpg"
   },
+  
 ];

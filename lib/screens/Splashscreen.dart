@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
 class SplashScreen extends StatefulWidget {
@@ -32,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             decoration:BoxDecoration(
               color: new Color(0xff622F74),
               gradient: LinearGradient(
-                colors:[Colors.black26,Colors.orange[900]],
+                colors:[Colors.white,Colors.orange[200]],
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 ),
@@ -43,18 +44,18 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment:MainAxisAlignment.center,
             children:<Widget>[
               
-              Image.asset('images/welcomenew.png',
-              width: 300,
+              Image.asset('images/welcomenewicon.png',
+              width: 100,
               ),  
               Padding(
                 padding:EdgeInsets.only(top:20.0), 
               ),
               
-              /*SizedBox(
+              SizedBox(
                 width: 250.0,
                 child:Center(
                 child: ColorizeAnimatedTextKit(
-                  text: ["Transport_Tracker",],
+                  text: ["BOARDING HUB",],
                   
                   textStyle: TextStyle(
                   fontSize: 30.0, 
@@ -62,14 +63,14 @@ class _SplashScreenState extends State<SplashScreen> {
                   fontWeight:FontWeight.bold,
                   ),
                   colors: [
-                  Colors.blue,
-                  Colors.black,
-                  Colors.blue,
                   Colors.white,
+                  Colors.orange,
+                  Colors.orangeAccent,
+                  Colors.black12,
                     ],
                   ),
                 ),
-              ),*/
+              ), 
               
             ]
           )
