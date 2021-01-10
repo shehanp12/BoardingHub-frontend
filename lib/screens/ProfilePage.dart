@@ -127,10 +127,6 @@ class ProfileListItems extends StatelessWidget {
             text:getTranslated(context, 'My_Ads'),
           ),
           ProfileListItem(
-            icon: LineAwesomeIcons.history,
-            text:getTranslated(context,'Purchase_History'),
-          ),
-          ProfileListItem(
             icon: LineAwesomeIcons.question_circle,
             text:getTranslated(context,'Help_&_Support'),
           ),
