@@ -108,6 +108,7 @@ class _AdsScreenState extends State<AdsScreen> with TickerProviderStateMixin {
                                         animationController:
                                             animationController,
                                       );
+
                                     },
                                   )),
                         ),

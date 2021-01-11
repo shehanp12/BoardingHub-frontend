@@ -71,9 +71,7 @@ class RestService {
         },
         options: Options(headers: {
           'Authorization': 'Bearer ${sharedPreferences.get("token")}'
-        }
-        )
-    );
+        }));
   }
 
   static Future<List<BoardingHouse>> fetchBoardingdetails() async {
@@ -106,14 +104,18 @@ class RestService {
             )));
     Dio _dio = Dio();
 
-    Response response =
-        await _dio.get('http://192.168.1.107:3000/boardingProvider/',
-            options: Options(headers: {
-              'Authorization': 'Bearer ${sharedPreferences.get("token")}'
-            }
-            )
-
-        );
+    Response response = await _dio.get(
+        'http://192.168.1.107:3000/boardingProvider/',
+        options: Options(headers: {
+          'Authorization': 'Bearer ${sharedPreferences.get("token")}'
+        }));
+    print(response.data);
     a.Get.back();
+    if (response.statusCode == 200) {
+      for (var item in response.data) {
+        _controller.myListData.add(BoardingProvider.fromJson(item));
+      }
+      return _controller.myListData;
+    }
   }
 }

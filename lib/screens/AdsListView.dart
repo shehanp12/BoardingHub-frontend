@@ -58,8 +58,8 @@ class AdsListView extends StatelessWidget {
                             AspectRatio(
                               aspectRatio: 2,
                               child: CachedNetworkImage(
-
-                                fit: BoxFit.cover, imageUrl: hotelData.imageUrl,
+                                fit: BoxFit.cover,
+                                imageUrl: hotelData.imageUrl,
                               ),
                             ),
                             Container(
@@ -132,7 +132,7 @@ class AdsListView extends StatelessWidget {
                                                   SmoothStarRating(
                                                     allowHalfRating: true,
                                                     starCount: 5,
-                                                     rating:4.4 ,
+                                                    rating: 4.4,
                                                     size: 20,
                                                     color: CardAppTheme
                                                             .buildLightTheme()
@@ -173,13 +173,13 @@ class AdsListView extends StatelessWidget {
                                             fontSize: 22,
                                           ),
                                         ),
-                                        Text(
-                                          '/per night',
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color:
-                                                  Colors.grey.withOpacity(0.8)),
-                                        ),
+                                        // Text(
+                                        //   '/per night',
+                                        //   style: TextStyle(
+                                        //       fontSize: 14,
+                                        //       color:
+                                        //           Colors.grey.withOpacity(0.8)),
+                                        // ),
                                       ],
                                     ),
                                   ),
