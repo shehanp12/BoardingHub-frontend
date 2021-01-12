@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
                 primarySwatch: Colors.orange,
               ),
               //home: AdsScreen(),
-              home: HomePage(),
+              home: SplashScreen(),
              
 
               routes: <String, WidgetBuilder>{
