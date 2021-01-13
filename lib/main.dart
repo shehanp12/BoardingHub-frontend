@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
                 primarySwatch: Colors.orange,
               ),
 
-              home: HomePage(),
+              home:WelcomePage(),
 
            
              
