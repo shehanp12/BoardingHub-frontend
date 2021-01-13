@@ -65,8 +65,6 @@ class _MyAppState extends State<MyApp> {
     super.didChangeDependencies();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -78,13 +76,7 @@ class _MyAppState extends State<MyApp> {
               theme: ThemeData(
                 primarySwatch: Colors.orange,
               ),
-
-              home:WelcomePage(),
-
-           
-             
-
-
+              home: WelcomePage(),
               routes: <String, WidgetBuilder>{
                 '/signup': (BuildContext context) => SignUpPage(),
                 '/signin': (BuildContext context) => SignInPage(),
