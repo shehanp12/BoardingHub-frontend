@@ -45,6 +45,10 @@ dependencies:
   firebase_storage: ^5.2.0
   cached_network_image: ^2.5.0
   line_awesome_flutter: ^1.0.1
+  rect_getter: ^0.0.1
+  provider: ^3.1.0
+  splashscreen:
+  animated_text_kit: 
 
   
 dev_dependencies:
@@ -86,11 +90,16 @@ flutter:
     - images/room1.jpeg
     - images/room2.jpeg
     - images/background/dashboardbg.jpg
-
+    - images/background/bg2.jpg
     - lib/lang/en.json
     - lib/lang/si.json
-
     - images/as.png
+    - images/welcomenewicon.png
+    - images/ads3.jpg
+    - images/ads4.jpg
+    - images/ads5.jpg
+    - images/ads6.jpg
+    
 
 
 

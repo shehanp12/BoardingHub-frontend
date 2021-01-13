@@ -1,14 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/localization/language_constants.dart';
-import 'package:flutter_app/models/AdsListData.dart';
-import 'package:flutter_app/models/BoardingHouse.dart';
 import 'package:flutter_app/screens/AdsListView.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/screens/filter/FilterScreen.dart';
 import 'package:flutter_app/utils/BoardingService.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 
 class AdsScreen extends StatefulWidget {
