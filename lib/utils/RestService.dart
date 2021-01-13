@@ -112,9 +112,16 @@ class RestService {
     print(response.data);
     a.Get.back();
     if (response.statusCode == 200) {
-      for (var item in response.data) {
+      for( var item in response.data){
         _controller.myListData.add(BoardingProvider.fromJson(item));
+        print(_controller.)
+
       }
+      // for (var item in response.data) {
+      //   _controller.myListData.add(BoardingProvider.fromJson(response.data));
+      //   print(_controller.myListData);
+
+      // }
       return _controller.myListData;
     }
   }

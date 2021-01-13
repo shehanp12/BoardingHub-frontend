@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/localization/language_constants.dart';
+import 'package:flutter_app/screens/ProfileView.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/utils/BoardingService.dart';
 import 'package:flutter_app/widgets/Profile_List_item.dart';
@@ -18,52 +19,29 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kAppPrimaryColor,
-      body: Stack(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(25),
-            child: GetX<BoardingService>(
-              init: BoardingService(),
-              builder: (controller) => ListView.builder(
+        backgroundColor: kAppPrimaryColor,
+        body: Container(
+          child: GetX<BoardingService>(
+            init: BoardingService(),
+            builder: (controller) => ListView.builder(
                 itemCount: controller.myListData.length,
-                  itemBuilder:
-                  (BuildContext context,int index){
-                    return Column(
-                      children: <Widget>[
-                        AvatarImage(),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Text(
-                        controller.myListData[index].userName,
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: "Poppins"),
-                        ),
-                        Text(
-                          '0778342720',
-                          style: TextStyle(fontWeight: FontWeight.w300),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          'lakshan.bimantha@gmail.com',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 20, fontFamily: "Poppins"),
-                        ),
-                        ProfileListItems(),
-                      ],
-                    );
-                  }
+                itemBuilder:
+                    (BuildContext context,int index){
+                return ProfileView(
 
-              ),
+                  myData:controller.myListData[index]
+
+                );
+                }
 
             ),
-          )
-        ],
-      ),
-    );
+
+          ),
+        ));
+
+
+
+
   }
 }
 

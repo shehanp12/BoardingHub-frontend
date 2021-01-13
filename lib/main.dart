@@ -71,7 +71,7 @@ class _MyAppState extends State<MyApp> {
               theme: ThemeData(
                 primarySwatch: Colors.orange,
               ),
-              home:  WelcomePage(),
+              home: HomePage(),
               routes: <String, WidgetBuilder>{
                 '/signup': (BuildContext context) => SignUpPage(),
                 '/signin': (BuildContext context) => SignInPage(),

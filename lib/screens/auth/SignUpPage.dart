@@ -104,8 +104,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     FlatButton(
                       onPressed: () {
                         BoardingProvider boardingProvider =
-                            new BoardingProvider(userName, fullName, email,
-                                password, address, contactNumber);
+                            new BoardingProvider(0,userName, fullName, email,
+                                password, address, contactNumber,"","");
 
                         _register(boardingProvider);
                       },
