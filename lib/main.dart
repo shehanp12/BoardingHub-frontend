@@ -3,7 +3,7 @@ import 'package:flutter_app/screens/FeedPage.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 
 import 'package:flutter_app/screens/ProfilePage.dart';
-import 'package:flutter_app/screens/ad_view/home_screen.dart';
+
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
 import 'package:flutter_app/screens/viewData/ProfileEditPage.dart';
 
