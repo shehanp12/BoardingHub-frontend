@@ -19,7 +19,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  String username;
+  String userName;
   String fullName;
   String email;
   String password;
@@ -36,7 +36,7 @@ class _SignUpPageState extends State<SignUpPage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: white,
-          title: Text(getTranslated(context,'Sign_Up'),
+          title: Text(getTranslated(context, 'Sign_Up'),
               style: TextStyle(
                   color: Colors.grey, fontFamily: 'Poppins', fontSize: 15)),
           actions: <Widget>[
@@ -48,7 +48,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         type: PageTransitionType.rightToLeft,
                         child: SignInPage()));
               },
-              child: Text(getTranslated(context,'Sign_In'), style: contrastText),
+              child:
+                  Text(getTranslated(context, 'Sign_In'), style: contrastText),
             )
           ],
         ),
@@ -65,34 +66,45 @@ class _SignUpPageState extends State<SignUpPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(getTranslated(context,'Welcome_to_Boarding_Hub!'), style: h3),
-                        Text(getTranslated(context,'Lets_get_started'), style: taglineText),
-                        fryoTextInput(getTranslated(context,'Username'),
+                        Text(getTranslated(context, 'Welcome_to_Boarding_Hub!'),
+                            style: h3),
+                        Text(getTranslated(context, 'Lets_get_started'),
+                            style: taglineText),
+                        fryoTextInput(getTranslated(context, 'Username'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
-                            onChanged: (val) => setState(() => username = val)
-                        ),
-                        fryoTextInput(getTranslated(context,'Full_Name'),
+                            onChanged: (val) => setState(() => userName = val)),
+                        fryoTextInput(getTranslated(context, 'Full_Name'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => fullName = val)),
-                        fryoEmailInput(getTranslated(context,'Email_Address'),
+                        fryoEmailInput(getTranslated(context, 'Email_Address'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => email = val)),
-                        fryoPasswordInput(getTranslated(context,'Password'),
+                        fryoTextInput('Address',
+                            validator: (val) =>
+                                val == null || val.trim() == '' ? '' : null,
+                            onChanged: (val) => setState(() => address = val)),
+                        fryoTextInput('Contact Number',
+                            validator: (val) =>
+                                val == null || val.trim() == '' ? '' : null,
+                            onChanged: (val) =>
+                                setState(() => contactNumber = val)),
+                        fryoPasswordInput(getTranslated(context, 'Password'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => password = val))
                       ],
                     ),
-                    SizedBox(height: 15,),
+                    SizedBox(
+                      height: 15,
+                    ),
                     FlatButton(
                       onPressed: () {
-
                         BoardingProvider boardingProvider =
-                            new BoardingProvider(
-                                username, fullName, email, password,address,contactNumber);
+                            new BoardingProvider(userName, fullName, email,
+                                password, address, contactNumber);
 
                         _register(boardingProvider);
                       },
@@ -104,7 +116,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
               ),
-              height: 450,
+              height: 800,
               width: double.infinity,
               decoration: authPlateDecoration,
             ),
@@ -114,18 +126,18 @@ class _SignUpPageState extends State<SignUpPage> {
 
   void _register(boardingProvider) {
     if (!_formKey.currentState.validate()) {
-      _scaffoldKey.currentState.showSnackBar(
-        new SnackBar(
-          content: new Text(getTranslated(context,'Invalid_information'),),
-          backgroundColor: Colors.deepOrangeAccent,
+      _scaffoldKey.currentState.showSnackBar(new SnackBar(
+        content: new Text(
+          getTranslated(context, 'Invalid_information'),
         ),
-      );
+        backgroundColor: Colors.deepOrangeAccent,
+      ));
     }
     _restService.registerUser(boardingProvider).then((val) {
       val.data['success'] == true
           ? _scaffoldKey.currentState
               .showSnackBar(new SnackBar(
-                content: new Text(val.data['msg']),
+                content: new Text(val.data['message']),
                 backgroundColor: Colors.deepOrangeAccent,
               ))
               .closed
@@ -137,7 +149,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               )
           : _scaffoldKey.currentState.showSnackBar(new SnackBar(
-              content: new Text(val.data['msg']),
+              content: new Text(val.data['message']),
               backgroundColor: Colors.deepOrangeAccent,
             ));
     });

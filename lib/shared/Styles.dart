@@ -85,6 +85,8 @@ const inputFieldHintPaswordTextStyle = TextStyle(
 //////////////////////////////////
 
 const authPlateDecoration = BoxDecoration(
+  //image: DecorationImage(
+   //             image: AssetImage('images/background/bg2.jpg'),fit: BoxFit.cover),
     color: white,
     boxShadow: [
       BoxShadow(
