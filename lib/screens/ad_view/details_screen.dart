@@ -1,40 +1,38 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/models/AdsListData.dart';
+import 'package:flutter_app/models/BoardingHouse.dart';
 import 'package:flutter_app/models/suit_models.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DetailScreen extends StatefulWidget {
+  final BoardingHouse hotelData;
 
-  final Suitable suitable ;
-
-
-  DetailScreen(this.suitable);
+  DetailScreen(this.hotelData);
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  bool isLike = false;
 
-  bool isLike=false;
+  Icon icon = Icon(FontAwesomeIcons.solidHeart);
 
-  Icon icon = Icon(FontAwesomeIcons.solidHeart) ;
-
-  int _selectedIndex=0;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             expandedHeight: 300,
-
-
             pinned: true,
             flexibleSpace: ClipRRect(
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(60.0)),
+              borderRadius:
+                  BorderRadius.only(bottomLeft: Radius.circular(60.0)),
               child: FlexibleSpaceBar(
                 collapseMode: CollapseMode.parallax,
                 background: Stack(
@@ -44,30 +42,28 @@ class _DetailScreenState extends State<DetailScreen> {
                       top: 0,
                       right: 0,
                       left: 0,
-                      child: Hero(
-                        tag: widget.suitable.id,
-                        child: Image(
-                          image: AssetImage(widget.suitable.imgUrl),
-                          fit: BoxFit.cover,
-                        ),
+                      child: CachedNetworkImage(
+                        imageUrl: widget.hotelData.imageUrl,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     Positioned(
-                      bottom: 10,
-                      right: 10,
-                      child: FloatingActionButton(
-                        child: icon ,
-                        onPressed: () {
-                          setState(() {
-
-                            isLike=!isLike;
-                            icon = !isLike ? Icon(FontAwesomeIcons.solidHeart) : Icon(FontAwesomeIcons.solidHeart,color: Colors.red,);
-
-                          });
-                        },
-                      )
-                    )
-
+                        bottom: 10,
+                        right: 10,
+                        child: FloatingActionButton(
+                          child: icon,
+                          onPressed: () {
+                            setState(() {
+                              isLike = !isLike;
+                              icon = !isLike
+                                  ? Icon(FontAwesomeIcons.solidHeart)
+                                  : Icon(
+                                      FontAwesomeIcons.solidHeart,
+                                      color: Colors.red,
+                                    );
+                            });
+                          },
+                        ))
                   ],
                 ),
               ),
@@ -79,21 +75,23 @@ class _DetailScreenState extends State<DetailScreen> {
               child: Column(
                 children: <Widget>[
                   _buildTitleInfo(),
-                  SizedBox(height: 30.0,),
-                  _buildMenuBar(),
-                  SizedBox(height: 20.0,),
+                  SizedBox(
+                    height: 90.0,
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
                   _buildServiceBar(),
-                  SizedBox(height: 30.0,),
-                 _buildBookButton(),
-
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  _buildBookButton(),
                 ],
               ),
             ),
           )
         ],
       ),
-
-
     );
   }
 
@@ -104,24 +102,67 @@ class _DetailScreenState extends State<DetailScreen> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(widget.suitable.title,style: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.2
-            ),),
-            SizedBox(height:10.0 ,),
-            Text(widget.suitable.categorie),
+            Text(
+              widget.hotelData.title,
+              style: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.2),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Text(widget.hotelData.description,
+            //     textAlign: TextAlign.justify,
+            //   ),
+            // ),
+            Row(
+              textDirection: TextDirection.rtl,
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Expanded(
+                    child: Text(
+                      widget.hotelData.description,
+                      textAlign: TextAlign.justify,
+                      textDirection: TextDirection.ltr,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w100,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            //  Row(
+            //   textDirection: TextDirection.rtl,
+            //   children: <Widget>[
+            //
+            //     const Expanded(
+            //       child: Text("Flutter's hot reload helps you quickly and easily experiment, build UIs, add features, and fix bug faster. Experience sub-second reload times, without losing state, on emulators, simulators, and hardware for iOS and Android."),
+            //     ),
+            //
+            //   ],
+            // ),
           ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('\$${widget.suitable.price}',style: TextStyle(
-                fontSize: 19.0,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 1.2
-            ),),
-            SizedBox(height:10.0 ,),
+            Text(
+              '\$${widget.hotelData.perMonth}',
+              style: TextStyle(
+                  fontSize: 19.0,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1.2),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
             Text("Per month"),
           ],
         ),
@@ -130,19 +171,17 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   _buildMenuBar() {
-
     return Container(
-
       height: 45.0,
       child: ListView.builder(
         itemCount: listString.length,
         scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context,int index){
-          String menu=listString[index];
+        itemBuilder: (BuildContext context, int index) {
+          String menu = listString[index];
           return GestureDetector(
-            onTap: (){
+            onTap: () {
               setState(() {
-                _selectedIndex=index;
+                _selectedIndex = index;
               });
             },
             child: Container(
@@ -151,29 +190,34 @@ class _DetailScreenState extends State<DetailScreen> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(menu,style: TextStyle(
-                      fontSize: 20.0,
-                      color: _selectedIndex==index ? Theme.of(context).accentColor : Colors.grey
-
-                  ),),
-                  SizedBox(height: 5.0,),
-                  _selectedIndex==index ? Container(
-                    color: Theme.of(context).accentColor,
-                    height: 4.0,
-                    width: 30.0,
-                  ):SizedBox.shrink()
+                  Text(
+                    menu,
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        color: _selectedIndex == index
+                            ? Theme.of(context).accentColor
+                            : Colors.grey),
+                  ),
+                  SizedBox(
+                    height: 5.0,
+                  ),
+                  _selectedIndex == index
+                      ? Container(
+                          color: Theme.of(context).accentColor,
+                          height: 4.0,
+                          width: 30.0,
+                        )
+                      : SizedBox.shrink()
                 ],
               ),
             ),
           );
-
         },
       ),
     );
   }
 
   _buildServiceBar() {
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -184,22 +228,23 @@ class _DetailScreenState extends State<DetailScreen> {
               height: 70.0,
               decoration: BoxDecoration(
                   color: Colors.blue[100],
-                  borderRadius: BorderRadius.circular(45.0)
-              ),
-              child: Icon(FontAwesomeIcons.bath,
+                  borderRadius: BorderRadius.circular(45.0)),
+              child: Icon(
+                FontAwesomeIcons.bath,
                 color: Colors.blueAccent,
               ),
             ),
-
-            SizedBox(height: 10.0,),
-            Text("Bathroom"),
-
-            SizedBox(height: 10.0,),
-            Text("12 sqft",style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0
-            ),),
-
+            SizedBox(
+              height: 10.0,
+            ),
+            Text("AttachBathroom"),
+            SizedBox(
+              height: 10.0,
+            ),
+            // Text(
+            //   "12 sqft",
+            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+            // ),
           ],
         ),
         Column(
@@ -209,22 +254,23 @@ class _DetailScreenState extends State<DetailScreen> {
               height: 70.0,
               decoration: BoxDecoration(
                   color: Colors.blue[100],
-                  borderRadius: BorderRadius.circular(45.0)
-              ),
-              child: Icon(FontAwesomeIcons.bed,
+                  borderRadius: BorderRadius.circular(45.0)),
+              child: Icon(
+                FontAwesomeIcons.female,
                 color: Colors.blueAccent,
               ),
             ),
-
-            SizedBox(height: 10.0,),
-            Text("BedRoom"),
-
-            SizedBox(height: 10.0,),
-            Text("20 sqft",style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0
-            ),),
-
+            SizedBox(
+              height: 10.0,
+            ),
+            Text("GirlsOnly"),
+            SizedBox(
+              height: 10.0,
+            ),
+            // Text(
+            //   "20 sqft",
+            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+            // ),
           ],
         ),
         Column(
@@ -234,22 +280,23 @@ class _DetailScreenState extends State<DetailScreen> {
               height: 70.0,
               decoration: BoxDecoration(
                   color: Colors.blue[100],
-                  borderRadius: BorderRadius.circular(45.0)
-              ),
-              child: Icon(FontAwesomeIcons.dollyFlatbed,
+                  borderRadius: BorderRadius.circular(45.0)),
+              child: Icon(
+                FontAwesomeIcons.car,
                 color: Colors.blueAccent,
               ),
             ),
-
-            SizedBox(height: 10.0,),
-            Text("Livingroom"),
-
-            SizedBox(height: 10.0,),
-            Text("80 sqft",style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0
-            ),),
-
+            SizedBox(
+              height: 10.0,
+            ),
+            Text("Parking"),
+            SizedBox(
+              height: 10.0,
+            ),
+            // Text(
+            //   "80 sqft",
+            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+            // ),
           ],
         ),
       ],
@@ -257,13 +304,11 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   _buildBookButton() {
-
-    return  ClipRRect(
+    return ClipRRect(
       borderRadius: BorderRadius.circular(45.0),
       child: FlatButton(
         onPressed: () {},
         color: Colors.blue[800],
-
         child: Container(
           width: 180.0,
           height: 80.0,
@@ -272,13 +317,12 @@ class _DetailScreenState extends State<DetailScreen> {
             children: <Widget>[
               Container(
                 width: 120.0,
-
-
-                child: Text("Book now" ,style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-
-                ),
+                child: Text(
+                  "Book now",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -287,8 +331,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 height: 60.0,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius:  BorderRadius.circular(45.0),
-
+                  borderRadius: BorderRadius.circular(45.0),
                 ),
                 child: Icon(
                   Icons.arrow_forward_ios,
@@ -298,11 +341,8 @@ class _DetailScreenState extends State<DetailScreen> {
               )
             ],
           ),
-        ) ,
-
-
+        ),
       ),
     );
   }
-
 }
