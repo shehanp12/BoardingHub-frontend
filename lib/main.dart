@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/FeedPage.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/screens/Splashscreen.dart';
+import 'package:flutter_app/screens/settings/settings.dart';
 import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
 import 'package:get/get.dart';
