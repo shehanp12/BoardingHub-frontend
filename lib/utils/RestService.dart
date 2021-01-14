@@ -13,10 +13,7 @@ var _controller = BoardingService.to;
 class RestService {
   Dio _dio = new Dio();
 
-
-
   final String host = 'http://192.168.1.107:3000/';
-
 
   registerUser(boardingProvider) async {
     return await _dio.post(host + 'boardingProvider/signup', data: {
@@ -84,9 +81,6 @@ class RestService {
     Response response =
         await _dio.get('http://192.168.1.107:3000/boardingHouse');
 
-
-
-
     a.Get.back();
 
     if (response.statusCode == 200) {
@@ -114,10 +108,8 @@ class RestService {
     print(response.data);
     a.Get.back();
     if (response.statusCode == 200) {
-      for( var item in response.data){
+      for (var item in response.data) {
         _controller.myListData.add(BoardingProvider.fromJson(item));
-
-
       }
       // for (var item in response.data) {
       //   _controller.myListData.add(BoardingProvider.fromJson(response.data));
