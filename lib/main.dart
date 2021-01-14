@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/FeedPage.dart';
 import 'package:flutter_app/screens/HomePage.dart';
+
+import 'package:flutter_app/screens/ProfilePage.dart';
+import 'package:flutter_app/screens/ad_view/home_screen.dart';
+import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
+import 'package:flutter_app/screens/viewData/ProfileEditPage.dart';
+
 import 'package:flutter_app/screens/Splashscreen.dart';
-import 'package:flutter_app/screens/settings/settings.dart';
 import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
 import 'package:get/get.dart';
@@ -30,7 +35,6 @@ class MyApp extends StatefulWidget {
     state.setLocale(newlocale);
   }
 
-  // This widget is the root of your application.
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -61,8 +65,6 @@ class _MyAppState extends State<MyApp> {
     super.didChangeDependencies();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -74,9 +76,11 @@ class _MyAppState extends State<MyApp> {
               theme: ThemeData(
                 primarySwatch: Colors.orange,
               ),
+
               //home: AdsScreen(),
               home: SplashScreen(),
              
+
 
               routes: <String, WidgetBuilder>{
                 '/signup': (BuildContext context) => SignUpPage(),

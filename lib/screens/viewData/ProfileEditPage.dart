@@ -66,8 +66,7 @@ class MapScreenState extends State<ProfileeditPage>
                                 decoration: new BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: new DecorationImage(
-                                    image: new ExactAssetImage(
-                                        'images/as.png'),
+                                    image: new ExactAssetImage('images/as.png'),
                                     fit: BoxFit.cover,
                                   ),
                                 )),
@@ -162,7 +161,6 @@ class MapScreenState extends State<ProfileeditPage>
                                   ),
                                   enabled: !_status,
                                   autofocus: !_status,
-
                                 ),
                               ),
                             ],
