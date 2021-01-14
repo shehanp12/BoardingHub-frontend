@@ -1,12 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/models/AdsListData.dart';
+import 'package:flutter_app/models/BoardingHouse.dart';
 import 'package:flutter_app/models/suit_models.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DetailScreen extends StatefulWidget {
-  final Suitable suitable;
+  final BoardingHouse hotelData;
 
-  DetailScreen(this.suitable);
+  DetailScreen(this.hotelData);
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
@@ -39,12 +42,9 @@ class _DetailScreenState extends State<DetailScreen> {
                       top: 0,
                       right: 0,
                       left: 0,
-                      child: Hero(
-                        tag: widget.suitable.id,
-                        child: Image(
-                          image: AssetImage(widget.suitable.imgUrl),
-                          fit: BoxFit.cover,
-                        ),
+                      child: CachedNetworkImage(
+                        imageUrl: widget.hotelData.imageUrl,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     Positioned(
@@ -76,9 +76,8 @@ class _DetailScreenState extends State<DetailScreen> {
                 children: <Widget>[
                   _buildTitleInfo(),
                   SizedBox(
-                    height: 30.0,
+                    height: 90.0,
                   ),
-                  _buildMenuBar(),
                   SizedBox(
                     height: 20.0,
                   ),
@@ -104,7 +103,7 @@ class _DetailScreenState extends State<DetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              widget.suitable.title,
+              widget.hotelData.title,
               style: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.bold,
@@ -113,14 +112,49 @@ class _DetailScreenState extends State<DetailScreen> {
             SizedBox(
               height: 10.0,
             ),
-            Text(widget.suitable.categorie),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Text(widget.hotelData.description,
+            //     textAlign: TextAlign.justify,
+            //   ),
+            // ),
+            Row(
+              textDirection: TextDirection.rtl,
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Expanded(
+                    child: Text(
+                      widget.hotelData.description,
+                      textAlign: TextAlign.justify,
+                      textDirection: TextDirection.ltr,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w100,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            //  Row(
+            //   textDirection: TextDirection.rtl,
+            //   children: <Widget>[
+            //
+            //     const Expanded(
+            //       child: Text("Flutter's hot reload helps you quickly and easily experiment, build UIs, add features, and fix bug faster. Experience sub-second reload times, without losing state, on emulators, simulators, and hardware for iOS and Android."),
+            //     ),
+            //
+            //   ],
+            // ),
           ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              '\$${widget.suitable.price}',
+              '\$${widget.hotelData.perMonth}',
               style: TextStyle(
                   fontSize: 19.0,
                   fontWeight: FontWeight.w600,
@@ -203,14 +237,14 @@ class _DetailScreenState extends State<DetailScreen> {
             SizedBox(
               height: 10.0,
             ),
-            Text("Bathroom"),
+            Text("AttachBathroom"),
             SizedBox(
               height: 10.0,
             ),
-            Text(
-              "12 sqft",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-            ),
+            // Text(
+            //   "12 sqft",
+            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+            // ),
           ],
         ),
         Column(
@@ -222,21 +256,21 @@ class _DetailScreenState extends State<DetailScreen> {
                   color: Colors.blue[100],
                   borderRadius: BorderRadius.circular(45.0)),
               child: Icon(
-                FontAwesomeIcons.bed,
+                FontAwesomeIcons.female,
                 color: Colors.blueAccent,
               ),
             ),
             SizedBox(
               height: 10.0,
             ),
-            Text("BedRoom"),
+            Text("GirlsOnly"),
             SizedBox(
               height: 10.0,
             ),
-            Text(
-              "20 sqft",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-            ),
+            // Text(
+            //   "20 sqft",
+            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+            // ),
           ],
         ),
         Column(
@@ -248,21 +282,21 @@ class _DetailScreenState extends State<DetailScreen> {
                   color: Colors.blue[100],
                   borderRadius: BorderRadius.circular(45.0)),
               child: Icon(
-                FontAwesomeIcons.dollyFlatbed,
+                FontAwesomeIcons.car,
                 color: Colors.blueAccent,
               ),
             ),
             SizedBox(
               height: 10.0,
             ),
-            Text("Livingroom"),
+            Text("Parking"),
             SizedBox(
               height: 10.0,
             ),
-            Text(
-              "80 sqft",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-            ),
+            // Text(
+            //   "80 sqft",
+            //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+            // ),
           ],
         ),
       ],
