@@ -81,7 +81,6 @@ class RestService {
     Response response =
         await _dio.get('http://192.168.1.107:3000/boardingHouse');
 
-
     a.Get.back();
 
     if (response.statusCode == 200) {
@@ -109,10 +108,8 @@ class RestService {
     print(response.data);
     a.Get.back();
     if (response.statusCode == 200) {
-      for( var item in response.data){
+      for (var item in response.data) {
         _controller.myListData.add(BoardingProvider.fromJson(item));
-
-
       }
       // for (var item in response.data) {
       //   _controller.myListData.add(BoardingProvider.fromJson(response.data));
