@@ -1,4 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flutter_app/screens/settings/Myads.dart';
+
 import 'package:flutter_app/screens/FeedPage.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 
@@ -11,15 +15,15 @@ import 'package:flutter_app/screens/Splashscreen.dart';
 
 import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'localization/language_constants.dart';
+
 import 'localization/demo_localization.dart';
+import 'localization/language_constants.dart';
 import 'screens/auth/SignInPage.dart';
 import 'screens/auth/SignUpPage.dart';
 import 'screens/viewData/ProductPage.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() => runApp(MyApp());
 
@@ -79,8 +83,11 @@ class _MyAppState extends State<MyApp> {
               ),
 
               //home: AdsScreen(),
-              home:(),
-             
+
+
+              home: HomePage(),
+
+
 
 
               routes: <String, WidgetBuilder>{
