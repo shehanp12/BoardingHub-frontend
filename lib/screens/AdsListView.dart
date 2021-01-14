@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/models/BoardingHouse.dart';
+import 'package:flutter_app/screens/ad_view/details_screen.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
@@ -61,128 +62,139 @@ class AdsListView extends StatelessWidget {
                                 imageUrl: hotelData.imageUrl,
                               ),
                             ),
-                            Container(
-                              color: CardAppTheme.buildLightTheme()
-                                  .backgroundColor,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Container(
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 16, top: 8, bottom: 8),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              hotelData.title,
-                                              textAlign: TextAlign.left,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 22,
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DetailScreen(hotelData)
+                                  ),
+                                );
+
+                              },
+                              child: Container(
+                                color: CardAppTheme.buildLightTheme()
+                                    .backgroundColor,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Container(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 16, top: 8, bottom: 8),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                hotelData.title,
+                                                textAlign: TextAlign.left,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 22,
+                                                ),
                                               ),
-                                            ),
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: <Widget>[
-                                                Text(
-                                                  hotelData.subtitle,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.grey
-                                                          .withOpacity(0.8)),
-                                                ),
-                                                const SizedBox(
-                                                  width: 4,
-                                                ),
-                                                Icon(
-                                                  FontAwesomeIcons.mapMarkerAlt,
-                                                  size: 12,
-                                                  color: CardAppTheme
-                                                          .buildLightTheme()
-                                                      .primaryColor,
-                                                ),
-                                                Expanded(
-                                                  child: Text(
-                                                    '${hotelData.distance.toStringAsFixed(1)} km to city',
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Text(
+                                                    hotelData.subtitle,
                                                     style: TextStyle(
                                                         fontSize: 14,
                                                         color: Colors.grey
                                                             .withOpacity(0.8)),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.only(top: 4),
-                                              child: Row(
-                                                children: <Widget>[
-                                                  SmoothStarRating(
-                                                    allowHalfRating: true,
-                                                    starCount: 5,
-                                                    rating: 4.4,
-                                                    size: 20,
+                                                  const SizedBox(
+                                                    width: 4,
+                                                  ),
+                                                  Icon(
+                                                    FontAwesomeIcons.mapMarkerAlt,
+                                                    size: 12,
                                                     color: CardAppTheme
                                                             .buildLightTheme()
                                                         .primaryColor,
-                                                    borderColor: CardAppTheme
-                                                            .buildLightTheme()
-                                                        .primaryColor,
                                                   ),
-                                                  Text(
-                                                    ' ${80} Reviews',
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        color: Colors.grey
-                                                            .withOpacity(0.8)),
+                                                  Expanded(
+                                                    child: Text(
+                                                      '${hotelData.distance.toStringAsFixed(1)} km to city',
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Colors.grey
+                                                              .withOpacity(0.8)),
+                                                    ),
                                                   ),
                                                 ],
                                               ),
-                                            ),
-                                          ],
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.only(top: 4),
+                                                child: Row(
+                                                  children: <Widget>[
+                                                    SmoothStarRating(
+                                                      allowHalfRating: true,
+                                                      starCount: 5,
+                                                      rating: 4.4,
+                                                      size: 20,
+                                                      color: CardAppTheme
+                                                              .buildLightTheme()
+                                                          .primaryColor,
+                                                      borderColor: CardAppTheme
+                                                              .buildLightTheme()
+                                                          .primaryColor,
+                                                    ),
+                                                    Text(
+                                                      ' ${80} Reviews',
+                                                      style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Colors.grey
+                                                              .withOpacity(0.8)),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        right: 16, top: 8),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: <Widget>[
-                                        Text(
-                                          ' ${5} Reviews',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 22,
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          right: 16, top: 8),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: <Widget>[
+                                          Text(
+                                            ' ${5} Reviews',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 22,
+                                            ),
                                           ),
-                                        ),
-                                        // Text(
-                                        //   '/per night',
-                                        //   style: TextStyle(
-                                        //       fontSize: 14,
-                                        //       color:
-                                        //           Colors.grey.withOpacity(0.8)),
-                                        // ),
-                                      ],
+                                          // Text(
+                                          //   '/per night',
+                                          //   style: TextStyle(
+                                          //       fontSize: 14,
+                                          //       color:
+                                          //           Colors.grey.withOpacity(0.8)),
+                                          // ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ],

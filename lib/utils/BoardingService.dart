@@ -22,7 +22,7 @@ class BoardingService extends GetxController {
   void onInit() {
     print(myListData);
     RestService.fetchBoardingdetails();
-    RestService.fetchMyDetails();
+    // RestService.fetchMyDetails();
     super.onInit();
   }
 }

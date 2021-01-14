@@ -3,6 +3,7 @@ import 'package:flutter_app/screens/FeedPage.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 
 import 'package:flutter_app/screens/ProfilePage.dart';
+import 'package:flutter_app/screens/ad_view/home_screen.dart';
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
 import 'package:flutter_app/screens/viewData/ProfileEditPage.dart';
 
@@ -65,8 +66,6 @@ class _MyAppState extends State<MyApp> {
     super.didChangeDependencies();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -78,13 +77,7 @@ class _MyAppState extends State<MyApp> {
               theme: ThemeData(
                 primarySwatch: Colors.orange,
               ),
-
-              home:WelcomePage(),
-
-           
-             
-
-
+              home:HomePage(),
               routes: <String, WidgetBuilder>{
                 '/signup': (BuildContext context) => SignUpPage(),
                 '/signin': (BuildContext context) => SignInPage(),
