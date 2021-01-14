@@ -23,13 +23,10 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: EdgeInsets.all(25),
             child: Column(
               children: <Widget>[
-
                 AvatarImage(),
                 SizedBox(
                   height: 25,
                 ),
-
-
                 Text(
                   'Anjana98',
                   style: TextStyle(
@@ -114,8 +111,6 @@ class AvatarImage extends StatelessWidget {
   }
 }
 
-
-
 class ProfileListItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -124,28 +119,30 @@ class ProfileListItems extends StatelessWidget {
         children: <Widget>[
           ProfileListItem(
             icon: LineAwesomeIcons.user_shield,
-            text:getTranslated(context, 'My_Ads'),
+            text: getTranslated(context, 'My_Ads'),
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.history,
-            text:getTranslated(context,'Purchase_History'),
+            text: getTranslated(context, 'Purchase_History'),
+
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.question_circle,
-            text:getTranslated(context,'Help_&_Support'),
+            text: getTranslated(context, 'Help_&_Support'),
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.cog,
-            text:getTranslated(context,'Settings'),
+            text: getTranslated(context, 'Settings'),
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.user_plus,
-            text:getTranslated(context, 'Invite_a_Friend'),
+            text: getTranslated(context, 'Invite_a_Friend'),
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.alternate_sign_out,
-            text:getTranslated(context,'Logout'),
-            hasNavigation: false,
+            text: getTranslated(context, 'Logout'),
+
+
           ),
         ],
       ),
