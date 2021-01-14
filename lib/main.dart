@@ -1,6 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_app/screens/settings/Myads.dart';
+
+import 'package:flutter_app/screens/FeedPage.dart';
+import 'package:flutter_app/screens/HomePage.dart';
+
+import 'package:flutter_app/screens/ProfilePage.dart';
+
+import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
+import 'package:flutter_app/screens/viewData/ProfileEditPage.dart';
+
+import 'package:flutter_app/screens/Splashscreen.dart';
+
 import 'package:flutter_app/utils/RestService.dart';
 import 'package:flutter_app/widgets/Loading_Screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -71,7 +83,9 @@ class _MyAppState extends State<MyApp> {
               ),
 
               //home: AdsScreen(),
-              home: MyadScreen(),
+
+              home: HomePage(),
+
              
 
 
