@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/models/AdsListData.dart';
 import 'package:flutter_app/models/BoardingHouse.dart';
 import 'package:flutter_app/models/suit_models.dart';
+import 'package:flutter_app/shared/Colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -75,15 +76,13 @@ class _DetailScreenState extends State<DetailScreen> {
               child: Column(
                 children: <Widget>[
                   _buildTitleInfo(),
-                  SizedBox(
-                    height: 90.0,
-                  ),
+                  
                   SizedBox(
                     height: 20.0,
                   ),
                   _buildServiceBar(),
                   SizedBox(
-                    height: 30.0,
+                    height: 20.0,
                   ),
                   _buildBookButton(),
                 ],
@@ -129,8 +128,8 @@ class _DetailScreenState extends State<DetailScreen> {
                       textAlign: TextAlign.justify,
                       textDirection: TextDirection.ltr,
                       style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w100,
+                        fontSize: 19,
+                        fontWeight: FontWeight.w200,
                       ),
                     ),
                   ),
@@ -216,11 +215,11 @@ class _DetailScreenState extends State<DetailScreen> {
               width: 70.0,
               height: 70.0,
               decoration: BoxDecoration(
-                  color: Colors.blue[100],
+                  color: Colors.orange[100],
                   borderRadius: BorderRadius.circular(45.0)),
               child: Icon(
                 FontAwesomeIcons.bath,
-                color: Colors.blueAccent,
+                color: Colors.black,
               ),
             ),
             SizedBox(
@@ -242,11 +241,11 @@ class _DetailScreenState extends State<DetailScreen> {
               width: 70.0,
               height: 70.0,
               decoration: BoxDecoration(
-                  color: Colors.blue[100],
+                  color: Colors.orange[100],
                   borderRadius: BorderRadius.circular(45.0)),
               child: Icon(
                 FontAwesomeIcons.female,
-                color: Colors.blueAccent,
+                color: Colors.black,
               ),
             ),
             SizedBox(
@@ -268,11 +267,11 @@ class _DetailScreenState extends State<DetailScreen> {
               width: 70.0,
               height: 70.0,
               decoration: BoxDecoration(
-                  color: Colors.blue[100],
+                  color: Colors.orange[100],
                   borderRadius: BorderRadius.circular(45.0)),
               child: Icon(
                 FontAwesomeIcons.car,
-                color: Colors.blueAccent,
+                color: Colors.black,
               ),
             ),
             SizedBox(
@@ -297,7 +296,7 @@ class _DetailScreenState extends State<DetailScreen> {
       borderRadius: BorderRadius.circular(45.0),
       child: FlatButton(
         onPressed: () {},
-        color: Colors.blue[800],
+        color: primaryColor,
         child: Container(
           width: 180.0,
           height: 80.0,
@@ -307,7 +306,7 @@ class _DetailScreenState extends State<DetailScreen> {
               Container(
                 width: 120.0,
                 child: Text(
-                  "Book now",
+                  "Call now",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,

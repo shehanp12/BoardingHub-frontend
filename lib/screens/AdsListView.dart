@@ -176,11 +176,11 @@ class AdsListView extends StatelessWidget {
                                             CrossAxisAlignment.end,
                                         children: <Widget>[
                                           Text(
-                                            ' ${5} Reviews',
+                                            ' ${50}Per Month',
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w600,
-                                              fontSize: 22,
+                                              fontSize: 15,
                                             ),
                                           ),
                                           // Text(
