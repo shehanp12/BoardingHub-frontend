@@ -11,6 +11,7 @@ import 'package:flutter_app/screens/viewData/BoardingRegisterPage.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/screens/bottom_navigation_view/TabIconData.dart';
 import 'package:flutter_app/utils/BoardingService.dart';
+import 'package:flutter_app/utils/RestService.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -42,6 +43,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   void initState() {
+    RestService.fetchBoardingdetails();
     tabIconsList.forEach((TabIconData tab) {
       tab.isSelected = false;
     });

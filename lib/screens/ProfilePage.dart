@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/localization/language_constants.dart';
+import 'package:flutter_app/screens/settings/Myads.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/widgets/Profile_List_item.dart';
+import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -117,9 +119,15 @@ class ProfileListItems extends StatelessWidget {
     return Expanded(
       child: ListView(
         children: <Widget>[
-          ProfileListItem(
-            icon: LineAwesomeIcons.user_shield,
-            text: getTranslated(context, 'My_Ads'),
+          GestureDetector(
+            onTap: (){
+              Get.to(MyadScreen());
+            },
+            child: ProfileListItem(
+              icon: LineAwesomeIcons.user_shield,
+              text: getTranslated(context, 'My_Ads'),
+
+            ),
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.history,
