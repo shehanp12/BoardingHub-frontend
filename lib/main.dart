@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/settings/ChangeLanguage.dart';
 
 import 'package:flutter_app/screens/settings/Myads.dart';
 
@@ -84,7 +85,8 @@ class _MyAppState extends State<MyApp> {
 
               //home: AdsScreen(),
 
-              home: HomePage(),
+
+              home: SplashScreen(),
 
              
 
