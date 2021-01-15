@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import '../../shared/Styles.dart';
 import '../../shared/Buttons.dart';
 import 'package:flutter_app/localization/language_constants.dart';
@@ -12,7 +12,6 @@ import 'package:flutter_app/main.dart';
 
 class WelcomePage extends StatefulWidget {
   final String pageTitle;
-  
 
   WelcomePage({Key key, this.pageTitle}) : super(key: key);
 
@@ -25,37 +24,36 @@ class _WelcomePageState extends State<WelcomePage> {
     Locale _locale = await setLocale(language.languageCode);
     MyApp.setLocale(context, _locale);
   }
+
   DateTime current;
 
-Future<bool> popped() async{
-    DateTime now = DateTime.now();
-    if (current == null || now.difference(current) > Duration(seconds: 2)) {
-      current = now;
-      Fluttertoast.showToast(
-        msg: "Press back Again To exit!",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        textColor: Colors.white,
-        backgroundColor: Color.fromARGB(1000, 4, 1, 0)
-      );
-      
-      return Future.value(false);
-    } else {
-      Fluttertoast.cancel();
-      //bool user = await checkUser();
-      //if(user){
-     //   SystemNavigator.pop();
-     // } 
-      return Future.value(true);
-    }
-    
-  }
+// Future<bool> popped() async{
+//     DateTime now = DateTime.now();
+//     if (current == null || now.difference(current) > Duration(seconds: 2)) {
+//       current = now;
+//       Fluttertoast.showToast(
+//         msg: "Press back Again To exit!",
+//         toastLength: Toast.LENGTH_SHORT,
+//         gravity: ToastGravity.CENTER,
+//         textColor: Colors.white,
+//         backgroundColor: Color.fromARGB(1000, 4, 1, 0)
+//       );
+//
+//       return Future.value(false);
+//     } else {
+//       Fluttertoast.cancel();
+//       //bool user = await checkUser();
+//       //if(user){
+//      //   SystemNavigator.pop();
+//      // }
+//       return Future.value(true);
+//     }
+//
+//   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop:() => popped(),
-    child: Scaffold(
+    return Scaffold(
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
@@ -130,6 +128,6 @@ Future<bool> popped() async{
         )),
         //backgroundColor: bgColor,
       ),
-    ),);
+    );
   }
 }
