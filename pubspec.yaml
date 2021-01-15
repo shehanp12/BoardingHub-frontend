@@ -49,7 +49,7 @@ dependencies:
   provider: ^3.1.0
   splashscreen:
   animated_text_kit: 
-  url_launcher: ^5.4.11
+  url_launcher: 
   fluttertoast: ^7.1.6
 
   

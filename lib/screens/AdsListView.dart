@@ -180,7 +180,7 @@ class AdsListView extends StatelessWidget {
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w600,
-                                              fontSize: 22,
+                                              fontSize: 20,
                                             ),
                                           ),
                                           // Text(
