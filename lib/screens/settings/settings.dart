@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/settings/ChangeLanguage.dart';
 import 'package:flutter_app/shared/Colors.dart';
 
 
@@ -51,28 +52,7 @@ class _SettingPageState extends State<SettingPage> {
                         ),
                         CloseButton()
                       ],
-                    ),
-                    ListTile(
-                      title: Text( "change_password"),
-                      leading: Icon(
-                        Icons.lock,
-                        color: primaryColor,
-                        size: 20.0,
-                      ),
-                      //onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        //  builder: (_) => ChangePasswordPage())),
-                    ),
-                    Divider(),
-//                     ListTile(
-//                    title: Text('Change Address'),
-//                    leading: Icon(Icons.local_post_office,
-//                            color: Colors.blue,
-//                            size: 20.0,
-//                            ),
-//                    onTap: () => Navigator.of(context).push(
-//                        MaterialPageRoute(builder: (_) => ChangePasswordPage())),
-//                  ),
-//                    Divider(),
+                    ),         
                     ListTile(
                       title:  Text( "change_language"),
                       leading: Icon(
@@ -80,8 +60,8 @@ class _SettingPageState extends State<SettingPage> {
                         color: primaryColor,
                         size: 20.0,
                       ),
-                      //onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                       //   builder: (_) => Language_Settings())),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => ChangeLanguagePage())),
                     ),
                   ],
                 ),

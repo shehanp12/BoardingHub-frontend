@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/screens/settings/Myads.dart';
+import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/widgets/Profile_List_item.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key key, this.title}) : super(key: key);
@@ -13,6 +18,32 @@ class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
+Future<Null> logoutUser() async {
+    //logout user
+    SharedPreferences prefs;
+    prefs = await SharedPreferences.getInstance();
+    //await _auth.signOut();
+    prefs.clear();
+    prefs.commit();
+  } 
+
+void launchWhatsApp() async {
+    String url() {
+      String phone = "+966539500051";
+      String message = "";
+      if (Platform.isIOS) {
+        return "whatsapp://wa.me/$phone/?text=${Uri.parse(message)}";
+      } else {
+        return "whatsapp://send?phone=$phone&text=${Uri.parse(message)}";
+      }
+    }
+
+    if (await canLaunch(url())) {
+      await launch(url());
+    } else {
+      throw 'Could not launch ${url()}';
+    }
+  }
 
 class _ProfilePageState extends State<ProfilePage> {
   @override
@@ -144,13 +175,25 @@ class ProfileListItems extends StatelessWidget {
           ),
           ProfileListItem(
             icon: LineAwesomeIcons.user_plus,
-            text: getTranslated(context, 'Invite_a_Friend'),
-          ),
+            text:getTranslated(context, 'Invite_a_Friend'),
+            onPress: () async {
+              await launchWhatsApp();
+                          },),
           ProfileListItem(
             icon: LineAwesomeIcons.alternate_sign_out,
-            text: getTranslated(context, 'Logout'),
+            text:getTranslated(context,'Logout'),
+            //hasNavigation: false,
+            onPress:() async {
+                                        await logoutUser();
+                                        //state.onRemoveLocation();
 
-
+                                        Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    WelcomePage()),
+                                            (Route<dynamic> route) => false);
+                                      } ,
           ),
         ],
       ),
