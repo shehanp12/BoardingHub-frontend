@@ -50,6 +50,7 @@ dependencies:
   splashscreen:
   animated_text_kit: 
   url_launcher: ^5.4.11
+  fluttertoast: ^7.1.6
 
   
 dev_dependencies:
