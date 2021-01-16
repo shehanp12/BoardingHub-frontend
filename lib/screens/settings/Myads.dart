@@ -46,7 +46,35 @@ class MyadScreenState extends State<MyadScreen> {
 
   
 
-  
+  createDummyData() {
+    setState(() {
+      categories.clear();
+
+      categories.add(new Myad(
+          id: 7, name: "Kaduwela", image: "images/room1.jpeg", ));
+
+      categories.add(new Myad(
+          id: 1, name: "Colombo", image: "images/room2.jpeg", ));
+
+      categories.add(new Myad(
+          id: 2, name: "Nittambuwa", image: "images/room1.jpeg", ));
+
+      categories.add(new Myad(
+          id: 3,
+          name: "Homagama",
+          image: "images/room1.jpeg",
+          ));
+
+      categories.add(new Myad(
+          id: 4, name: "London", image: "images/room1.jpeg", ));
+
+      categories.add(new Myad(
+          id: 5, name: "Gampaha", image: "images/room1.jpeg", ));
+
+      categories.add(new Myad(
+          id: 6, name: "Nugegoda", image: "images/room1.jpeg", ));
+    });
+  }
 }
 
 typedef void MyadClick(Myad myad);
