@@ -45,8 +45,6 @@ class _SignInPageState extends State<SignInPage> {
                         child: SignUpPage()));
                 sharedPreferences.clear();
                 sharedPreferences.commit();
-
-
               },
               child: Text(getTranslated(context,'Sign_Up'), style: contrastText),
             )
