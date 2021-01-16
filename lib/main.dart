@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
               //home: AdsScreen(),
 
 
-              home: HomePage(),
+              home: SplashScreen(),
 
               routes: <String, WidgetBuilder>{
                 '/signup': (BuildContext context) => SignUpPage(),

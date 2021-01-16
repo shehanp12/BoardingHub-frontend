@@ -66,6 +66,8 @@
   "Logout": "Logout",
   "City": "City",
   "20_rooms_found": "20 rooms found",
-  "Filter": "Filter"
+  "Filter": "Filter",
+  "Address":"Address",
+  "Contact Number":"Contact Number"
 
 }
