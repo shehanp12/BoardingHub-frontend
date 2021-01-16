@@ -37,7 +37,21 @@ class _ChangeCountryPageState extends State<ChangeLanguagePage> {
               child: Column(
                 
                 children: [
-                  
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                       
+                          
+                        Text(getTranslated(context, 'Choose language'),
+                          style: TextStyle(
+                            color: Colors.black26,
+                            fontSize: 22,
+        
+                          ),
+                        ),
+                        CloseButton()
+                      ],
+                    ),
                   SizedBox(
                     height: 50,
                   ),
