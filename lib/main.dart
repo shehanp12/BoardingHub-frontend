@@ -24,7 +24,6 @@ import 'localization/demo_localization.dart';
 import 'localization/language_constants.dart';
 import 'screens/auth/SignInPage.dart';
 import 'screens/auth/SignUpPage.dart';
-import 'screens/viewData/ProductPage.dart';
 
 void main() => runApp(MyApp());
 
