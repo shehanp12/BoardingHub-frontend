@@ -21,6 +21,7 @@ Future<Locale> getLocale() async {
   return _locale(languageCode);
 }
 
+
 Locale _locale(String languageCode) {
   switch (languageCode) {
     case ENGLISH:
