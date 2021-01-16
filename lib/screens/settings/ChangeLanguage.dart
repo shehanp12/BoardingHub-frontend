@@ -70,7 +70,20 @@ class _ChangeCountryPageState extends State<ChangeLanguagePage> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  
+                  SizedBox(
+                    height: 40,
+                    width: MediaQuery.of(context).size.width,
+                    child: RaisedButton(
+                      onPressed: () {
+                        _changeLanguage(Language.languageList().last);
+                      },
+                      child: Text(
+                          Language.languageList().last.flag +
+                              "   " +
+                              Language.languageList().last.name,
+                          style: TextStyle(fontSize: 20)),
+                    ),
+                  )
                 ],
               ),
             )
