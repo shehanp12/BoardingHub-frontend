@@ -73,38 +73,7 @@ class MenudrawerPage extends StatelessWidget {
                 },
               ),
             ),
-            Container(
-              height: 55,
-              margin: EdgeInsets.symmetric(
-                horizontal: 10,
-              ).copyWith(
-                bottom: 20,
-              ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.grey[300],
-              ),
-              child: ListTile(
-                leading: Icon(
-                  Icons.contact_mail,
-                  color: Colors.deepOrangeAccent,
-                  size: 25.0,
-                ),
-                title: Text(getTranslated(context,'Contact_Us'),),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.deepOrangeAccent,
-                ),
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                    return ContactUs();
-                  }));
-                },
-              ),
-            ),
+            
             Container(
               height: 55,
               margin: EdgeInsets.symmetric(
