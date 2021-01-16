@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage>
 
   @override
   void initState() {
-    RestService.fetchBoardingdetails();
     tabIconsList.forEach((TabIconData tab) {
       tab.isSelected = false;
     });

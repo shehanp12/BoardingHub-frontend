@@ -66,6 +66,10 @@
   "Logout": "ඉවත් වන්න",
   "City": "නගරය",
   "20_rooms_found": "20 කාමර හමු විය",
-  "Filter": "පෙරහන"
+  "Filter": "පෙරහන",
+  "Address":"ලිපිනය",
+  "Contact Number":"ඇමතුම් අංකය",
+  "Choose language":"භාෂාව තෝරන්න",
+  "settings": "සැකසුම්"
 
 }

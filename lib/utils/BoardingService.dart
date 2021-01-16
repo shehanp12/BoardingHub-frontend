@@ -21,7 +21,7 @@ class BoardingService extends GetxController {
   @override
   void onInit() {
     print(myListData);
-
+      RestService.fetchBoardingdetails();
     // RestService.fetchMyDetails();
     super.onInit();
   }
