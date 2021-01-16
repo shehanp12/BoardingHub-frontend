@@ -61,7 +61,39 @@ class _AboutusPageState extends State<Hotline> {
                           ]),
                       height: MediaQuery.of(context).size.height / 6,
                       child: Center(
-                        
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.contact_phone_outlined,
+                                  color: Colors.deepOrangeAccent,
+                                  size: 40.0,
+                                )
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(getTranslated(context,"General_Inquiries"),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        //fontWeight: FontWeight.bold,
+                                        fontSize: 15.0,
+                                        fontFamily: 'Pacifico')),
+                                Text("+94117433433",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        //fontWeight: FontWeight.bold,
+                                        fontSize: 15.0,
+                                        fontFamily: 'Pacifico')),
+                                
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
