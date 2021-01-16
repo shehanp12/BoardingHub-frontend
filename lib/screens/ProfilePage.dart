@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/screens/settings/Myads.dart';
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
+import 'package:flutter_app/screens/settings/settings.dart';
 import 'package:flutter_app/shared/AppTheme.dart';
 import 'package:flutter_app/widgets/Profile_List_item.dart';
 import 'package:get/get.dart';
@@ -169,21 +170,27 @@ class ProfileListItems extends StatelessWidget {
             icon: LineAwesomeIcons.question_circle,
             text: getTranslated(context, 'Help_&_Support'),
           ),
-          ProfileListItem(
+           GestureDetector(
+             onTap: (){
+              Get.to(SettingPage());
+            },
+          child:ProfileListItem(
             icon: LineAwesomeIcons.cog,
             text: getTranslated(context, 'Settings'),
-          ),
-          ProfileListItem(
+            
+          ),),
+
+          GestureDetector(
+             onTap: ()async {
+              await launchWhatsApp();
+                          },
+          child:ProfileListItem(
             icon: LineAwesomeIcons.user_plus,
             text:getTranslated(context, 'Invite_a_Friend'),
-            onPress: () async {
-              await launchWhatsApp();
-                          },),
-          ProfileListItem(
-            icon: LineAwesomeIcons.alternate_sign_out,
-            text:getTranslated(context,'Logout'),
-            //hasNavigation: false,
-            onPress:() async {
+            ),),
+
+          GestureDetector(
+             onTap: ()async {
                                         await logoutUser();
                                         //state.onRemoveLocation();
 
@@ -194,6 +201,11 @@ class ProfileListItems extends StatelessWidget {
                                                     WelcomePage()),
                                             (Route<dynamic> route) => false);
                                       } ,
+          child:ProfileListItem(
+            icon: LineAwesomeIcons.alternate_sign_out,
+            text:getTranslated(context,'Logout'),
+            //hasNavigation: false,
+          )
           ),
         ],
       ),
