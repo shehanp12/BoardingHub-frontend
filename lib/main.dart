@@ -91,7 +91,6 @@ class _MyAppState extends State<MyApp> {
               routes: <String, WidgetBuilder>{
                 '/signup': (BuildContext context) => SignUpPage(),
                 '/signin': (BuildContext context) => SignInPage(),
-                '/productPage': (BuildContext context) => ProductPage(),
               },
               locale: _locale,
               supportedLocales: [
