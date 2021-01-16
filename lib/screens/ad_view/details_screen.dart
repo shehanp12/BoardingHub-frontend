@@ -294,7 +294,7 @@ class _DetailScreenState extends State<DetailScreen> {
       borderRadius: BorderRadius.circular(45.0),
       child: FlatButton(
         onPressed: () {},
-        color: Colors.orange[500],
+        color: Colors.orange[300],
         child: Container(
           width: 180.0,
           height: 80.0,

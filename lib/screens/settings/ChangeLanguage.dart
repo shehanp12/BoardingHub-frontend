@@ -42,8 +42,7 @@ class _ChangeCountryPageState extends State<ChangeLanguagePage> {
                       children: <Widget>[
                        
                           
-                        Text(
-                          "Choose language",
+                        Text(getTranslated(context, 'Choose language'),
                           style: TextStyle(
                             color: Colors.black26,
                             fontSize: 22,
