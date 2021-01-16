@@ -18,7 +18,6 @@ class SignInPage extends StatefulWidget {
   @override
   _SignInPageState createState() => _SignInPageState();
 }
-
 class _SignInPageState extends State<SignInPage> {
   String email;
   String password;
@@ -111,7 +110,6 @@ class _SignInPageState extends State<SignInPage> {
         ),
       );
     }
-
     _restService.login(email, password).then((val)  {
 
       // sharedPreferences.setString("token", val.data['token']);
@@ -135,6 +133,7 @@ class _SignInPageState extends State<SignInPage> {
               content: new Text(val.data['message']),
               backgroundColor: Colors.deepOrangeAccent,
             ));
-    });
+    }
+    );
   }
 }
