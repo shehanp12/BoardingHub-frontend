@@ -30,7 +30,16 @@ class _AboutusPageState extends State<AboutUs> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: Text(getTranslated(context,
+                  'About_Us'),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0),
+                ),
+              ),
               Flexible(
                 child: ListView(
                   children: <Widget>[
