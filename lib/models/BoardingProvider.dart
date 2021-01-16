@@ -39,14 +39,12 @@ class BoardingProvider {
 
   factory BoardingProvider.fromJson(Map<String, dynamic> json) =>
       BoardingProvider(
-
         json["fullName"],
         json["email"],
         json["contactNumber"],
         json["userName"],
         json["address"],
         json["password"]
-
       );
 
   Map<String, dynamic> toJson() => {
