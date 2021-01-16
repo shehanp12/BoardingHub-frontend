@@ -12,14 +12,13 @@ String boardingProviderToJson(BoardingProvider data) =>
 
 class BoardingProvider {
   BoardingProvider(
-
       String fullName,
       String email,
       String contactNumber,
       String userName,
       String address,
       String password,
-
+      
       ) {
 
     this.fullName = fullName;
@@ -37,7 +36,6 @@ class BoardingProvider {
   String userName;
   String address;
   String password;
-
 
   factory BoardingProvider.fromJson(Map<String, dynamic> json) =>
       BoardingProvider(
