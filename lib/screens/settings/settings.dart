@@ -22,5 +22,54 @@ class _SettingPageState extends State<SettingPage> {
     });
   }
 
-  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: LayoutBuilder(
+        builder: (_, constraints) => GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          child: SingleChildScrollView(
+            controller: scrollController,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: constraints.maxHeight,
+              ),
+              child: Container(
+                margin: const EdgeInsets.only(top: kToolbarHeight),
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(getTranslated(context, 'settings'),
+                          style: TextStyle(
+                            color: Colors.black26,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        CloseButton()
+                      ],
+                    ),         
+                    ListTile(
+                      title:  Text( getTranslated(context, 'change_language'),),
+                      leading: Icon(
+                        Icons.category,
+                        color: primaryColor,
+                        size: 20.0,
+                      ),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => ChangeLanguagePage())),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
