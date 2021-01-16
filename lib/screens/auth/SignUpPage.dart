@@ -82,11 +82,11 @@ class _SignUpPageState extends State<SignUpPage> {
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => email = val)),
-                        fryoTextInput('Address',
+                        fryoTextInput(getTranslated(context, 'Address'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => address = val)),
-                        fryoTextInput('Contact Number',
+                        fryoTextInput(getTranslated(context, 'Contact Number'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) =>

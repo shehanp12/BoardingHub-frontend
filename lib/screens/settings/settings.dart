@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
+import 'package:flutter_app/screens/settings/ChangeLanguage.dart';
 import 'package:flutter_app/shared/Colors.dart';
 
 
@@ -41,8 +43,7 @@ class _SettingPageState extends State<SettingPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text(
-                          "settings",
+                        Text(getTranslated(context, 'settings'),
                           style: TextStyle(
                             color: Colors.black26,
                             fontSize: 22,
@@ -51,37 +52,16 @@ class _SettingPageState extends State<SettingPage> {
                         ),
                         CloseButton()
                       ],
-                    ),
+                    ),         
                     ListTile(
-                      title: Text( "change_password"),
-                      leading: Icon(
-                        Icons.lock,
-                        color: primaryColor,
-                        size: 20.0,
-                      ),
-                      //onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        //  builder: (_) => ChangePasswordPage())),
-                    ),
-                    Divider(),
-//                     ListTile(
-//                    title: Text('Change Address'),
-//                    leading: Icon(Icons.local_post_office,
-//                            color: Colors.blue,
-//                            size: 20.0,
-//                            ),
-//                    onTap: () => Navigator.of(context).push(
-//                        MaterialPageRoute(builder: (_) => ChangePasswordPage())),
-//                  ),
-//                    Divider(),
-                    ListTile(
-                      title:  Text( "change_language"),
+                      title:  Text( getTranslated(context, 'change_language'),),
                       leading: Icon(
                         Icons.category,
                         color: primaryColor,
                         size: 20.0,
                       ),
-                      //onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                       //   builder: (_) => Language_Settings())),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => ChangeLanguagePage())),
                     ),
                   ],
                 ),

@@ -62,10 +62,14 @@
   "Purchase_History": "මිලදී ගැනීමේ ඉතිහාසය",
   "Help_&_Support": "උදව් සහ සහාය",
   "Settings": "සැකසුම්",
-  "Invite_a_Friend": "මිතුරෙකුට ආරාධනා කරන්න",
+  "Invite_a_Friend": "මිතුරෙකුට ආරාධනා කර",
   "Logout": "ඉවත් වන්න",
   "City": "නගරය",
   "20_rooms_found": "20 කාමර හමු විය",
-  "Filter": "පෙරහන"
+  "Filter": "පෙරහන",
+  "Address":"ලිපිනය",
+  "Contact Number":"ඇමතුම් අංකය",
+  "Choose language":"භාෂාව තෝරන්න",
+  "settings": "සැකසුම්"
 
 }

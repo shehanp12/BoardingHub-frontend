@@ -176,20 +176,20 @@ class AdsListView extends StatelessWidget {
                                             CrossAxisAlignment.end,
                                         children: <Widget>[
                                           Text(
-                                            ' ${5} Reviews',
+                                            '\$${hotelData.perMonth}',
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
                                               fontWeight: FontWeight.w600,
-                                              fontSize: 22,
+                                              fontSize: 19,
                                             ),
                                           ),
-                                          // Text(
-                                          //   '/per night',
-                                          //   style: TextStyle(
-                                          //       fontSize: 14,
-                                          //       color:
-                                          //           Colors.grey.withOpacity(0.8)),
-                                          // ),
+                                           Text(
+                                             'per month',
+                                             style: TextStyle(
+                                                 fontSize: 14,
+                                                 color:
+                                                     Colors.grey.withOpacity(0.8)),
+                                           ),
                                         ],
                                       ),
                                     ),

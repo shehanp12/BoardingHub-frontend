@@ -6,13 +6,15 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 class ProfileListItem extends StatelessWidget {
   final IconData icon;
   final String text;
-  final bool hasNavigation;
+  final Function onPress;
+
 
   const ProfileListItem({
     Key key,
     this.icon,
     this.text,
-    this.hasNavigation = true,
+    this.onPress
+
   }) : super(key: key);
 
   @override
@@ -48,7 +50,7 @@ class ProfileListItem extends StatelessWidget {
             ),
           ),
           Spacer(),
-          if (this.hasNavigation)
+
             Icon(
               LineAwesomeIcons.angle_right,
               size: 25,
