@@ -121,6 +121,30 @@ class AppBarButton extends StatelessWidget {
   }
 }
 
+class AvatarImage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width / 1,
+      height: MediaQuery.of(context).size.height / 4.5,
+      padding: EdgeInsets.all(8),
+      decoration: avatarDecoration,
+      child: Container(
+        decoration: avatarDecoration,
+        padding: EdgeInsets.all(3),
+        child: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              image: AssetImage('images/as.png'),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class ProfileListItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -184,29 +208,6 @@ class ProfileListItems extends StatelessWidget {
           )
           ),
         ],
-      ),
-    );
-  }
-}
-class AvatarImage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 1,
-      height: MediaQuery.of(context).size.height / 4.5,
-      padding: EdgeInsets.all(8),
-      decoration: avatarDecoration,
-      child: Container(
-        decoration: avatarDecoration,
-        padding: EdgeInsets.all(3),
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              image: AssetImage('images/as.png'),
-            ),
-          ),
-        ),
       ),
     );
   }
