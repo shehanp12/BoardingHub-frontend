@@ -1,9 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/settings/ChangeLanguage.dart';
-
-import 'package:flutter_app/screens/settings/Myads.dart';
-
 import 'package:flutter_app/screens/FeedPage.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 
