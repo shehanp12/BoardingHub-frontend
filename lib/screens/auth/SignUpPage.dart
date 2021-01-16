@@ -99,8 +99,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(
                       height: 15,
-                    ),
-                    FlatButton(
+                    ),FlatButton(
                       onPressed: () {
                         BoardingProvider boardingProvider =
                             new BoardingProvider(userName, fullName, email,
@@ -113,6 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       shape: CircleBorder(),
                       child: Icon(Icons.arrow_forward, color: white),
                     )
+                    
                   ],
                 ),
               ),
