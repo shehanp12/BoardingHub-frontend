@@ -40,52 +40,7 @@ class _AboutusPageState extends State<TermsCondition> {
                       fontSize: 18.0),
                 ),
               ),
-              Flexible(
-                child: ListView(
-                  children: <Widget>[
-                    
-                    Text(getTranslated(context,
-                        'Terms_Description'),),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(getTranslated(context,
-                      'Advice'),
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.0),
-                    ),
-                    Text(getTranslated(context,
-                        'Advice_first_paragraph'),),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(getTranslated(context,
-                        'Advice_second_paragraph'),),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(getTranslated(context,
-                        'Advice_Third_paragraph'),),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(getTranslated(context,
-                      'Copyright'),
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.0),
-                    ),
-                    Text(getTranslated(context,
-                        'Copyright_description'),)
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+              
       ),
     );
   }
