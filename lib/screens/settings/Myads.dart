@@ -16,7 +16,33 @@ class MyadScreenState extends State<MyadScreen> {
     createDummyData();
   }
 
-  
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      backgroundColor: Colors.grey,
+      appBar: new AppBar(
+        title: new Text(
+          "My Ads".toUpperCase(),
+          style: new TextStyle(color: Colors.black, fontFamily: "Arquitecta"),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+      ),
+      body: new Center(
+        child: new Container(
+          child: new ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemBuilder: (context, index) => new MyadCard(
+                  category: categories[index],
+                ),
+            itemCount: categories.length,
+            padding: new EdgeInsets.all(20.0),
+          ),
+        ),
+      ),
+    );
+  }
 
   
 
@@ -107,30 +133,3 @@ class MyadCard extends StatelessWidget {
     );
   }
 }
-@override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      backgroundColor: Colors.grey,
-      appBar: new AppBar(
-        title: new Text(
-          "My Ads".toUpperCase(),
-          style: new TextStyle(color: Colors.black, fontFamily: "Arquitecta"),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-      ),
-      body: new Center(
-        child: new Container(
-          child: new ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemBuilder: (context, index) => new MyadCard(
-                  category: categories[index],
-                ),
-            itemCount: categories.length,
-            padding: new EdgeInsets.all(20.0),
-          ),
-        ),
-      ),
-    );
-  }
