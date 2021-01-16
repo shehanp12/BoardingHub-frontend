@@ -15,7 +15,10 @@ class ProfileView extends StatelessWidget {
           SizedBox(
             height: 25,
           ),
-          
+          Text(
+            '0778342720',
+            style: TextStyle(fontWeight: FontWeight.w300),
+          ),
           SizedBox(height: 10),
           Text(
             'lakshan.bimantha@gmail.com',
