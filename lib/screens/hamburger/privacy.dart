@@ -31,7 +31,16 @@ class _AboutusPageState extends State<PrivacyPolicy> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: Text(getTranslated(context,
+                  'USER_PRIVACY_STATEMENT'),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0),
+                ),
+              ),
               Flexible(
                 child: ListView(
                   children: <Widget>[
