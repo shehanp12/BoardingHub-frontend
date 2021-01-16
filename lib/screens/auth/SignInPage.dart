@@ -100,7 +100,6 @@ class _SignInPageState extends State<SignInPage> {
           ],
         ));
   }
-
   void _login(email, password) {
     if (!_formKey.currentState.validate()) {
       _scaffoldKey.currentState.showSnackBar(
@@ -136,4 +135,6 @@ class _SignInPageState extends State<SignInPage> {
     }
     );
   }
+
+  
 }
