@@ -39,13 +39,11 @@ class DemoLocalizations {
 
     static const LocalizationsDelegate<DemoLocalizations> delegate =
     DemoLocalizationDelegate();
-
   
 }
 
 class DemoLocalizationDelegate extends LocalizationsDelegate<DemoLocalizations>  {
   const DemoLocalizationDelegate();
-
 
   @override
   bool isSupported(Locale locale) => ['en', 'si'].contains(locale.languageCode);

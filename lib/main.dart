@@ -1,9 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/settings/ChangeLanguage.dart';
-
-import 'package:flutter_app/screens/settings/Myads.dart';
-
 import 'package:flutter_app/screens/FeedPage.dart';
 import 'package:flutter_app/screens/HomePage.dart';
 
@@ -24,7 +20,6 @@ import 'localization/demo_localization.dart';
 import 'localization/language_constants.dart';
 import 'screens/auth/SignInPage.dart';
 import 'screens/auth/SignUpPage.dart';
-import 'screens/viewData/ProductPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -91,7 +86,6 @@ class _MyAppState extends State<MyApp> {
               routes: <String, WidgetBuilder>{
                 '/signup': (BuildContext context) => SignUpPage(),
                 '/signin': (BuildContext context) => SignInPage(),
-                '/productPage': (BuildContext context) => ProductPage(),
               },
               locale: _locale,
               supportedLocales: [

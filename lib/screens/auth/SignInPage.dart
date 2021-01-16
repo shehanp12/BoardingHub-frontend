@@ -18,7 +18,6 @@ class SignInPage extends StatefulWidget {
   @override
   _SignInPageState createState() => _SignInPageState();
 }
-
 class _SignInPageState extends State<SignInPage> {
   String email;
   String password;
@@ -46,8 +45,6 @@ class _SignInPageState extends State<SignInPage> {
                         child: SignUpPage()));
                 sharedPreferences.clear();
                 sharedPreferences.commit();
-
-
               },
               child: Text(getTranslated(context,'Sign_Up'), style: contrastText),
             )
@@ -101,7 +98,6 @@ class _SignInPageState extends State<SignInPage> {
           ],
         ));
   }
-
   void _login(email, password) {
     if (!_formKey.currentState.validate()) {
       _scaffoldKey.currentState.showSnackBar(
@@ -111,7 +107,6 @@ class _SignInPageState extends State<SignInPage> {
         ),
       );
     }
-
     _restService.login(email, password).then((val)  {
 
       // sharedPreferences.setString("token", val.data['token']);
@@ -135,6 +130,9 @@ class _SignInPageState extends State<SignInPage> {
               content: new Text(val.data['message']),
               backgroundColor: Colors.deepOrangeAccent,
             ));
-    });
+    }
+    );
   }
+
+  
 }
