@@ -1,7 +1,7 @@
 
 # BoardingHub Frontend
 
-![Project Image](project-image-url)
+![Project Image](https://github.com/shehanp12/BoardingHub-frontend/tree/master/gif/Boardinghub(1).gif)
 
 > BoardingHub is a platform to find boarding places easily.
 
