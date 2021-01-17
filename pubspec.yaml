@@ -48,12 +48,11 @@ dependencies:
   rect_getter: ^0.0.1
   provider: ^3.1.0
   splashscreen:
-  animated_text_kit:
-  url_launcher: ^5.7.10
+  animated_text_kit: 
+  url_launcher: 
+  fluttertoast: ^7.1.6
 
-
-
-
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

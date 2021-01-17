@@ -24,13 +24,23 @@ class MenudrawerPage extends StatelessWidget {
       
       body: Center(
         child: ListView(
-          padding: EdgeInsets.zero,
+          padding: EdgeInsets.all(20),
           children: <Widget>[
             SizedBox(
-              height: 80,
+              height: 30,
+            ),
+            Container(
+              height: 50,
+              child: Text(getTranslated(context, 'Help_&_Support'),
+              textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 30, fontFamily: "Poppins"),),
+            ),
+            SizedBox(
+              height: 20,
             ),
             Container(
               height: 55,
+               width: MediaQuery.of(context).size.width / 2,
               margin: EdgeInsets.symmetric(
                 horizontal: 10,
               ).copyWith(
@@ -45,7 +55,7 @@ class MenudrawerPage extends StatelessWidget {
               ),
               child: ListTile(
                 leading: Icon(
-                  Icons.account_balance,
+                  Icons.business_outlined,
                   color: Colors.deepOrangeAccent,
                   size: 25.0,
                 ),
@@ -53,7 +63,7 @@ class MenudrawerPage extends StatelessWidget {
                   'About_Us'),
                 ),
                 trailing: Icon(
-                  Icons.arrow_forward_ios,
+                  Icons.arrow_forward_ios_outlined,
                   color: Colors.deepOrangeAccent,
                 ),
                 onTap: () {

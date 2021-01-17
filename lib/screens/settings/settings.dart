@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/localization/language_constants.dart';
 import 'package:flutter_app/screens/settings/ChangeLanguage.dart';
 import 'package:flutter_app/shared/Colors.dart';
 
@@ -21,6 +22,7 @@ class _SettingPageState extends State<SettingPage> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,8 +44,7 @@ class _SettingPageState extends State<SettingPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text(
-                          "settings",
+                        Text(getTranslated(context, 'settings'),
                           style: TextStyle(
                             color: Colors.black26,
                             fontSize: 22,
@@ -54,7 +55,7 @@ class _SettingPageState extends State<SettingPage> {
                       ],
                     ),         
                     ListTile(
-                      title:  Text( "change_language"),
+                      title:  Text( getTranslated(context, 'change_language'),),
                       leading: Icon(
                         Icons.category,
                         color: primaryColor,

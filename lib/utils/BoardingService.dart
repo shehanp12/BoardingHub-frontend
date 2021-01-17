@@ -8,10 +8,7 @@ class BoardingService extends GetxController {
   List<BoardingHouse> listData = List<BoardingHouse>().obs;
   List<BoardingProvider> myListData = List<BoardingProvider>().obs;
 
-
-
-
-  var _x;
+var _x;
 
   get x => _x;
 
@@ -21,7 +18,7 @@ class BoardingService extends GetxController {
   @override
   void onInit() {
     print(myListData);
-
+      RestService.fetchBoardingdetails();
     // RestService.fetchMyDetails();
     super.onInit();
   }

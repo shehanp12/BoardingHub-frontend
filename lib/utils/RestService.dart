@@ -13,7 +13,7 @@ var _controller = BoardingService.to;
 class RestService {
   Dio _dio = new Dio();
 
-  final String host = 'http://192.168.1.107:3000/';
+  final String host = 'http://192.168.8.100:3000/';
 
   registerUser(boardingProvider) async {
     return await _dio.post(host + 'boardingProvider/signup', data: {
@@ -78,8 +78,7 @@ class RestService {
             )));
     Dio _dio = Dio();
     Response response =
-    await _dio.get('http://192.168.1.107:3000/boardingHouse');
-
+        await _dio.get('http://192.168.8.100:3000/boardingHouse');
   }
 
   static Future<List<BoardingHouse>> fetchBoardingdetails() async {
@@ -91,11 +90,11 @@ class RestService {
             )));
 
     Dio _dio = Dio();
-    Response response =
-        await _dio.get('http://192.168.1.107:3000/boardingHouse',
-            options: Options(headers: {
-              'Authorization': 'Bearer ${sharedPreferences.get("token")}'
-            }));
+    Response response = await _dio.get(
+        'http://192.168.8.100:3000/boardingHouse',
+        options: Options(headers: {
+          'Authorization': 'Bearer ${sharedPreferences.get("token")}'
+        }));
 
     a.Get.back();
 
@@ -117,11 +116,10 @@ class RestService {
     Dio _dio = Dio();
 
     Response response = await _dio.get(
-        'http://192.168.1.107:3000/boardingProvider/',
+        'http://192.168.8.100:3000/boardingProvider/',
         options: Options(headers: {
           'Authorization': 'Bearer ${sharedPreferences.get("token")}'
-        })
-    );
+        }));
     print(response.data);
     a.Get.back();
     if (response.statusCode == 200) {

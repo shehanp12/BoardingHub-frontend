@@ -82,11 +82,11 @@ class _SignUpPageState extends State<SignUpPage> {
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => email = val)),
-                        fryoTextInput('Address',
+                        fryoTextInput(getTranslated(context, 'Address'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) => setState(() => address = val)),
-                        fryoTextInput('Contact Number',
+                        fryoTextInput(getTranslated(context, 'Contact Number'),
                             validator: (val) =>
                                 val == null || val.trim() == '' ? '' : null,
                             onChanged: (val) =>
@@ -99,8 +99,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     SizedBox(
                       height: 15,
-                    ),
-                    FlatButton(
+                    ),FlatButton(
                       onPressed: () {
                         BoardingProvider boardingProvider =
                             new BoardingProvider(userName, fullName, email,
@@ -113,6 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       shape: CircleBorder(),
                       child: Icon(Icons.arrow_forward, color: white),
                     )
+                    
                   ],
                 ),
               ),

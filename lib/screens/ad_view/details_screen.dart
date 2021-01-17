@@ -76,9 +76,6 @@ class _DetailScreenState extends State<DetailScreen> {
                 children: <Widget>[
                   _buildTitleInfo(),
                   SizedBox(
-                    height: 90.0,
-                  ),
-                  SizedBox(
                     height: 20.0,
                   ),
                   _buildServiceBar(),
@@ -129,8 +126,8 @@ class _DetailScreenState extends State<DetailScreen> {
                       textAlign: TextAlign.justify,
                       textDirection: TextDirection.ltr,
                       style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w100,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w200,
                       ),
                     ),
                   ),
@@ -216,7 +213,7 @@ class _DetailScreenState extends State<DetailScreen> {
               width: 70.0,
               height: 70.0,
               decoration: BoxDecoration(
-                  color: Colors.blue[100],
+                  color: Colors.orange[100],
                   borderRadius: BorderRadius.circular(45.0)),
               child: Icon(
                 FontAwesomeIcons.bath,
@@ -242,7 +239,7 @@ class _DetailScreenState extends State<DetailScreen> {
               width: 70.0,
               height: 70.0,
               decoration: BoxDecoration(
-                  color: Colors.blue[100],
+                  color: Colors.orange[100],
                   borderRadius: BorderRadius.circular(45.0)),
               child: Icon(
                 FontAwesomeIcons.female,
@@ -268,7 +265,7 @@ class _DetailScreenState extends State<DetailScreen> {
               width: 70.0,
               height: 70.0,
               decoration: BoxDecoration(
-                  color: Colors.blue[100],
+                  color: Colors.orange[100],
                   borderRadius: BorderRadius.circular(45.0)),
               child: Icon(
                 FontAwesomeIcons.car,
@@ -297,7 +294,7 @@ class _DetailScreenState extends State<DetailScreen> {
       borderRadius: BorderRadius.circular(45.0),
       child: FlatButton(
         onPressed: () {},
-        color: Colors.blue[800],
+        color: Colors.orange[300],
         child: Container(
           width: 180.0,
           height: 80.0,
@@ -307,7 +304,7 @@ class _DetailScreenState extends State<DetailScreen> {
               Container(
                 width: 120.0,
                 child: Text(
-                  "Book now",
+                  "Call now",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
