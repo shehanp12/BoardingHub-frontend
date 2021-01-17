@@ -1,11 +1,21 @@
 
 # BoardingHub Frontend
 
-![](https://github.com/shehanp12/BoardingHub-frontend/tree/master/gif/Boardinghub(1).gif)
+![Image](gif/Boardinghub(1).gif)
 
 > BoardingHub is a platform to find boarding places easily.
 
 ---
+## Group Members
+
+| Name          | Student_ID           
+| -------------    |:-------------:|
+| KASP Kasthuriarachchi| 21017688 |
+| SAL Dimantha    | 21089195     |
+|PK Hansamali |21019368     |
+|BMKT Balasuriya | 21019535    |
+| HMMM Bandara|21018539 |
+| LK Kothalawala|21089281 |
 
 ### Table of Contents
 You're sections headers will be used to reference location of destination.
