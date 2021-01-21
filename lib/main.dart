@@ -81,7 +81,6 @@ class _MyAppState extends State<MyApp> {
 
               //home: AdsScreen(),
 
-
               home: SplashScreen(),
 
               routes: <String, WidgetBuilder>{
