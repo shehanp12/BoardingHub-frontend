@@ -51,6 +51,7 @@ dependencies:
   animated_text_kit: 
   url_launcher: 
   fluttertoast: ^7.1.6
+  tflite: ^1.1.1
 
   
 dev_dependencies:
@@ -63,6 +64,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -101,7 +104,11 @@ flutter:
     - images/ads4.jpg
     - images/ads5.jpg
     - images/ads6.jpg
-    
+    - assets/labels.txt
+    - assets/a.tflite
+
+
+
 
 
 

@@ -6,6 +6,7 @@ import 'package:flutter_app/screens/HomePage.dart';
 import 'package:flutter_app/screens/ProfilePage.dart';
 
 import 'package:flutter_app/screens/auth/WelcomeUserPage.dart';
+import 'package:flutter_app/screens/mlPart/MlAlgorithm.dart';
 import 'package:flutter_app/screens/viewData/ProfileEditPage.dart';
 
 import 'package:flutter_app/screens/Splashscreen.dart';
